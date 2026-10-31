@@ -52,10 +52,21 @@ const folderVectorBody=folderVector.slice(folderVector.indexOf('>')+1,folderVect
 // inside a CSS mask, so the mask uses the source SVG body with alpha amplified.
 fs.writeFileSync('dist/assets/folder-silhouette.svg',`<svg xmlns="http://www.w3.org/2000/svg" width="212.273" height="148.018" viewBox="0 0 212.273 148.018"><defs><filter id="alpha" x="0" y="0" width="100%" height="100%"><feComponentTransfer><feFuncA type="linear" slope="100"/></feComponentTransfer></filter></defs><g filter="url(#alpha)">${folderVectorBody}</g></svg>`);
 const vectorLayer=convert('600:52073','600:52127');
-const folderMarkup=convert('600:52073','600:52108').replace('data-node-id="600:52108"','data-node-id="600:52108" data-folder-scene').replace(vectorLayer,'');
+// SVG images cannot apply Figma's foreignObject backdrop blur to their own
+// painted layers. Keep the source artwork and blur its shading with an SVG
+// filter instead; the base silhouette and the two stars remain crisp.
+const orbSource=fs.readFileSync('dist/assets/c40ec.svg','utf8');
+const orbBlur=orbSource.match(/backdrop-filter:blur\(([^)]+)px\)/)?.[1];
+if(!orbBlur)throw Error('Folder orb blur missing from Figma export');
+const browserOrb=orbSource.replace(/<foreignObject\b[\s\S]*?<\/foreignObject>/,'')
+ .replace('<g id="6235933"','<g filter="url(#folder-orb-blur)"><g id="6235933"')
+ .replace('<circle id="Ellipse 35"','</g><circle id="Ellipse 35"')
+ .replace('<defs>',`<defs><filter id="folder-orb-blur" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="${orbBlur}"/></filter>`);
+fs.writeFileSync('dist/assets/folder-orb.svg',browserOrb);
+const folderMarkup=convert('600:52073','600:52108').replace('data-node-id="600:52108"','data-node-id="600:52108" data-folder-scene').replace(vectorLayer,'').replace('assets/c40ec.svg','assets/folder-orb.svg');
 const folderStart=folderMarkup.indexOf('>')+1;
 const frostedSample=folderMarkup.replaceAll('data-node-id=','data-folder-ref=').replace(' data-folder-scene','');
-const old=folderMarkup.slice(0,folderStart)+`<div class="folder-papers">${folderMarkup.slice(folderStart,-6)}</div><div class="folder-front"><div class="folder-glass"><div class="folder-frosted-sample" aria-hidden="true">${frostedSample}</div></div>${vectorLayer}<div class="folder-grain"></div></div></div>`;
+const old=folderMarkup.slice(0,folderStart)+`<div class="folder-papers">${folderMarkup.slice(folderStart,-6)}</div><div class="folder-front"><div class="folder-glass"><div class="folder-frosted-sample" aria-hidden="true">${frostedSample}</div></div>${vectorLayer}<div class="folder-grain"></div><div class="folder-sheen" aria-hidden="true"></div></div></div>`;
 const education='<div class="orbit-layer">'+['600:52521','600:52522','600:52523','600:52524','600:52536'].map((id,i)=>`<div class="orbit-item" style="--phase:${[-162,-18,-90,54,126][i]}deg">${convert('600:52517',id)}</div>`).join('')+'</div>';
 const fade=convert('600:52517','600:52548');
 const arrow=image('8e5ff.svg','','edu-arrow');
