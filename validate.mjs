@@ -1,10 +1,11 @@
 import fs from 'node:fs';
 const html=fs.readFileSync('dist/index.html','utf8');
-const css=['styles.css','artwork.css','motion.css'].map(file=>fs.readFileSync('dist/'+file,'utf8')).join('\n');
+const css=['styles.css','artwork.css','motion.css','stickers.css'].map(file=>fs.readFileSync('dist/'+file,'utf8')).join('\n');
 const assets=[...new Set([...html.matchAll(/(?:src|href)="(assets\/[^\"]+)"/g)].map(m=>m[1]).concat([...css.matchAll(/url\(['"]?(assets\/[^)'"?]+)(?:\?[^)'" ]+)?['"]?\)/g)].map(m=>m[1])))];
 const missing=assets.filter(p=>!fs.existsSync('dist/'+p)||!fs.statSync('dist/'+p).size);
 const temporaryUrls=/figma.com\/api\/mcp\/asset/.test(html+css);
 const expectedMotion=JSON.parse(fs.readFileSync('reference/motion.json','utf8')).nodes;
 const unmappedMotion=expectedMotion.filter(n=>!html.includes(`data-node-id="${n.nodeId}"`));
-console.log(JSON.stringify({assetFiles:assets.length,missing,temporaryUrls,animations:expectedMotion.length,unmappedMotion:unmappedMotion.map(n=>n.nodeId)}));
-if(missing.length||temporaryUrls||unmappedMotion.length)process.exit(1);
+const missingRuntime=[...html.matchAll(/(?:src|href)="([^\"]+\.(?:css|js))"/g)].map(m=>m[1]).filter(file=>!fs.existsSync('dist/'+file)||!fs.statSync('dist/'+file).size);
+console.log(JSON.stringify({assetFiles:assets.length,missing,missingRuntime,temporaryUrls,animations:expectedMotion.length,unmappedMotion:unmappedMotion.map(n=>n.nodeId)}));
+if(missing.length||missingRuntime.length||temporaryUrls||unmappedMotion.length)process.exit(1);
