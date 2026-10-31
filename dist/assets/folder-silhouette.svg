@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212.273" height="148.018" viewBox="0 0 212.273 148.018"><defs><filter id="alpha" x="0" y="0" width="100%" height="100%"><feComponentTransfer><feFuncA type="linear" slope="100"/></feComponentTransfer></filter></defs><g filter="url(#alpha)">
+<foreignObject x="-25" y="-25" width="262.273" height="198.018"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(12.5px);clip-path:url(#bgblur_0_0_1833_clip_path);height:100%;width:100%"></div></foreignObject><g id="Vector 234255636" filter="url(#filter0_n_0_1833)" data-figma-bg-blur-radius="25">
+<path d="M25.6354 0.00327584C64.856 0.628673 111.031 2.04004 128.799 2.3347C133.501 2.41268 138.452 4.03916 142.154 6.93815L164.399 24.3547C166.947 26.3501 170.09 27.4342 173.327 27.4342H188.825C201.938 27.4342 212.502 38.1881 212.269 51.2992L210.966 124.61C210.74 137.374 200.343 147.611 187.577 147.641L28.0664 148.018C12.5767 148.055 0.000329813 135.508 0.000283434 120.018L1.16415e-10 25.3569C-4.23369e-05 11.2171 11.4975 -0.222163 25.6354 0.00327584Z" fill="#DFECF6" fill-opacity="0.1"/>
+</g>
+<defs>
+<filter id="filter0_n_0_1833" x="-25" y="-25" width="262.273" height="198.018" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="100 100" stitchTiles="stitch" numOctaves="3" result="noise" seed="5221" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(101, 136, 211, 0.68)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect1_noise_0_1833">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<clipPath id="bgblur_0_0_1833_clip_path" transform="translate(25 25)"><path d="M25.6354 0.00327584C64.856 0.628673 111.031 2.04004 128.799 2.3347C133.501 2.41268 138.452 4.03916 142.154 6.93815L164.399 24.3547C166.947 26.3501 170.09 27.4342 173.327 27.4342H188.825C201.938 27.4342 212.502 38.1881 212.269 51.2992L210.966 124.61C210.74 137.374 200.343 147.611 187.577 147.641L28.0664 148.018C12.5767 148.055 0.000329813 135.508 0.000283434 120.018L1.16415e-10 25.3569C-4.23369e-05 11.2171 11.4975 -0.222163 25.6354 0.00327584Z"/>
+</clipPath></defs>
+</g></svg>

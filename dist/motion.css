@@ -1,0 +1,54 @@
+/* Scrolling case stack: each panel keeps its own rounded silhouette. */
+body{overflow-x:clip}
+.projects{position:relative;isolation:isolate;padding-bottom:1px}
+.project{position:relative;border-radius:80px;border:1px solid #c1e0f60d;box-shadow:0 -16px 48px #13131a12}
+.project:first-child{position:sticky;top:var(--stack-top,24px);z-index:1;transform:scale(var(--stack-scale,1));transform-origin:50% 0%;margin-bottom:96px}
+.project:first-child:after{content:'';position:absolute;inset:0;background:#08080e;opacity:var(--stack-shade,0);pointer-events:none;border-radius:inherit}
+.bank-project{z-index:2;margin-top:-96px;box-shadow:0 -1px 0 #ffffff0a,0 -28px 70px #10101620}
+.background{position:relative;z-index:3;background:var(--bg)}
+
+/* The active capsule fills for the same 15 seconds as the slideshow clock. */
+.gallery-controls{--progress:0;gap:6px;min-height:40px;padding:14px 16px}
+.dot{flex:none;width:6px;height:6px;overflow:visible;transition:width .3s cubic-bezier(.2,.8,.2,1),background-color .2s}
+.dot.active{width:32px;background:#646468}
+.dot-fill{display:block;position:absolute;inset:0;background:white;border-radius:inherit;transform:scaleX(0);transform-origin:left;opacity:0}
+.dot.active .dot-fill{opacity:1;transform:scaleX(var(--progress))}
+.autoplay-toggle{position:relative;width:12px;height:12px;flex:none;padding:0;margin-left:5px;opacity:.65}
+.autoplay-toggle:before{content:'';position:absolute;inset:-12px -7px}
+.autoplay-toggle span{display:block;width:8px;height:8px;margin:auto;border-inline:2px solid #ddd}
+.autoplay-toggle[aria-pressed="true"] span{width:0;height:0;border:4px solid transparent;border-left:6px solid #ddd;border-right:0}
+.autoplay-toggle:hover,.autoplay-toggle:focus-visible{opacity:1}
+.gallery{overflow-anchor:none}
+
+/* A live frosted front sits over the original paper and phone artwork. */
+.archive-art{padding:0;border:0;background:none;cursor:pointer;outline-offset:12px}
+.archive-art [data-folder-scene]{overflow:visible!important;transition:transform .65s cubic-bezier(.2,.8,.2,1);transform-origin:50% 80%}
+.folder-papers{position:absolute;inset:0;clip-path:inset(0 round 27.59px);transition:clip-path .65s cubic-bezier(.2,.8,.2,1)}
+.archive-art:is(:hover,:focus-visible) .folder-papers{clip-path:inset(-60px -35px 0 -35px round 27.59px)}
+.archive-art [data-node-id="600:52109"]{box-shadow:0 8px 24px #10284726}
+.folder-front{position:absolute;z-index:2;left:0;top:32.59px;width:212.693px;height:148.365px;transform-origin:50% 100%;transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.folder-front>[data-node-id="600:52127"]{top:0!important;left:0!important;pointer-events:none}
+.folder-glass,.folder-grain{position:absolute;inset:.28px .42px 0 0;mask-image:url('assets/folder-silhouette.svg?v=2');mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-image:url('assets/folder-silhouette.svg?v=2');-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;pointer-events:none}
+.folder-glass{background:linear-gradient(110deg,#77bddb,#c4d0d4 38%,#25292e 90%);backdrop-filter:blur(25px) saturate(.95);-webkit-backdrop-filter:blur(25px) saturate(.95)}
+.folder-frosted-sample{position:absolute;left:0;top:-32.59px;width:211px;height:180px;filter:blur(25px);pointer-events:none}
+.folder-frosted-sample>[data-folder-ref]{position:relative!important;left:0!important;top:0!important}
+.folder-grain{background-image:url('assets/folder-grain.svg');background-size:90px 90px;mix-blend-mode:soft-light;opacity:.38}
+.archive-art [data-node-id="600:52110"],.archive-art [data-node-id="600:52111"],.archive-art [data-node-id="600:52112"],.archive-art [data-node-id="600:52126"]{transition:transform .65s cubic-bezier(.2,.8,.2,1);transform-origin:50% 80%}
+.archive-art:is(:hover,:focus-visible) [data-folder-scene]{transform:translateY(-4px) rotate(-2deg)}
+.archive-art:is(:hover,:focus-visible) .folder-front{transform:translateY(5px) scaleY(.93)}
+.archive-art:is(:hover,:focus-visible) [data-node-id="600:52110"]{transform:translate(-5px,-21px) rotate(-5deg)}
+.archive-art:is(:hover,:focus-visible) [data-node-id="600:52111"]{transform:translate(5px,-31px) rotate(5deg);transition-delay:35ms}
+.archive-art:is(:hover,:focus-visible) [data-node-id="600:52126"]{transform:translate(-4px,-17px) rotate(-4deg);transition-delay:65ms}
+.archive-art:is(:hover,:focus-visible) [data-node-id="600:52112"]{transform:translate(8px,-25px) rotate(10deg);transition-delay:90ms}
+
+/* Orbit wrappers move; the original Figma artwork keeps its own tilt. */
+@property --orbit-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+.education-art{width:100%;left:0;right:0;top:0;transform:none;overflow:hidden}
+.education-art>div:first-child{left:0!important}
+.orbit-layer{position:absolute;inset:0;--orbit-rx:min(40vw,570px);--orbit-ry:223px}
+.education-art:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 75%,var(--bg))}
+.orbit-item{--orbit-angle:var(--phase);position:absolute;width:170px;height:170px;left:calc(50% + cos(var(--orbit-angle))*var(--orbit-rx));top:calc(313px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%);animation:education-orbit 70s linear infinite}
+.orbit-item>div{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)}
+@keyframes education-orbit{from{--orbit-angle:var(--phase)}to{--orbit-angle:calc(var(--phase) + 360deg)}}
+@media(max-width:760px){.project{border-radius:40px}.project:first-child{margin-bottom:52px}.bank-project{margin-top:-52px}.orbit-layer{--orbit-rx:calc(50% - 48px);--orbit-ry:270px}.orbit-item{top:calc(330px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%) scale(.45)}.education-art{width:100%;left:0;transform:none}.education-content{pointer-events:none}.gallery-controls{margin-top:24px}}
+@media(prefers-reduced-motion:reduce){.project:first-child{position:relative;top:auto;transform:none}.project:first-child:after{display:none}.orbit-item{animation:none}.archive-art:is(:hover,:focus-visible) [data-folder-scene],.archive-art:is(:hover,:focus-visible) .folder-front,.archive-art:is(:hover,:focus-visible) [data-node-id]{transform:none}.dot{transition:none}}
