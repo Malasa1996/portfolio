@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const html=fs.readFileSync('dist/index.html','utf8');
+const css=fs.readFileSync('dist/styles.css','utf8')+fs.readFileSync('dist/artwork.css','utf8');
+const assets=[...new Set([...html.matchAll(/(?:src|href)="(assets\/[^\"]+)"/g)].map(m=>m[1]))];
+const missing=assets.filter(p=>!fs.existsSync('dist/'+p)||!fs.statSync('dist/'+p).size);
+const temporaryUrls=/figma.com\/api\/mcp\/asset/.test(html+css);
+const expectedMotion=JSON.parse(fs.readFileSync('reference/motion.json','utf8')).nodes;
+const unmappedMotion=expectedMotion.filter(n=>!html.includes(`data-node-id="${n.nodeId}"`));
+console.log(JSON.stringify({assetFiles:assets.length,missing,temporaryUrls,animations:expectedMotion.length,unmappedMotion:unmappedMotion.map(n=>n.nodeId)}));
+if(missing.length||temporaryUrls||unmappedMotion.length)process.exit(1);

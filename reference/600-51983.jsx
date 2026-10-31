@@ -1,0 +1,3 @@
+export default function Gradient() {
+  return <div className="relative size-full" data-node-id="600:51983" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 1566.4 944.82' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(64.669 0 0 62.411 783.21 472.41)'><stop stop-color='rgba(30,30,36,0)' offset='0'/><stop stop-color='rgba(30,30,36,1)' offset='1'/></radialGradient></defs></svg>\")" }} data-name="Gradient" />;
+}
