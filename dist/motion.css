@@ -35,7 +35,7 @@ body{overflow-x:clip}
 .folder-sheen{overflow:hidden}
 .folder-sheen:before{content:'';position:absolute;top:-30%;left:-65%;width:48%;height:160%;background:linear-gradient(90deg,transparent 10%,#ffffff18 30%,#ffffffb3 50%,#ffffff18 70%,transparent 90%);opacity:0;transform:translateX(-15%) skewX(-24deg)}
 .archive-art:is(:hover,:focus-visible) .folder-sheen:before{animation:folder-sheen .528s cubic-bezier(.2,.6,.3,1) .06s both}
-@keyframes folder-sheen{0%{opacity:0;transform:translateX(-15%) skewX(-24deg)}15%{opacity:.85}80%{opacity:.85}100%{opacity:0;transform:translateX(450%) skewX(-24deg)}}
+@keyframes folder-sheen{0%{opacity:0;transform:translateX(-15%) skewX(-24deg)}15%{opacity:.7225}80%{opacity:.7225}100%{opacity:0;transform:translateX(450%) skewX(-24deg)}}
 .archive-art [data-node-id="600:52110"],.archive-art [data-node-id="600:52111"],.archive-art [data-node-id="600:52112"],.archive-art [data-node-id="600:52126"]{transition:transform .65s cubic-bezier(.2,.8,.2,1);transform-origin:50% 80%}
 .archive-art:is(:hover,:focus-visible) [data-folder-scene]{transform:translateY(-4px) rotate(-2deg)}
 .archive-art:is(:hover,:focus-visible) .folder-front{transform:translateY(5px) scaleY(.93)}
