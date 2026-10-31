@@ -9,7 +9,6 @@ class Gallery {
   this.originals=[...this.track.children];
   this.controls=element.nextElementSibling;
   this.dots=[...this.controls.querySelectorAll('.dot')];
-  this.toggle=this.controls.querySelector('.autoplay-toggle');
   this.index=1;this.elapsed=0;this.visible=false;this.paused=reduced.matches;this.dragging=false;this.focused=false;this.navigating=false;
   // A full copy on either side keeps the neighbouring artwork visible at the
   // seam. Only the middle copy is exposed to assistive technology and dialogs.
@@ -18,21 +17,78 @@ class Gallery {
   this.track.append(...this.originals.map(copy));
   this.slides=[...this.track.children];
   this.dots.forEach((dot,i)=>dot.addEventListener('click',()=>this.go(i)));
-  this.toggle.addEventListener('click',()=>{this.paused=!this.paused;this.updateToggle();});
   element.addEventListener('keydown',event=>{
    if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();this.go(this.index+(event.key==='ArrowRight'?1:-1));}
-   if(event.code==='Space'&&event.target===element){event.preventDefault();this.paused=!this.paused;this.updateToggle();}
   });
-  element.addEventListener('pointerdown',()=>{this.dragging=true;});
-  const release=()=>{this.dragging=false;};
-  window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);
+  element.addEventListener('pointerdown',event=>this.beginDrag(event));
+  element.addEventListener('pointermove',event=>this.moveDrag(event));
+  window.addEventListener('pointerup',event=>this.endDrag(event));
+  window.addEventListener('pointercancel',event=>this.endDrag(event));
+  element.addEventListener('lostpointercapture',event=>this.endDrag(event));
+  element.addEventListener('dragstart',event=>event.preventDefault());
   element.addEventListener('focusin',event=>{this.focused=event.target.matches(':focus-visible');});
   element.addEventListener('focusout',()=>{this.focused=false;});
   element.addEventListener('scroll',()=>{clearTimeout(this.settleTimer);this.settleTimer=setTimeout(()=>this.settle(),160);},{passive:true});
   element.addEventListener('scrollend',()=>this.settle());
   new IntersectionObserver(entries=>{this.visible=entries[0].intersectionRatio>.2;},{threshold:[0,.2,.5]}).observe(element);
   new ResizeObserver(()=>this.align()).observe(element);
-  this.align();this.update();this.updateToggle();
+  this.align();this.update();
+ }
+ closestSlide(){
+  const bounds=this.element.getBoundingClientRect();
+  const center=bounds.left+bounds.width/2;
+  return this.slides.reduce((best,node)=>Math.abs(node.getBoundingClientRect().left+node.getBoundingClientRect().width/2-center)<Math.abs(best.getBoundingClientRect().left+best.getBoundingClientRect().width/2-center)?node:best);
+ }
+ beginDrag(event){
+  if(!event.isPrimary||event.button!==0)return;
+  clearTimeout(this.settleTimer);
+  this.pointer={id:event.pointerId,startX:event.clientX,startY:event.clientY,lastX:event.clientX,lastTime:event.timeStamp,velocity:0,scroll:this.element.scrollLeft,startSlide:this.closestSlide(),moved:false};
+  this.dragging=true;this.navigating=false;
+  if(event.pointerType==='mouse'){
+   event.preventDefault();
+   this.element.classList.add('is-dragging');
+   this.element.setPointerCapture(event.pointerId);
+   this.element.scrollTo({left:this.element.scrollLeft,behavior:'instant'});
+  }
+ }
+ moveDrag(event){
+  const pointer=this.pointer;
+  if(!pointer||pointer.id!==event.pointerId)return;
+  const distance=event.clientX-pointer.startX;
+  const vertical=event.clientY-pointer.startY;
+  if(!pointer.moved){
+   if(Math.abs(distance)<6||Math.abs(distance)<Math.abs(vertical)*1.15)return;
+   pointer.moved=true;
+   this.element.classList.add('is-dragging');
+   this.element.setPointerCapture(event.pointerId);
+  }
+  event.preventDefault();
+  const elapsed=event.timeStamp-pointer.lastTime;
+  if(elapsed>0)pointer.velocity=(event.clientX-pointer.lastX)/elapsed;
+  pointer.lastX=event.clientX;pointer.lastTime=event.timeStamp;
+  const scale=this.element.getBoundingClientRect().width/this.element.offsetWidth;
+  this.element.scrollLeft=pointer.scroll-distance/scale;
+ }
+ endDrag(event){
+  const pointer=this.pointer;
+  if(!pointer||pointer.id!==event.pointerId)return;
+  this.pointer=null;this.dragging=false;
+  let target=this.closestSlide();
+  if(pointer.moved){
+   const distance=pointer.lastX-pointer.startX;
+   const speed=event.timeStamp-pointer.lastTime<120?pointer.velocity:0;
+   const threshold=Math.min(70,pointer.startSlide.getBoundingClientRect().width*.14);
+   if(target===pointer.startSlide&&(Math.abs(distance)>threshold||Math.abs(speed)>.5)){
+    const direction=Math.sign(distance||speed);
+    target=this.slides[Math.max(0,Math.min(this.slides.length-1,this.slides.indexOf(target)-direction))];
+   }
+   this.elapsed=0;
+  }
+  this.element.classList.remove('is-dragging');
+  if(this.element.hasPointerCapture(pointer.id))this.element.releasePointerCapture(pointer.id);
+  this.index=Number(target.dataset.slideIndex);this.navigating=true;this.update();
+  this.center(target,'smooth');
+  this.settleTimer=setTimeout(()=>this.settle(),650);
  }
  center(slide,behavior='instant'){
   const bounds=this.element.getBoundingClientRect();
@@ -55,8 +111,7 @@ class Gallery {
  settle(){
   if(this.dragging)return;
   clearTimeout(this.settleTimer);
-  const center=this.element.getBoundingClientRect().left+this.element.clientWidth/2;
-  const closest=this.slides.reduce((best,node)=>Math.abs(node.getBoundingClientRect().left+node.getBoundingClientRect().width/2-center)<Math.abs(best.getBoundingClientRect().left+best.getBoundingClientRect().width/2-center)?node:best);
+  const closest=this.closestSlide();
   const index=Number(closest.dataset.slideIndex);
   if(this.index!==index){this.index=index;this.elapsed=0;}
   this.navigating=false;
@@ -64,11 +119,10 @@ class Gallery {
   this.update();
  }
  update(){
-  this.dots.forEach((dot,i)=>{dot.classList.toggle('active',i===this.index);dot.setAttribute('aria-pressed',String(i===this.index));});
+  this.dots.forEach((dot,i)=>{dot.classList.toggle('active',i===this.index);dot.classList.toggle('nearby',i===(this.index+1)%this.dots.length);dot.setAttribute('aria-pressed',String(i===this.index));});
   this.controls.style.setProperty('--progress',this.elapsed/SLIDE_DURATION);
   this.element.dataset.currentSlide=String(this.index+1);
  }
- updateToggle(){this.toggle.setAttribute('aria-pressed',String(this.paused));this.toggle.setAttribute('aria-label',this.paused?'Включить автопереключение':'Приостановить автопереключение');}
  tick(delta){
   if(!this.paused&&!this.focused&&!this.dragging&&!this.navigating&&this.visible&&!document.hidden&&!document.querySelector('dialog[open]')){
    this.elapsed+=delta;
@@ -79,7 +133,7 @@ class Gallery {
 }
 const carousels=galleries.map(element=>new Gallery(element));
 window.addEventListener('load',()=>carousels.forEach(carousel=>carousel.align()),{once:true});
-reduced.addEventListener('change',()=>{carousels.forEach(carousel=>{carousel.paused=reduced.matches;carousel.updateToggle();});scheduleStack();});
+reduced.addEventListener('change',()=>{carousels.forEach(carousel=>{carousel.paused=reduced.matches;});scheduleStack();});
 let lastFrame=performance.now();
 function animateGalleries(now){const delta=Math.min(now-lastFrame,100);lastFrame=now;carousels.forEach(carousel=>carousel.tick(delta));requestAnimationFrame(animateGalleries);}
 requestAnimationFrame(animateGalleries);
