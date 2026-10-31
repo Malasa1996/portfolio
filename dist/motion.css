@@ -1,10 +1,10 @@
-/* Scrolling case stack: each panel keeps its own rounded silhouette. */
+/* Figma's first case has square lower corners and extends behind the next header. */
 body{overflow-x:clip}
-.projects{position:relative;isolation:isolate;padding-bottom:1px}
+.projects{--case-underlap:146px;position:relative;isolation:isolate;padding-bottom:1px}
 .project{position:relative;border-radius:80px;border:1px solid #c1e0f60d;box-shadow:0 -16px 48px #13131a12}
-.project:first-child{position:sticky;top:var(--stack-top,24px);z-index:1;transform:scale(var(--stack-scale,1));transform-origin:50% 0%;margin-bottom:96px}
+.project:first-child{position:sticky;top:var(--stack-top,24px);z-index:1;transform:scale(var(--stack-scale,1));transform-origin:50% 0%;border-radius:80px 80px 0 0;padding-bottom:calc(58px + var(--case-underlap));margin-bottom:0}
 .project:first-child:after{content:'';position:absolute;inset:0;background:#08080e;opacity:var(--stack-shade,0);pointer-events:none;border-radius:inherit}
-.bank-project{z-index:2;margin-top:-96px;box-shadow:0 -1px 0 #ffffff0a,0 -28px 70px #10101620}
+.bank-project{z-index:2;margin-top:calc(0px - var(--case-underlap));box-shadow:0 -1px 0 #ffffff0a,0 -28px 70px #10101620}
 .background{position:relative;z-index:3;background:var(--bg)}
 
 /* The active capsule fills for the same 15 seconds as the slideshow clock. */
@@ -48,5 +48,5 @@ body{overflow-x:clip}
 .orbit-item{--orbit-angle:var(--phase);position:absolute;width:170px;height:170px;left:calc(50% + cos(var(--orbit-angle))*var(--orbit-rx));top:calc(313px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%);animation:education-orbit 70s linear infinite}
 .orbit-item>div{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)}
 @keyframes education-orbit{from{--orbit-angle:var(--phase)}to{--orbit-angle:calc(var(--phase) + 360deg)}}
-@media(max-width:760px){.project{border-radius:40px}.project:first-child{margin-bottom:52px}.bank-project{margin-top:-52px}.orbit-layer{--orbit-rx:calc(50% - 48px);--orbit-ry:270px}.orbit-item{top:calc(330px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%) scale(.45)}.education-art{width:100%;left:0;transform:none}.education-content{pointer-events:none}.gallery-controls{margin-top:24px}}
+@media(max-width:760px){.projects{--case-underlap:100px}.project{border-radius:40px}.project:first-child{border-radius:40px 40px 0 0;padding-bottom:calc(42px + var(--case-underlap))}.orbit-layer{--orbit-rx:calc(50% - 48px);--orbit-ry:270px}.orbit-item{top:calc(330px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%) scale(.45)}.education-art{width:100%;left:0;transform:none}.education-content{pointer-events:none}.gallery-controls{margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.project:first-child{position:relative;top:auto;transform:none}.project:first-child:after{display:none}.orbit-item{animation:none}.archive-art:is(:hover,:focus-visible) [data-folder-scene],.archive-art:is(:hover,:focus-visible) .folder-front,.archive-art:is(:hover,:focus-visible) [data-node-id]{transform:none}.dot{transition:none}}
