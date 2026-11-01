@@ -155,6 +155,24 @@ window.addEventListener('scroll',scheduleStack,{passive:true});
 window.addEventListener('resize',scheduleStack);
 new ResizeObserver(scheduleStack).observe(firstCase);
 scheduleStack();
+
+const footerAvatar=document.querySelector('.footer-avatar');
+let avatarHovered=false;
+const wantsAvatarMotion=()=>!reduced.matches&&(avatarHovered||footerAvatar.matches(':focus-visible'));
+function startAvatarMotion(){if(wantsAvatarMotion())footerAvatar.classList.add('is-grooving');}
+footerAvatar.addEventListener('pointerenter',event=>{if(event.pointerType==='touch')return;avatarHovered=true;startAvatarMotion();});
+footerAvatar.addEventListener('pointerleave',()=>{avatarHovered=false;});
+footerAvatar.addEventListener('pointercancel',()=>{avatarHovered=false;});
+footerAvatar.addEventListener('focus',startAvatarMotion);
+// Complete the current loop on exit, then stop at the identical neutral frame.
+footerAvatar.querySelector('img').addEventListener('animationiteration',event=>{
+ if(event.animationName==='footer-head-groove'&&!wantsAvatarMotion())footerAvatar.classList.remove('is-grooving');
+});
+reduced.addEventListener('change',()=>{
+ if(reduced.matches)footerAvatar.classList.remove('is-grooving');
+ else startAvatarMotion();
+});
+
 const theme=document.querySelector('.theme-toggle');let saved;try{saved=localStorage.getItem('portfolio-theme');}catch{}
 function setTheme(light){document.documentElement.classList.toggle('light',light);theme.setAttribute('aria-pressed',String(light));theme.setAttribute('aria-label',light?'Включить тёмную тему':'Включить светлую тему');}
 setTheme(saved==='light');theme.addEventListener('click',()=>{const light=!document.documentElement.classList.contains('light');setTheme(light);try{localStorage.setItem('portfolio-theme',light?'light':'dark');}catch{}});
