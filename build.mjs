@@ -79,8 +79,7 @@ const education='<div class="orbit-layer">'+[0,1,2,3,4].map((icon,i)=>`<div clas
 const arrow=image('8e5ff.svg','','edu-arrow');
 const aboutScenes=[
  ['Игры, музыка, спорт и эстетика 2000-х','about-scenes.svg'],
- ['Путешествия с друзьями на север','about-scenes.svg'],
- ['Кошка Луна и мечта завести собаку','about-scenes.svg']
+ ['Путешествия с друзьями на север','about-scenes.svg']
 ];
 const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><h2 class="visually-hidden" id="about-title">Обо мне</h2><div class="about-stage">${aboutScenes.map(([alt,file],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}">${image(file,alt)}</figure>`).join('')}</div></div></section>`;
 const contacts=`<a href="mailto:malasa1308@gmail.com">Email</a><button type="button" data-cv>CV</button><a href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Telegram</a>`;
