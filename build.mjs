@@ -8,9 +8,8 @@ const esc=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;');
 const image=(file,alt='',cls='')=>`<img src="assets/${file}" alt="${alt}" class="${cls}">`;
 const aboutSource=fs.readFileSync(path.join(ref,'about-scenes.svg'),'utf8');
 fs.copyFileSync(path.join(ref,'about-scenes.svg'),'dist/assets/about-scenes.svg');
-// The exported Figma frame contains all three 1440 × 760 states. Keep the
-// original artwork untouched and expose each state through a cropped SVG view.
-[904,2506,4108].forEach((x,index)=>fs.writeFileSync(`dist/assets/about-scene-${index+1}.svg`,`<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="${x} 496 1440 760"><image href="about-scenes.svg" width="5538" height="1458"/></svg>`));
+// The exported Figma frame contains all three 1440 × 760 states. CSS crops the
+// single original asset so browsers decode and cache the artwork only once.
 const educationSource=fs.readFileSync(path.join(ref,'education.svg'),'utf8');
 const educationIcons=[...educationSource.matchAll(/<image id="image(\d+)[^>]+xlink:href="data:image\/png;base64,([^"]+)"\/>/g)];
 if(educationIcons.length!==5)throw Error('Expected five education icons from the new Figma frame');
@@ -79,9 +78,9 @@ const old=folderMarkup.slice(0,folderStart)+`<div class="folder-papers">${folder
 const education='<div class="orbit-layer">'+[0,1,2,3,4].map((icon,i)=>`<div class="orbit-item" style="--phase:${[-90,-18,54,126,-162][i]}deg">${image(`education-icon-${icon}.png`,'')}</div>`).join('')+'</div>';
 const arrow=image('8e5ff.svg','','edu-arrow');
 const aboutScenes=[
- ['Игры, музыка, спорт и эстетика 2000-х','about-scene-1.svg'],
- ['Путешествия с друзьями на север','about-scene-2.svg'],
- ['Кошка Луна и мечта завести собаку','about-scene-3.svg']
+ ['Игры, музыка, спорт и эстетика 2000-х','about-scenes.svg'],
+ ['Путешествия с друзьями на север','about-scenes.svg'],
+ ['Кошка Луна и мечта завести собаку','about-scenes.svg']
 ];
 const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><h2 class="visually-hidden" id="about-title">Обо мне</h2><div class="about-stage">${aboutScenes.map(([alt,file],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}">${image(file,alt)}</figure>`).join('')}</div></div></section>`;
 const contacts=`<a href="mailto:malasa1308@gmail.com">Email</a><button type="button" data-cv>CV</button><a href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Telegram</a>`;
