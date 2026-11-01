@@ -55,12 +55,16 @@ body{overflow-x:clip}
 @keyframes education-orbit{from{--orbit-angle:var(--phase)}to{--orbit-angle:calc(var(--phase) + 360deg)}}
 
 /* A small musical nod; the link's hit area stays still as the portrait moves. */
-.footer-avatar img{transform-origin:50% 85%}
-.footer-avatar.is-grooving img{animation:footer-head-groove 1.4s linear infinite,footer-head-bob 1.4s ease-in-out infinite}
+.footer-portrait{display:block;transform-origin:50% 85%}
+.footer-avatar.is-grooving .footer-portrait{animation:footer-head-groove 1.4s linear infinite,footer-head-bob 1.4s ease-in-out infinite}
+.footer-eye{transform-box:fill-box;transform-origin:50% 30%}
+/* Three head cycles per blink keep the eyes open at every possible exit. */
+.footer-avatar.is-grooving .footer-eye{animation:footer-eye-blink 4.2s ease-in-out infinite}
+@keyframes footer-eye-blink{0%,20%,24%,100%{transform:scaleY(1)}21.5%,22.5%{transform:scaleY(.12)}}
 /* Quarter-wave curves preserve speed through neutral and ease only at each tilt. */
 @keyframes footer-head-groove{0%,50%,100%{transform:rotate(0deg);animation-timing-function:cubic-bezier(.333333,.523599,.666667,1)}25%{transform:rotate(-5deg);animation-timing-function:cubic-bezier(.333333,0,.666667,.476401)}75%{transform:rotate(5deg);animation-timing-function:cubic-bezier(.333333,0,.666667,.476401)}}
 @keyframes footer-head-bob{0%,50%,100%{translate:0 0}25%,75%{translate:0 2px}}
-@media(prefers-reduced-motion:reduce){.footer-avatar.is-grooving img{animation:none;transform:none}}
+@media(prefers-reduced-motion:reduce){.footer-avatar.is-grooving .footer-portrait,.footer-avatar.is-grooving .footer-eye{animation:none;transform:none}}
 
 @media(max-width:760px){.projects{--case-underlap:100px}.project{border-radius:40px}.project:first-child{border-radius:40px 40px 0 0;padding-bottom:calc(42px + var(--case-underlap))}.orbit-layer{--orbit-rx:calc(50% - 48px);--orbit-ry:270px}.orbit-item{top:calc(330px + sin(var(--orbit-angle))*var(--orbit-ry));transform:translate(-50%,-50%) scale(.45)}.education-art{width:100%;left:0;transform:none}.education-content{pointer-events:none}.gallery-controls{margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.project:first-child{position:relative;top:auto;transform:none}.project:first-child:after{display:none}.orbit-item{animation:none}.archive-art:is(:hover,:focus-visible) [data-folder-scene],.archive-art:is(:hover,:focus-visible) .folder-front,.archive-art:is(:hover,:focus-visible) [data-node-id]{transform:none}.archive-art .folder-sheen:before{animation:none;opacity:0}.dot{transition:none}}

@@ -165,7 +165,7 @@ footerAvatar.addEventListener('pointerleave',()=>{avatarHovered=false;});
 footerAvatar.addEventListener('pointercancel',()=>{avatarHovered=false;});
 footerAvatar.addEventListener('focus',startAvatarMotion);
 // Complete the current loop on exit, then stop at the identical neutral frame.
-footerAvatar.querySelector('img').addEventListener('animationiteration',event=>{
+footerAvatar.querySelector('.footer-portrait').addEventListener('animationiteration',event=>{
  if(event.animationName==='footer-head-groove'&&!wantsAvatarMotion())footerAvatar.classList.remove('is-grooving');
 });
 reduced.addEventListener('change',()=>{
