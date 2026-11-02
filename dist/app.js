@@ -58,7 +58,7 @@ class Gallery {
   const distance=event.clientX-pointer.startX;
   const vertical=event.clientY-pointer.startY;
   if(!pointer.moved){
-   if(Math.abs(distance)<6||Math.abs(distance)<Math.abs(vertical)*1.15)return;
+   if(Math.abs(distance)<4||Math.abs(distance)<Math.abs(vertical)*1.15)return;
    pointer.moved=true;
    this.element.classList.add('is-dragging');
    this.element.setPointerCapture(event.pointerId);
@@ -75,21 +75,28 @@ class Gallery {
   if(!pointer||pointer.id!==event.pointerId)return;
   this.pointer=null;this.dragging=false;
   let target=this.closestSlide();
+  const speed=event.type==='pointercancel'||event.timeStamp-pointer.lastTime>=120?0:pointer.velocity;
   if(pointer.moved){
-   const speed=event.timeStamp-pointer.lastTime<120?pointer.velocity:0;
-   // A short drag stays near its release position; only a deliberate flick
-   // carries a little momentum. There is no forced next slide after 70px.
+   const distance=pointer.lastX-pointer.startX;
    const limit=pointer.startSlide.getBoundingClientRect().width*.22;
    const projection=event.type==='pointercancel'?0:Math.max(-limit,Math.min(limit,-speed*120));
    target=this.closestSlide(projection);
+   // A modest gesture is enough, without pulling halfway across a wide card.
+   // Tiny accidental movements still return to the current slide.
+   const threshold=Math.max(32,Math.min(64,pointer.startSlide.getBoundingClientRect().width*.08));
+   const intentional=event.type!=='pointercancel'&&(Math.abs(distance)>=threshold||(Math.abs(distance)>=14&&Math.abs(speed)>.35));
+   if(target===pointer.startSlide&&intentional){
+    const direction=Math.sign(distance);
+    target=this.slides[Math.max(0,Math.min(this.slides.length-1,this.slides.indexOf(pointer.startSlide)-direction))];
+   }
    this.elapsed=0;
   }
   this.element.classList.remove('is-dragging');
   if(this.element.hasPointerCapture(pointer.id))this.element.releasePointerCapture(pointer.id);
   this.index=Number(target.dataset.slideIndex);this.navigating=true;this.update();
-  this.center(target,'smooth');
+  this.center(target,'smooth',speed);
  }
- center(slide,behavior='instant'){
+ center(slide,behavior='instant',releaseSpeed=0){
   const bounds=this.element.getBoundingClientRect();
   const scale=bounds.width/this.element.offsetWidth;
   const target=this.element.scrollLeft+(slide.getBoundingClientRect().left+slide.getBoundingClientRect().width/2-(bounds.left+bounds.width/2))/scale;
@@ -104,11 +111,15 @@ class Gallery {
   // One animator owns the release. Native mandatory snapping and smooth
   // scrolling used to fight each other as pointer capture was released.
   this.navigating=true;
-  const duration=Math.min(850,Math.max(420,480+Math.abs(distance)*.25));
+  const duration=Math.min(950,Math.max(580,620+Math.abs(distance)*.3));
+  // Match the release velocity, then ease to rest. A slow release accelerates
+  // gently instead of starting with the old cubic-out tug.
+  const slope=Math.max(0,Math.min(2,(-releaseSpeed/scale)*duration/distance));
   const began=performance.now();
   const step=now=>{
    const progress=Math.min(1,(now-began)/duration);
-   this.element.scrollLeft=start+distance*(1-Math.pow(1-progress,3));
+   const eased=progress*progress*(3-2*progress)+slope*progress*Math.pow(1-progress,2);
+   this.element.scrollLeft=start+distance*eased;
    if(progress<1)this.scrollAnimation=requestAnimationFrame(step);
    else{this.scrollAnimation=undefined;this.settle();}
   };
