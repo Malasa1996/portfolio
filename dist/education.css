@@ -1,6 +1,7 @@
 /* Figma 3:7857: one 1354px wheel, clipped to the 741px education frame. */
 .education{width:calc(100% - 80px);max-width:1354.262px;height:auto;aspect-ratio:1354.262/741;margin-inline:auto;container-type:inline-size}
 .education-wheel-position{position:absolute;left:0;top:-.045%;width:100%;aspect-ratio:1}
+.education .education-art>.education-wheel-position{display:block}
 @property --education-rotation{syntax:'<angle>';initial-value:0rad;inherits:false}
 .education-wheel{position:absolute;inset:0;transform:rotate(var(--education-rotation,0rad));animation:education-wheel-turn 20s linear infinite;will-change:transform}
 @keyframes education-wheel-turn{0%{--education-rotation:0rad}100%{--education-rotation:6.283rad}}
