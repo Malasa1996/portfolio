@@ -144,9 +144,10 @@ let stackFrame;
 function updateStack(){
  stackFrame=undefined;
  if(reduced.matches){firstCase.style.removeProperty('--stack-scale');firstCase.style.removeProperty('--stack-shade');return;}
- const top=Math.min(24,window.innerHeight-firstCase.offsetHeight-24);
+ const viewportHeight=window.innerHeight/pageScale();
+ const top=Math.min(24,viewportHeight-firstCase.offsetHeight-24);
  firstCase.style.setProperty('--stack-top',top+'px');
- const overlap=Math.max(0,Math.min(1,(window.innerHeight-nextCase.getBoundingClientRect().top)/(window.innerHeight-Math.max(24,top))));
+ const overlap=Math.max(0,Math.min(1,(viewportHeight-nextCase.getBoundingClientRect().top/pageScale())/(viewportHeight-Math.max(24,top))));
  firstCase.style.setProperty('--stack-scale',String(1-overlap*.035));
  firstCase.style.setProperty('--stack-shade',String(overlap*.18));
 }
@@ -162,14 +163,15 @@ let aboutFrame;
 function updateAbout(){
  aboutFrame=undefined;
  if(!aboutSection)return;
- const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,innerHeight-64)*1440/760);
+ const viewportHeight=innerHeight/pageScale();
+ const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,viewportHeight-64)*1440/760);
  const scale=canvasWidth/1440;
  aboutSection.style.setProperty('--about-width',`${canvasWidth}px`);
  aboutSection.style.setProperty('--about-scale',String(scale));
  aboutSection.style.setProperty('--about-static-height',`${(aboutScenes.length*760+124)*scale}px`);
  const bounds=aboutSection.getBoundingClientRect();
- const distance=Math.max(1,aboutSection.offsetHeight-innerHeight);
- const progress=Math.max(0,Math.min(1,-bounds.top/distance));
+ const distance=Math.max(1,aboutSection.offsetHeight-viewportHeight);
+ const progress=Math.max(0,Math.min(1,-bounds.top/pageScale()/distance));
  const active=Math.min(aboutScenes.length-1,Math.floor(progress*aboutScenes.length));
  aboutScenes.forEach((scene,index)=>{
   scene.classList.toggle('is-active',index===active);
