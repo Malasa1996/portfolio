@@ -138,5 +138,10 @@
     "node": "21:38917",
     "name": "imgStroke",
     "file": "about-ef307.svg"
+  },
+  {
+    "node": "21:38917",
+    "name": "imgTravelCaption",
+    "file": "about-travel-caption.svg"
   }
 ]

@@ -39,28 +39,7 @@ export default function Component2() {
               </div>
             </div>
           </div>
-          <div className="absolute flex h-[96.399px] items-center justify-center left-[513.5px] top-[59px] w-[468.865px]" data-node-id="21:38924">
-            <div className="flex-none rotate-[3.5deg]">
-              <div className="h-[68.125px] relative w-[465.576px]">
-                <div className="absolute h-[68.125px] left-0 top-0 w-[464.247px]" data-node-id="21:38925">
-                  <div className="absolute h-[64.829px] left-[1.37px] top-[1.93px] w-[461.503px]" data-node-id="21:38926" data-name="Люблю путешествовать с друзьями, особенно если это какая-нибудь поездка на север в минус миллион градусов">
-                    <div className="absolute inset-[-8%_-1.19%_-8.46%_-1.19%]">
-                      <img alt="" className="block max-w-none size-full" src={img} />
-                    </div>
-                  </div>
-                  <div className="absolute h-[68.124px] left-0 top-[0.01px] w-[464.249px]" data-node-id="21:39018" data-name="Люблю путешествовать с друзьями, особенно если это какая-нибудь поездка на север в минус миллион градусов (Stroke)">
-                    <div className="absolute inset-[-7.22%_-1.18%_-8.05%_-1.18%]">
-                      <img alt="" className="block max-w-none size-full" src={imgStroke} />
-                    </div>
-                  </div>
-                  <div className="absolute bg-white h-[39.204px] left-[25.58px] top-[11.1px] w-[360.127px]" data-node-id="21:39110" />
-                </div>
-                <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] left-0 not-italic text-[21.937px] text-black top-[33px] tracking-[0.4387px] w-[465.576px]" data-node-id="21:39111">
-                  <p className="leading-none">Люблю путешествовать с друзьями, особенно если это какая-нибудь поездка на север в минус миллион градусов</p>
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="absolute left-[509.543px] top-[55.026px] w-[476px] h-[101px]" data-node-id="21:38924"><img alt="Люблю путешествовать с друзьями, особенно если это какая-нибудь поездка на север в минус миллион градусов" className="absolute inset-0" src={imgTravelCaption} /></div>
           <div className="absolute flex h-[191.904px] items-center justify-center left-[84.23px] top-[464.76px] w-[216.458px]" data-node-id="21:39112">
             <div className="flex-none rotate-[-23.28deg]">
               <div className="h-[131.946px] relative w-[178.869px]" data-name="Игрушечный самолёт в полёте вправо 1">
