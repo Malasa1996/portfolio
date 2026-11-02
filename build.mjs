@@ -91,7 +91,7 @@ const educationSlots=[
 const education='<div class="education-wheel-position"><div class="education-wheel" data-node-id="3:7858">'+educationSlots.map(([file,x,y,tilt])=>`<div class="education-icon" style="left:${x/1354.262*100}%;top:${y/1354.266*100}%;--icon-tilt:${tilt}deg">${image(`edu-${file}`,'')}</div>`).join('')+'</div></div>';
 const arrow=image('edu-8e5ff.svg','','edu-arrow');
 const aboutScenes=[
- ['Путешествия с друзьями на север','3:8399','3:8400'],
+ ['Путешествия с друзьями на север','21:38917','21:38918'],
  ['Игры, музыка, спорт и эстетика 2000-х','21:39113','21:39114']
 ];
 const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><div class="about-stage"><div class="about-canvas"><h2 id="about-title">Обо мне</h2>${aboutScenes.map(([label,node,title],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}" aria-label="${label}" aria-hidden="${i!==0}">${convert(node,node,title)}</figure>`).join('')}</div></div></div></section>`;
