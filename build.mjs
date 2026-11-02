@@ -91,9 +91,8 @@ const educationSlots=[
 const education='<div class="education-wheel-position"><div class="education-wheel" data-node-id="3:7858">'+educationSlots.map(([file,x,y,tilt])=>`<div class="education-icon" style="left:${x/1354.262*100}%;top:${y/1354.266*100}%;--icon-tilt:${tilt}deg">${image(`edu-${file}`,'')}</div>`).join('')+'</div></div>';
 const arrow=image('edu-8e5ff.svg','','edu-arrow');
 const aboutScenes=[
- ['Игры, музыка, спорт и эстетика 2000-х','3:8758','3:8759'],
  ['Путешествия с друзьями на север','3:8399','3:8400'],
- ['Кошка Лина и мечта завести собаку','3:8493','3:8494']
+ ['Игры, музыка, спорт и эстетика 2000-х','21:39113','21:39114']
 ];
 const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><div class="about-stage"><div class="about-canvas"><h2 id="about-title">Обо мне</h2>${aboutScenes.map(([label,node,title],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}" aria-label="${label}" aria-hidden="${i!==0}">${convert(node,node,title)}</figure>`).join('')}</div></div></div></section>`;
 const contacts=`<a href="mailto:malasa1308@gmail.com">Email</a><button type="button" data-cv>CV</button><a href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Telegram</a>`;
