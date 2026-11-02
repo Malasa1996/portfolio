@@ -14,7 +14,7 @@ body{overflow-x:clip}
 .dot.active{width:40px;height:10px;background:#646468}
 .dot-fill{display:block;position:absolute;inset:0 auto 0 0;width:0;background:white;border-radius:inherit;opacity:0}
 .dot.active .dot-fill{opacity:1;width:calc(var(--progress)*100%)}
-.gallery{overflow-anchor:none;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+.gallery{overflow-anchor:none;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;scroll-snap-type:none;scroll-behavior:auto}
 .gallery.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .gallery img{-webkit-user-drag:none}
 

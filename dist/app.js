@@ -34,13 +34,14 @@ class Gallery {
   new ResizeObserver(()=>this.align()).observe(element);
   this.align();this.update();
  }
- closestSlide(){
+ closestSlide(projection=0){
   const bounds=this.element.getBoundingClientRect();
-  const center=bounds.left+bounds.width/2;
+  const center=bounds.left+bounds.width/2+projection;
   return this.slides.reduce((best,node)=>Math.abs(node.getBoundingClientRect().left+node.getBoundingClientRect().width/2-center)<Math.abs(best.getBoundingClientRect().left+best.getBoundingClientRect().width/2-center)?node:best);
  }
  beginDrag(event){
   if(!event.isPrimary||event.button!==0)return;
+  cancelAnimationFrame(this.scrollAnimation);this.scrollAnimation=undefined;
   clearTimeout(this.settleTimer);
   this.pointer={id:event.pointerId,startX:event.clientX,startY:event.clientY,lastX:event.clientX,lastTime:event.timeStamp,velocity:0,scroll:this.element.scrollLeft,startSlide:this.closestSlide(),moved:false};
   this.dragging=true;this.navigating=false;
@@ -64,7 +65,7 @@ class Gallery {
   }
   event.preventDefault();
   const elapsed=event.timeStamp-pointer.lastTime;
-  if(elapsed>0)pointer.velocity=(event.clientX-pointer.lastX)/elapsed;
+  if(elapsed>0)pointer.velocity=pointer.velocity*.6+(event.clientX-pointer.lastX)/elapsed*.4;
   pointer.lastX=event.clientX;pointer.lastTime=event.timeStamp;
   const scale=this.element.getBoundingClientRect().width/this.element.offsetWidth;
   this.element.scrollLeft=pointer.scroll-distance/scale;
@@ -75,26 +76,43 @@ class Gallery {
   this.pointer=null;this.dragging=false;
   let target=this.closestSlide();
   if(pointer.moved){
-   const distance=pointer.lastX-pointer.startX;
    const speed=event.timeStamp-pointer.lastTime<120?pointer.velocity:0;
-   const threshold=Math.min(70,pointer.startSlide.getBoundingClientRect().width*.14);
-   if(target===pointer.startSlide&&(Math.abs(distance)>threshold||Math.abs(speed)>.5)){
-    const direction=Math.sign(distance||speed);
-    target=this.slides[Math.max(0,Math.min(this.slides.length-1,this.slides.indexOf(target)-direction))];
-   }
+   // A short drag stays near its release position; only a deliberate flick
+   // carries a little momentum. There is no forced next slide after 70px.
+   const limit=pointer.startSlide.getBoundingClientRect().width*.22;
+   const projection=event.type==='pointercancel'?0:Math.max(-limit,Math.min(limit,-speed*120));
+   target=this.closestSlide(projection);
    this.elapsed=0;
   }
   this.element.classList.remove('is-dragging');
   if(this.element.hasPointerCapture(pointer.id))this.element.releasePointerCapture(pointer.id);
   this.index=Number(target.dataset.slideIndex);this.navigating=true;this.update();
   this.center(target,'smooth');
-  this.settleTimer=setTimeout(()=>this.settle(),650);
  }
  center(slide,behavior='instant'){
   const bounds=this.element.getBoundingClientRect();
   const scale=bounds.width/this.element.offsetWidth;
   const target=this.element.scrollLeft+(slide.getBoundingClientRect().left+slide.getBoundingClientRect().width/2-(bounds.left+bounds.width/2))/scale;
-  this.element.scrollTo({left:target,behavior:reduced.matches?'instant':behavior});
+  cancelAnimationFrame(this.scrollAnimation);this.scrollAnimation=undefined;
+  const start=this.element.scrollLeft;
+  const distance=target-start;
+  if(reduced.matches||behavior==='instant'||Math.abs(distance)<.5){
+   this.element.scrollTo({left:target,behavior:'instant'});
+   if(this.navigating)requestAnimationFrame(()=>this.settle());
+   return;
+  }
+  // One animator owns the release. Native mandatory snapping and smooth
+  // scrolling used to fight each other as pointer capture was released.
+  this.navigating=true;
+  const duration=Math.min(850,Math.max(420,480+Math.abs(distance)*.25));
+  const began=performance.now();
+  const step=now=>{
+   const progress=Math.min(1,(now-began)/duration);
+   this.element.scrollLeft=start+distance*(1-Math.pow(1-progress,3));
+   if(progress<1)this.scrollAnimation=requestAnimationFrame(step);
+   else{this.scrollAnimation=undefined;this.settle();}
+  };
+  this.scrollAnimation=requestAnimationFrame(step);
  }
  align(){this.navigating=false;this.center(this.originals[this.index]);}
  go(requested){
@@ -109,9 +127,12 @@ class Gallery {
   if(reduced.matches)requestAnimationFrame(()=>this.settle());
  }
  settle(){
-  if(this.dragging)return;
+  if(this.dragging||this.scrollAnimation)return;
   clearTimeout(this.settleTimer);
   const closest=this.closestSlide();
+  const bounds=this.element.getBoundingClientRect();
+  const offset=closest.getBoundingClientRect().left+closest.getBoundingClientRect().width/2-bounds.left-bounds.width/2;
+  if(Math.abs(offset)>1){this.center(closest,'smooth');return;}
   const index=Number(closest.dataset.slideIndex);
   if(this.index!==index){this.index=index;this.elapsed=0;}
   this.navigating=false;
