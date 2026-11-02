@@ -75,8 +75,14 @@ const folderMarkup=convert('600:52073','600:52108').replace('data-node-id="600:5
 const folderStart=folderMarkup.indexOf('>')+1;
 const frostedSample=folderMarkup.replaceAll('data-node-id=','data-folder-ref=').replace(' data-folder-scene','');
 const old=folderMarkup.slice(0,folderStart)+`<div class="folder-papers">${folderMarkup.slice(folderStart,-6)}</div><div class="folder-front"><div class="folder-glass"><div class="folder-frosted-sample" aria-hidden="true">${frostedSample}</div></div>${vectorLayer}<div class="folder-grain"></div><div class="folder-sheen" aria-hidden="true"></div></div></div>`;
-const education='<div class="orbit-layer">'+[0,1,2,3,4].map((icon,i)=>`<div class="orbit-item" style="--phase:${[-90,-18,54,126,-162][i]}deg">${image(`education-icon-${icon}.png`,'')}</div>`).join('')+'</div>';
-const arrow=image('8e5ff.svg','','edu-arrow');
+const educationSlots=[
+ ['3af28.png',619.21,0,0],['c29ef.png',620.09,1227.27,0],
+ ['f76ba.png',1050.2325,180.6625,45],['78399.png',183.0525,1049.0925,45],
+ ['f4f3e.png',1227.26,613.19,90],['82c7e.png',0,614.07,90],
+ ['91e18.png',1055.1125,1044.2125,-45],['d6fa5.png',186.5425,175.9225,-60]
+];
+const education='<div class="education-wheel-position"><div class="education-wheel" data-node-id="3:7858">'+educationSlots.map(([file,x,y,tilt])=>`<div class="education-icon" style="left:${x/1354.262*100}%;top:${y/1354.266*100}%;--icon-tilt:${tilt}deg">${image(`edu-${file}`,'')}</div>`).join('')+'</div></div>';
+const arrow=image('edu-8e5ff.svg','','edu-arrow');
 const aboutScenes=[
  ['Игры, музыка, спорт и эстетика 2000-х','about-scenes.svg'],
  ['Путешествия с друзьями на север','about-scenes.svg']
@@ -94,7 +100,7 @@ const html=`<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta nam
 const dots='<div class="dotfield" aria-hidden="true">'+Array(345).fill('<img src="assets/d8251.svg" alt="">').join('')+'</div>';
 const preparedHtml=html.replace(`<div class="archive-art">${old}</div>`,`<button class="archive-art" type="button" data-open-project="archive" aria-label="Открыть папку с архивными проектами">${old}</button>`)
  .replace(image('ce4b1.svg'),footerPortrait)
- .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
+ .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><link rel="stylesheet" href="education.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
  .replace('<div class="stickers" aria-hidden="true">','<div class="stickers" role="group" aria-label="Интерактивные плашки">')
  .replace(/<span class="sticker ([^"]+)">([^<]+)<\/span>/g,(_,classes,label)=>`<button type="button" class="sticker ${classes}" aria-label="Подбросить ${label}">${label}</button>`);
 fs.writeFileSync('dist/index.html',preparedHtml.replace('<div class="hero-art">',dots+'<div class="hero-art">').replace('<footer>','<footer id="footer">'+dots));

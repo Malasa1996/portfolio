@@ -1,0 +1,30 @@
+/* Figma 3:7857: one 1354px wheel, clipped to the 741px education frame. */
+.education{width:calc(100% - 80px);max-width:1354.262px;height:auto;aspect-ratio:1354.262/741;margin-inline:auto;container-type:inline-size}
+.education-wheel-position{position:absolute;left:0;top:-.045%;width:100%;aspect-ratio:1}
+@property --education-rotation{syntax:'<angle>';initial-value:0rad;inherits:false}
+.education-wheel{position:absolute;inset:0;transform:rotate(var(--education-rotation,0rad));animation:education-wheel-turn 20s linear infinite;will-change:transform}
+@keyframes education-wheel-turn{0%{--education-rotation:0rad}100%{--education-rotation:6.283rad}}
+.education-icon{position:absolute;width:9.3778%;aspect-ratio:1;transform:rotate(var(--icon-tilt));border-radius:31.75%;overflow:hidden}
+.education-icon img{width:100%;height:100%;object-fit:cover}
+.education:after{top:46.9636%;background:linear-gradient(to bottom,transparent 20.561%,var(--bg) 94.363%)}
+.education-content{position:absolute;left:35.9354%;top:33.3333%;width:29.0564%;padding:0;gap:2.95364cqw}
+.education h2{font-size:2.80595cqw;line-height:1.4;letter-spacing:-.088609cqw;font-weight:600;color:white}
+.education .courses{width:100%;gap:3.249cqw}
+.education .course{width:100%;gap:2.95364cqw;justify-content:center;color:white}
+.education .course>div{width:19.3463cqw;flex:none}
+.education .course h3{font-size:1.77218cqw;line-height:1.77218cqw;letter-spacing:-.059073cqw;font-weight:500}
+.education .course p{font-size:1.18146cqw;line-height:1.77218cqw;letter-spacing:.023629cqw;margin-top:.295364cqw;white-space:nowrap}
+.education .edu-arrow{width:1.77218cqw;height:1.77218cqw;flex:none}
+@media(max-width:760px){
+ .education{width:100%;height:640px;aspect-ratio:auto}
+ .education-wheel-position{width:900px;left:calc(50% - 450px);top:0}
+ .education-content{left:50%;top:180px;width:310px;transform:translateX(-50%);gap:32px}
+ .education h2{font-size:32px;letter-spacing:-1px}
+ .education .courses{gap:28px}
+ .education .course{gap:18px}
+ .education .course>div{width:226px}
+ .education .course h3{font-size:20px;line-height:24px;letter-spacing:-.8px}
+ .education .course p{font-size:13px;line-height:24px;letter-spacing:0;margin-top:4px}
+ .education .edu-arrow{width:24px;height:24px}
+}
+@media(prefers-reduced-motion:reduce){.education-wheel{animation:none;will-change:auto}}
