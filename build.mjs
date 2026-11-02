@@ -3,6 +3,7 @@ import path from 'node:path';
 const ref=path.resolve('reference');
 const read=id=>fs.readFileSync(path.join(ref,id.replace(':','-')+'.jsx'),'utf8');
 const assets=JSON.parse(fs.readFileSync(path.join(ref,'assets.json'),'utf8'));
+assets.push(...JSON.parse(fs.readFileSync(path.join(ref,'about-assets.json'),'utf8')));
 const css=[], unknown=new Set(), rules=new Map();
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;');
 const image=(file,alt='',cls='')=>`<img src="assets/${file}" alt="${alt}" class="${cls}">`;
@@ -16,6 +17,8 @@ if(educationIcons.length!==5)throw Error('Expected five education icons from the
 for(const [,index,data] of educationIcons)fs.writeFileSync(`dist/assets/education-icon-${index}.png`,Buffer.from(data,'base64'));
 const map={absolute:'position:absolute',relative:'position:relative',contents:'display:contents',block:'display:block',flex:'display:flex','flex-col':'flex-direction:column','flex-row':'flex-direction:row','flex-none':'flex:none','shrink-0':'flex-shrink:0','items-center':'align-items:center','items-start':'align-items:flex-start','items-end':'align-items:flex-end','justify-center':'justify-content:center','justify-end':'justify-content:flex-end','content-stretch':'align-content:stretch','self-stretch':'align-self:stretch','overflow-clip':'overflow:hidden','overflow-hidden':'overflow:hidden','max-w-none':'max-width:none','w-full':'width:100%','h-full':'height:100%','size-full':'width:100%;height:100%','min-w-full':'min-width:100%','min-w-px':'min-width:1px','min-h-px':'min-height:1px','inset-0':'inset:0','left-0':'left:0','right-0':'right:0','top-0':'top:0','bottom-0':'bottom:0','text-white':'color:white','text-black':'color:black','bg-white':'background-color:white','bg-black':'background-color:black','text-center':'text-align:center','text-ellipsis':'text-overflow:ellipsis','font-medium':'font-weight:500','font-normal':'font-weight:400','font-semibold':'font-weight:600','font-bold':'font-weight:700','not-italic':'font-style:normal','whitespace-nowrap':'white-space:nowrap','whitespace-pre-wrap':'white-space:pre-wrap',uppercase:'text-transform:uppercase',border:'border-width:1px','border-solid':'border-style:solid','pointer-events-none':'pointer-events:none','object-cover':'object-fit:cover','object-contain':'object-fit:contain','object-bottom':'object-position:bottom','-translate-x-1/2':'--tx:-50%','-translate-y-1/2':'--ty:-50%','-scale-y-100':'--sy:-1','mask-alpha':'mask-mode:alpha','mask-intersect':'mask-composite:intersect','mask-no-clip':'mask-clip:no-clip','mask-no-repeat':'mask-repeat:no-repeat','bg-gradient-to-b':'background-image:linear-gradient(to bottom,var(--from),var(--to))'};
 function styleFor(c){
+ if(c.startsWith('rounded-br-['))return 'border-bottom-right-radius:'+c.slice(12,-1);
+ if(c==='leading-none')return 'line-height:1';
  if(c==='content-end')return 'align-content:flex-end';
  if(c==='flex-wrap')return 'flex-wrap:wrap';
  if(c.startsWith('gap-y-['))return 'row-gap:'+c.slice(7,-1);
@@ -45,9 +48,13 @@ function styleFor(c){
 }
 function classes(s){const declarations=s.split(/\s+/).map(styleFor).filter(Boolean);if(declarations.some(d=>/^--(rot|tx|ty|sy):/.test(d))){declarations.unshift('--tx:0;--ty:0;--rot:0deg;--sy:1');declarations.push('transform:translate(var(--tx),var(--ty)) rotate(var(--rot)) scaleY(var(--sy))');}const st=declarations.join(';');if(!rules.has(st)){const name='f'+rules.size;rules.set(st,name);css.push(`.${name}{${st}}`);}return rules.get(st);}
 function extract(code,id){const marker=`data-node-id="${id}"`;const at=code.indexOf(marker);if(at<0)throw Error('Node missing '+id);const start=code.lastIndexOf('<',at);const tags=/<\/?(?:motion\.)?div\b[^>]*>/g;tags.lastIndex=start;let depth=0,m;while((m=tags.exec(code))){if(m[0].startsWith('</'))depth--;else if(!m[0].endsWith('/>'))depth++;if(depth===0)return code.slice(start,tags.lastIndex);}throw Error('Unbalanced node '+id);}
-function convert(id,node){let code=read(id);const local=Object.fromEntries(assets.filter(a=>a.node===id).map(a=>[a.name,'assets/'+a.file]));let html=extract(code,node);
+function convert(id,node,omitNode){let code=read(id);const local=Object.fromEntries(assets.filter(a=>a.node===id).map(a=>[a.name,'assets/'+a.file]));let html=extract(code,node);
+ if(omitNode)html=html.replace(extract(code,omitNode),'');
+ // Figma represents flipped raster fills as signed dimensions. CSS needs positive
+ // dimensions plus an origin-anchored reflection to preserve the same crop.
+ if(omitNode)html=html.replace(/<img([^>]*?)className="([^"]*)"([^>]*?)\/>/g,(_,before,cls,after)=>{let sx=1,sy=1;cls=cls.replace(/\bw-\[-([\d.]+)%\]/g,(_,v)=>{sx=-1;return `w-[${v}%]`;}).replace(/\bh-\[-([\d.]+)%\]/g,(_,v)=>{sy=-1;return `h-[${v}%]`;});return `<img${before}className="${cls}"${sx<0||sy<0?` style="transform:scale(${sx},${sy});transform-origin:0 0"`:''}${after}/>`;});
  html=html.replace(/style=\{\{([\s\S]*?)\}\}/g,(_,s)=>{let pairs=[];for(const m of s.matchAll(/(\w+):\s*("(?:\\.|[^"\\])*"|`[^`]*`)/g)){let val=m[2][0]==='"'?JSON.parse(m[2]):m[2].slice(1,-1).replace(/\$\{(\w+)\}/g,(_,n)=>local[n]);pairs.push(m[1].replace(/[A-Z]/g,c=>'-'+c.toLowerCase())+':'+val);}return `style="${esc(pairs.join(';'))}"`;});
- html=html.replace(/className="([^"]*)"/g,(_,s)=>`class="${classes(s)}"`).replace(/src=\{(\w+)\}/g,(_,n)=>`src="${local[n]}"`).replace(/\{`([^`]*)`\}/g,'$1').replaceAll('motion.div','div').replaceAll('aria-hidden ','aria-hidden="true" ').replace(/<div([^>]*)\/>/g,'<div$1></div>');return html;
+ html=html.replace(/className="([^"]*)"/g,(_,s)=>`class="${classes(s)}"`).replace(/src=\{(\w+)\}/g,(_,n)=>`src="${local[n]}"`).replace(/\{`([^`]*)`\}/g,'$1').replaceAll('motion.div','div').replaceAll('aria-hidden ','aria-hidden="true" ').replace(/<div([^>]*)\/>/g,'<div$1></div>').replace(/[\t ]+\n/g,'\n');return html;
 }
 function gallery(source,ids,widths,label){return `<div class="gallery" role="region" aria-roledescription="карусель" aria-label="${label}" aria-keyshortcuts="ArrowLeft ArrowRight" tabindex="0"><div class="gallery-track">${ids.map((id,i)=>`<div class="slide" data-slide-index="${i}" style="--slide-width:${widths[i]}px"><div class="slide-art" style="width:${widths[i]}px;height:479px">${convert(source,id)}</div></div>`).join('')}</div></div><div class="gallery-controls" aria-label="Слайды ${label}">${ids.map((_,i)=>`<button class="dot${i===1?' active':''}" aria-label="Слайд ${i+1}" aria-pressed="${i===1}"><span class="dot-fill" aria-hidden="true"></span></button>`).join('')}</div>`;}
 const designer=gallery('600:51996',['600:52010','600:52011','600:52053'],[711,851,426],'Дизайнерс');
@@ -84,10 +91,11 @@ const educationSlots=[
 const education='<div class="education-wheel-position"><div class="education-wheel" data-node-id="3:7858">'+educationSlots.map(([file,x,y,tilt])=>`<div class="education-icon" style="left:${x/1354.262*100}%;top:${y/1354.266*100}%;--icon-tilt:${tilt}deg">${image(`edu-${file}`,'')}</div>`).join('')+'</div></div>';
 const arrow=image('edu-8e5ff.svg','','edu-arrow');
 const aboutScenes=[
- ['Игры, музыка, спорт и эстетика 2000-х','about-scenes.svg'],
- ['Путешествия с друзьями на север','about-scenes.svg']
+ ['Игры, музыка, спорт и эстетика 2000-х','3:8758','3:8759'],
+ ['Путешествия с друзьями на север','3:8399','3:8400'],
+ ['Кошка Лина и мечта завести собаку','3:8493','3:8494']
 ];
-const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><h2 class="visually-hidden" id="about-title">Обо мне</h2><div class="about-stage">${aboutScenes.map(([alt,file],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}">${image(file,alt)}</figure>`).join('')}</div></div></section>`;
+const about=`<section class="about" id="about" aria-labelledby="about-title"><div class="about-sticky"><div class="about-stage"><div class="about-canvas"><h2 id="about-title">Обо мне</h2>${aboutScenes.map(([label,node,title],i)=>`<figure class="about-scene${i===0?' is-active':''}" data-about-scene="${i}" aria-label="${label}" aria-hidden="${i!==0}">${convert(node,node,title)}</figure>`).join('')}</div></div></div></section>`;
 const contacts=`<a href="mailto:malasa1308@gmail.com">Email</a><button type="button" data-cv>CV</button><a href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Telegram</a>`;
 // Reuse every original portrait path and its native dimensions. Inline only this
 // instance so the two existing eye paths can blink independently of the head.
@@ -100,7 +108,7 @@ const html=`<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta nam
 const dots='<div class="dotfield" aria-hidden="true">'+Array(345).fill('<img src="assets/d8251.svg" alt="">').join('')+'</div>';
 const preparedHtml=html.replace(`<div class="archive-art">${old}</div>`,`<button class="archive-art" type="button" data-open-project="archive" aria-label="Открыть папку с архивными проектами">${old}</button>`)
  .replace(image('ce4b1.svg'),footerPortrait)
- .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><link rel="stylesheet" href="education.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
+ .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><link rel="stylesheet" href="education.css"><link rel="stylesheet" href="about.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
  .replace('<div class="stickers" aria-hidden="true">','<div class="stickers" role="group" aria-label="Интерактивные плашки">')
  .replace(/<span class="sticker ([^"]+)">([^<]+)<\/span>/g,(_,classes,label)=>`<button type="button" class="sticker ${classes}" aria-label="Подбросить ${label}">${label}</button>`);
 fs.writeFileSync('dist/index.html',preparedHtml.replace('<div class="hero-art">',dots+'<div class="hero-art">').replace('<footer>','<footer id="footer">'+dots));

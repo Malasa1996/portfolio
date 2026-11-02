@@ -1,0 +1,14 @@
+.about{height:360vh;position:relative}
+.about-sticky{position:sticky;top:0;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.about-stage{position:relative;flex:none;width:var(--about-width,100%);height:calc(var(--about-width,100vw)*760/1440);max-height:none;overflow:visible}
+.about-canvas{position:relative;width:1440px;height:760px;transform:scale(var(--about-scale,1));transform-origin:0 0}
+.about-canvas>h2{position:absolute;z-index:5;top:.23px;left:217.5px;width:1005px;text-align:center;font:600 44px/1.4 Inter,Arial,sans-serif;letter-spacing:-1.2px;color:white}
+.about-scene{display:block;position:absolute;inset:0;margin:0;overflow:visible;opacity:0;transform:translateY(90px) scale(.97);filter:blur(4px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1),filter .6s;will-change:transform,opacity;pointer-events:none}
+.about-scene.is-active{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.about-scene.is-before{opacity:0;transform:translateY(-90px) scale(.97);filter:blur(4px)}
+.about-scene:first-child:not(.is-active){opacity:0}
+.about-scene>div{position:relative;width:1440px;height:760px}
+/* Images retain their individual Figma crops and transforms inside the canvas. */
+.about-scene img{position:absolute;max-width:none}
+@media(max-width:760px){.about{height:340vh}.about-sticky{height:100svh}.about-canvas>h2{font-size:60px;line-height:62px}.about-stage{overflow:visible}}
+@media(prefers-reduced-motion:reduce){.about{height:auto}.about-sticky{height:auto;position:relative;padding-block:32px;overflow:hidden}.about-stage{aspect-ratio:auto}.about-canvas{height:auto}.about-canvas>h2{position:relative;top:auto;margin-bottom:62px}.about-scene,.about-scene:first-child:not(.is-active){position:relative;height:760px;opacity:1!important;transform:none!important;filter:none;transition:none;will-change:auto}.about-stage{height:var(--about-static-height)}}

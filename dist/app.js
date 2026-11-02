@@ -161,22 +161,26 @@ const aboutScenes=[...document.querySelectorAll('.about-scene')];
 let aboutFrame;
 function updateAbout(){
  aboutFrame=undefined;
- if(!aboutSection||reduced.matches)return;
+ if(!aboutSection)return;
+ const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,innerHeight-64)*1440/760);
+ const scale=canvasWidth/1440;
+ aboutSection.style.setProperty('--about-width',`${canvasWidth}px`);
+ aboutSection.style.setProperty('--about-scale',String(scale));
+ aboutSection.style.setProperty('--about-static-height',`${(aboutScenes.length*760+124)*scale}px`);
  const bounds=aboutSection.getBoundingClientRect();
  const distance=Math.max(1,aboutSection.offsetHeight-innerHeight);
  const progress=Math.max(0,Math.min(1,-bounds.top/distance));
- const position=progress*(aboutScenes.length-1);
+ const active=Math.min(aboutScenes.length-1,Math.floor(progress*aboutScenes.length));
  aboutScenes.forEach((scene,index)=>{
-  const delta=index-position;
-  const opacity=Math.max(0,Math.min(1,1-Math.abs(delta)));
-  scene.style.opacity=String(opacity);
-  scene.style.transform=`translateY(${delta*34}px) scale(${.985+opacity*.015})`;
-  scene.classList.toggle('is-active',opacity>.5);
+  scene.classList.toggle('is-active',index===active);
+  scene.classList.toggle('is-before',index<active);
+  scene.setAttribute('aria-hidden',String(!reduced.matches&&index!==active));
  });
 }
 function scheduleAbout(){if(!aboutFrame)aboutFrame=requestAnimationFrame(updateAbout);}
 window.addEventListener('scroll',scheduleAbout,{passive:true});
 window.addEventListener('resize',scheduleAbout);
+if(aboutSection)new ResizeObserver(scheduleAbout).observe(aboutSection);
 reduced.addEventListener('change',scheduleAbout);
 scheduleAbout();
 
