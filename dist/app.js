@@ -18,6 +18,7 @@ class Gallery {
   this.slides=[...this.track.children];
   this.dots.forEach((dot,i)=>dot.addEventListener('click',()=>this.go(i)));
   element.addEventListener('keydown',event=>{
+   if(desktopLayout.matches)return;
    if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();this.go(this.index+(event.key==='ArrowRight'?1:-1));}
   });
   element.addEventListener('pointerdown',event=>this.beginDrag(event));
@@ -32,6 +33,7 @@ class Gallery {
   element.addEventListener('scrollend',()=>this.settle());
   new IntersectionObserver(entries=>{this.visible=entries[0].intersectionRatio>.2;},{threshold:[0,.2,.5]}).observe(element);
   new ResizeObserver(()=>this.align()).observe(element);
+  desktopLayout.addEventListener('change',()=>{this.element.scrollTop=0;this.align();});
   this.align();this.update();
  }
  closestSlide(){
@@ -40,6 +42,7 @@ class Gallery {
   return this.slides.reduce((best,node)=>Math.abs(node.getBoundingClientRect().left+node.getBoundingClientRect().width/2-center)<Math.abs(best.getBoundingClientRect().left+best.getBoundingClientRect().width/2-center)?node:best);
  }
  beginDrag(event){
+  if(desktopLayout.matches)return;
   if(!event.isPrimary||event.button!==0)return;
   clearTimeout(this.settleTimer);
   this.pointer={id:event.pointerId,startX:event.clientX,startY:event.clientY,lastX:event.clientX,lastTime:event.timeStamp,velocity:0,scroll:this.element.scrollLeft,startSlide:this.closestSlide(),moved:false};
@@ -96,7 +99,18 @@ class Gallery {
   const target=this.element.scrollLeft+(slide.getBoundingClientRect().left+slide.getBoundingClientRect().width/2-(bounds.left+bounds.width/2))/scale;
   this.element.scrollTo({left:target,behavior:reduced.matches?'instant':behavior});
  }
- align(){this.navigating=false;this.center(this.originals[this.index]);}
+ align(){
+  this.navigating=false;
+  const vertical=desktopLayout.matches;
+  this.element.setAttribute('aria-roledescription',vertical?'вертикальная галерея':'карусель');
+  this.element.setAttribute('aria-keyshortcuts',vertical?'ArrowUp ArrowDown PageUp PageDown':'ArrowLeft ArrowRight');
+  this.originals.forEach(slide=>{
+   if(vertical)slide.style.setProperty('--art-scale',String(this.element.clientWidth/parseFloat(slide.style.getPropertyValue('--slide-width'))));
+   else slide.style.removeProperty('--art-scale');
+  });
+  if(vertical){this.element.scrollLeft=0;return;}
+  this.center(this.originals[this.index]);
+ }
  go(requested){
   if(this.navigating)return;
   const count=this.originals.length;
@@ -109,6 +123,7 @@ class Gallery {
   if(reduced.matches)requestAnimationFrame(()=>this.settle());
  }
  settle(){
+  if(desktopLayout.matches)return;
   if(this.dragging)return;
   clearTimeout(this.settleTimer);
   const closest=this.closestSlide();
@@ -124,6 +139,7 @@ class Gallery {
   this.element.dataset.currentSlide=String(this.index+1);
  }
  tick(delta){
+  if(desktopLayout.matches)return;
   if(!this.paused&&!this.focused&&!this.dragging&&!this.navigating&&this.visible&&!document.hidden&&!document.querySelector('dialog[open]')){
    this.elapsed+=delta;
    if(this.elapsed>=SLIDE_DURATION)this.go(this.index+1);
@@ -144,9 +160,10 @@ let stackFrame;
 function updateStack(){
  stackFrame=undefined;
  if(reduced.matches){firstCase.style.removeProperty('--stack-scale');firstCase.style.removeProperty('--stack-shade');return;}
- const top=Math.min(24,window.innerHeight-firstCase.offsetHeight-24);
+ const viewportHeight=window.innerHeight/pageScale();
+ const top=Math.min(24,viewportHeight-firstCase.offsetHeight-24);
  firstCase.style.setProperty('--stack-top',top+'px');
- const overlap=Math.max(0,Math.min(1,(window.innerHeight-nextCase.getBoundingClientRect().top)/(window.innerHeight-Math.max(24,top))));
+ const overlap=Math.max(0,Math.min(1,(viewportHeight-nextCase.getBoundingClientRect().top/pageScale())/(viewportHeight-Math.max(24,top))));
  firstCase.style.setProperty('--stack-scale',String(1-overlap*.035));
  firstCase.style.setProperty('--stack-shade',String(overlap*.18));
 }
@@ -162,14 +179,15 @@ let aboutFrame;
 function updateAbout(){
  aboutFrame=undefined;
  if(!aboutSection)return;
- const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,innerHeight-64)*1440/760);
+ const viewportHeight=innerHeight/pageScale();
+ const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,viewportHeight-64)*1440/760);
  const scale=canvasWidth/1440;
  aboutSection.style.setProperty('--about-width',`${canvasWidth}px`);
  aboutSection.style.setProperty('--about-scale',String(scale));
  aboutSection.style.setProperty('--about-static-height',`${(aboutScenes.length*760+124)*scale}px`);
  const bounds=aboutSection.getBoundingClientRect();
- const distance=Math.max(1,aboutSection.offsetHeight-innerHeight);
- const progress=Math.max(0,Math.min(1,-bounds.top/distance));
+ const distance=Math.max(1,aboutSection.offsetHeight-viewportHeight);
+ const progress=Math.max(0,Math.min(1,-bounds.top/pageScale()/distance));
  const active=Math.min(aboutScenes.length-1,Math.floor(progress*aboutScenes.length));
  aboutScenes.forEach((scene,index)=>{
   scene.classList.toggle('is-active',index===active);

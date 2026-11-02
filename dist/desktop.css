@@ -1,0 +1,19 @@
+/* Keep the desktop composition proportional to its 1440px design canvas.
+   CSS zoom participates in layout, so sticky sections retain native scrolling. */
+@media (min-width:1101px){
+ body{width:1440px;zoom:var(--desktop-scale,1)}
+ .header{left:720px;width:1040px}
+ .about{height:calc(260vh / var(--desktop-scale,1))}
+ .about-sticky{height:calc(100svh / var(--desktop-scale,1))}
+ .project .gallery{height:479px;margin-inline:80px;overflow-x:hidden;overflow-y:auto;scroll-snap-type:none;touch-action:pan-y;cursor:auto;scrollbar-width:thin;scrollbar-color:#646468 transparent;overscroll-behavior:auto;scroll-behavior:smooth}
+ .project .gallery::-webkit-scrollbar{display:block;width:5px}
+ .project .gallery::-webkit-scrollbar-thumb{background:#646468;border-radius:5px}
+ .project .gallery-track{width:100%;padding:0;display:flex;flex-direction:column;align-items:center;gap:24px}
+ .project .gallery .slide{flex:none;width:100%;height:calc(479px * var(--art-scale));scroll-snap-align:none}
+ .project .gallery [data-clone]{display:none}
+ .project .gallery-controls{display:none}
+}
+@media (min-width:1101px) and (prefers-reduced-motion:reduce){
+ .project .gallery{scroll-behavior:auto}
+ .about,.about-sticky{height:auto}
+}

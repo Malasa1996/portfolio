@@ -108,6 +108,7 @@ const dots='<div class="dotfield" aria-hidden="true">'+Array(345).fill('<img src
 const preparedHtml=html.replace(`<div class="archive-art">${old}</div>`,`<button class="archive-art" type="button" data-open-project="archive" aria-label="Открыть папку с архивными проектами">${old}</button>`)
  .replace(image('ce4b1.svg'),footerPortrait)
  .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><link rel="stylesheet" href="education.css"><link rel="stylesheet" href="about.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
+ .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="desktop.css"><script src="desktop.js" defer></script><script src="app.js" defer></script>')
  .replace('<div class="stickers" aria-hidden="true">','<div class="stickers" role="group" aria-label="Интерактивные плашки">')
  .replace(/<span class="sticker ([^"]+)">([^<]+)<\/span>/g,(_,classes,label)=>`<button type="button" class="sticker ${classes}" aria-label="Подбросить ${label}">${label}</button>`);
 fs.writeFileSync('dist/index.html',preparedHtml.replace('<div class="hero-art">',dots+'<div class="hero-art">').replace('<footer>','<footer id="footer">'+dots));
