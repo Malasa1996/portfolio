@@ -1,0 +1,1040 @@
+{
+  "blocks": [
+    {
+      "heading": false,
+      "i": 0,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Привет! Я дизайнер в команде DSGNERS!, на проекте я отвечал за все этапы реддизайна продукта — от концепта до качества доставки на прод."
+        }
+      ],
+      "text": "Привет! Я дизайнер в команде DSGNERS!, на проекте я отвечал за все этапы реддизайна продукта — от концепта до качества доставки на прод."
+    },
+    {
+      "heading": true,
+      "i": 1,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "О проекте"
+        }
+      ],
+      "text": "О проекте"
+    },
+    {
+      "heading": false,
+      "i": 2,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "DSGNERS! — платформа, объединяющая полезный материал для дизайнеров в одном месте. На платформе студии, бизнес и свободные дизайнеры пишут статьи и новости. Проект создан дизайнерами для дизайнеров, чтобы объединить специалистов разной величины и сферы для профессионального развития."
+        }
+      ],
+      "text": "DSGNERS! — платформа, объединяющая полезный материал для дизайнеров в одном месте. На платформе студии, бизнес и свободные дизайнеры пишут статьи и новости. Проект создан дизайнерами для дизайнеров, чтобы объединить специалистов разной величины и сферы для профессионального развития."
+    },
+    {
+      "heading": false,
+      "i": 3,
+      "images": [
+        {
+          "file": "cover.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": true,
+      "i": 4,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Цель"
+        }
+      ],
+      "text": "Цель"
+    },
+    {
+      "heading": false,
+      "i": 5,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Вырастить возвращаемость пользователей на платформу"
+        }
+      ],
+      "text": "Вырастить возвращаемость пользователей на платформу"
+    },
+    {
+      "heading": false,
+      "i": 6,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Привлечь новых авторов, следствием чего станет увеличение числа читателей"
+        }
+      ],
+      "text": "Привлечь новых авторов, следствием чего станет увеличение числа читателей"
+    },
+    {
+      "heading": false,
+      "i": 7,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "За счет увеличения аудитории, привлечь новых рекламодателей"
+        }
+      ],
+      "text": "За счет увеличения аудитории, привлечь новых рекламодателей"
+    },
+    {
+      "heading": true,
+      "i": 8,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Аудитория"
+        }
+      ],
+      "text": "Аудитория"
+    },
+    {
+      "heading": false,
+      "i": 9,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Текущая аудитория платформы:"
+        }
+      ],
+      "text": "Текущая аудитория платформы:"
+    },
+    {
+      "heading": false,
+      "i": 10,
+      "images": [],
+      "marker": "ordered",
+      "number": "1",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Дизайнеры джуны (Учатся, читают статьи, проводят время с пользой)"
+        }
+      ],
+      "text": "Дизайнеры джуны (Учатся, читают статьи, проводят время с пользой)"
+    },
+    {
+      "heading": false,
+      "i": 11,
+      "images": [],
+      "marker": "ordered",
+      "number": "2",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Дизайнеры мидлы/синьеры (Делятся экспертизой, рассказывают про свои кейсы, читают сеньерный контент, от студий и корпа)"
+        }
+      ],
+      "text": "Дизайнеры мидлы/синьеры (Делятся экспертизой, рассказывают про свои кейсы, читают сеньерный контент, от студий и корпа)"
+    },
+    {
+      "heading": false,
+      "i": 12,
+      "images": [],
+      "marker": "ordered",
+      "number": "3",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Студии и корпорации (Делятся экспертизой, рассказывают про свои кейсы, наращивают HR-привлекательность бизнеса)\n"
+        }
+      ],
+      "text": "Студии и корпорации (Делятся экспертизой, рассказывают про свои кейсы, наращивают HR-привлекательность бизнеса)\n"
+    },
+    {
+      "heading": true,
+      "i": 13,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Критерии успеха"
+        }
+      ],
+      "text": "Критерии успеха"
+    },
+    {
+      "heading": false,
+      "i": 14,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Замерять будем через метрики:"
+        }
+      ],
+      "text": "Замерять будем через метрики:"
+    },
+    {
+      "heading": false,
+      "i": 15,
+      "images": [],
+      "marker": "ordered",
+      "number": "1",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "DAU/WAU"
+        }
+      ],
+      "text": "DAU/WAU"
+    },
+    {
+      "heading": false,
+      "i": 16,
+      "images": [],
+      "marker": "ordered",
+      "number": "2",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Retention"
+        }
+      ],
+      "text": "Retention"
+    },
+    {
+      "heading": false,
+      "i": 17,
+      "images": [],
+      "marker": "ordered",
+      "number": "3",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Engagement Rate"
+        }
+      ],
+      "text": "Engagement Rate"
+    },
+    {
+      "heading": false,
+      "i": 18,
+      "images": [],
+      "marker": "ordered",
+      "number": "4",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Обще кол-во контента на платформе "
+        }
+      ],
+      "text": "Обще кол-во контента на платформе "
+    },
+    {
+      "heading": true,
+      "i": 19,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Дискавери"
+        }
+      ],
+      "text": "Дискавери"
+    },
+    {
+      "heading": false,
+      "i": 20,
+      "images": [],
+      "marker": "ordered",
+      "number": "1",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Desk research"
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55069&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        }
+      ],
+      "text": "Desk research(ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 21,
+      "images": [],
+      "marker": "ordered",
+      "number": "2",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "UX-аудит "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55119&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        }
+      ],
+      "text": "UX-аудит (ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 22,
+      "images": [],
+      "marker": "ordered",
+      "number": "3",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Бенчмаркинг. Изучил релевантные кейсы, как ребята повышали метрики, масштабировались и реддизайнили свои продукты "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55084&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(Ссылка)"
+        }
+      ],
+      "text": "Бенчмаркинг. Изучил релевантные кейсы, как ребята повышали метрики, масштабировались и реддизайнили свои продукты (Ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 23,
+      "images": [
+        {
+          "file": "competitors.png"
+        }
+      ],
+      "marker": "ordered",
+      "number": "4",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Конкурентный анализ. Провёл анализ функций, сделал сводную таблицу "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55104&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(Ссылка)"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "\n"
+        }
+      ],
+      "text": "Конкурентный анализ. Провёл анализ функций, сделал сводную таблицу (Ссылка)\n"
+    },
+    {
+      "heading": false,
+      "i": 24,
+      "images": [
+        {
+          "file": "survey.png"
+        }
+      ],
+      "marker": "ordered",
+      "number": "5",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Опрос, с целью получения колличественых данных об аудитории, далее использовать полученную информацию для формирования сегментов в нашем продукте\n"
+        }
+      ],
+      "text": "Опрос, с целью получения колличественых данных об аудитории, далее использовать полученную информацию для формирования сегментов в нашем продукте\n"
+    },
+    {
+      "heading": false,
+      "i": 25,
+      "images": [],
+      "marker": "ordered",
+      "number": "6",
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Сформировал гипотезы"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55449&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "                                                                                                           "
+        }
+      ],
+      "text": "Сформировал гипотезы (ссылка)                                                                                                           "
+    },
+    {
+      "heading": false,
+      "i": 26,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Если мы добавим реакции на карточку статьи, то повысим метрику "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "Engagement Rate"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": ". В результате рост количества реакций на публикации увеличит вовлечённость в их прочтение."
+        }
+      ],
+      "text": "Если мы добавим реакции на карточку статьи, то повысим метрику Engagement Rate. В результате рост количества реакций на публикации увеличит вовлечённость в их прочтение."
+    },
+    {
+      "heading": false,
+      "i": 27,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Если мы добавим раздел вакансий, то повысим такие метрики, как "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "Retention"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " и "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "DAU/WAU"
+        }
+      ],
+      "text": "Если мы добавим раздел вакансий, то повысим такие метрики, как Retention и DAU/WAU"
+    },
+    {
+      "heading": false,
+      "i": 28,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Если мы добавим раздел студии, то сможем оптимизировать сценарий покупки рекламы публикации через платформу, за счёт чего "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "сэкономим время менеджера "
+        }
+      ],
+      "text": "Если мы добавим раздел студии, то сможем оптимизировать сценарий покупки рекламы публикации через платформу, за счёт чего сэкономим время менеджера "
+    },
+    {
+      "heading": false,
+      "i": 29,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Если мы будем продвигать публикации внутри платформы, то "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "сможем экономить время"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "работы менеджера"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " за счёт автоматизации процесса покупки рекламы."
+        }
+      ],
+      "text": "Если мы будем продвигать публикации внутри платформы, то сможем экономить время работы менеджера за счёт автоматизации процесса покупки рекламы."
+    },
+    {
+      "heading": false,
+      "i": 30,
+      "images": [],
+      "marker": "bullet",
+      "number": "",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Если мы добавим раздел вакансий, то "
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": true,
+          "text": "сможем зарабатывать"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " на их продвижении во внешних телеграм-каналах Оунера."
+        }
+      ],
+      "text": "Если мы добавим раздел вакансий, то сможем зарабатывать на их продвижении во внешних телеграм-каналах Оунера."
+    },
+    {
+      "heading": false,
+      "i": 31,
+      "images": [],
+      "marker": "ordered",
+      "number": "7",
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Провел интервью."
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " Пообщался с нашей редакцией, провел 4 интервью, поинтересовался мнением о проекте, собрал обратную связь по текущей реализации редактора, с каким проблемами они сталкивались во время публикации, обсудили опыт использования аналогичных платформ"
+        }
+      ],
+      "text": "Провел интервью. Пообщался с нашей редакцией, провел 4 интервью, поинтересовался мнением о проекте, собрал обратную связь по текущей реализации редактора, с каким проблемами они сталкивались во время публикации, обсудили опыт использования аналогичных платформ"
+    },
+    {
+      "heading": false,
+      "i": 32,
+      "images": [],
+      "marker": "ordered",
+      "number": "8",
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Приоритизировал гипотезы"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "(Добавили реакции, отказались от разделов \"Форум\" и \"Журнал\")"
+        }
+      ],
+      "text": "Приоритизировал гипотезы(Добавили реакции, отказались от разделов \"Форум\" и \"Журнал\")"
+    },
+    {
+      "heading": false,
+      "i": 33,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "\nДалее сделали встречу с менеджером. Вместе выделили основные разделы для первой итерации MVP, а так же взяли в работу несколько сильных гипотез.\nЧасть положили в Бэклог, вернемся к ним после запуска MVP\n\nПеред началом работы над дизайном я инициировал встречу с отделом разработки, уточнить технические особенности текущей реализации платформы\n\n"
+        },
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Результат встречи."
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": " Текущая версия платформы реализована на древнем легаси, код плохо написан, не структурирован. Тут появилась гипотеза что часть багов на платформе вызванна именно этим. Для скорости работы приняли решение переписать код текущей платформы, а не запускать ее с 0"
+        }
+      ],
+      "text": "\nДалее сделали встречу с менеджером. Вместе выделили основные разделы для первой итерации MVP, а так же взяли в работу несколько сильных гипотез.\nЧасть положили в Бэклог, вернемся к ним после запуска MVP\n\nПеред началом работы над дизайном я инициировал встречу с отделом разработки, уточнить технические особенности текущей реализации платформы\n\nРезультат встречи. Текущая версия платформы реализована на древнем легаси, код плохо написан, не структурирован. Тут появилась гипотеза что часть багов на платформе вызванна именно этим. Для скорости работы приняли решение переписать код текущей платформы, а не запускать ее с 0"
+    },
+    {
+      "heading": true,
+      "i": 34,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Дизайн"
+        }
+      ],
+      "text": "Дизайн"
+    },
+    {
+      "heading": false,
+      "i": 35,
+      "images": [
+        {
+          "file": "feed.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 36,
+      "images": [
+        {
+          "file": "profiles.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 37,
+      "images": [
+        {
+          "file": "personal-feed.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 38,
+      "images": [
+        {
+          "file": "settings.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 39,
+      "images": [
+        {
+          "file": "analytics.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 40,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "\nПроцесс работы над дизайном"
+        }
+      ],
+      "text": "\nПроцесс работы над дизайном"
+    },
+    {
+      "heading": false,
+      "i": 41,
+      "images": [],
+      "marker": "ordered",
+      "number": "1",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Пересобрал архитектуру сайта "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-55443&p=f&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        }
+      ],
+      "text": "Пересобрал архитектуру сайта (ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 42,
+      "images": [
+        {
+          "file": "architecture.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 43,
+      "images": [],
+      "marker": "ordered",
+      "number": "2",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Собрал прототипы (Сделали еще 1 встречу с разработчиками, презентовал прототипы, обсудили техническую часть) "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12001-63199&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        }
+      ],
+      "text": "Собрал прототипы (Сделали еще 1 встречу с разработчиками, презентовал прототипы, обсудили техническую часть) (ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 44,
+      "images": [
+        {
+          "file": "prototypes.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": false,
+      "i": 45,
+      "images": [],
+      "marker": "ordered",
+      "number": "3",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Протестировал основной сценарий - создание публикации"
+        }
+      ],
+      "text": "Протестировал основной сценарий - создание публикации"
+    },
+    {
+      "heading": false,
+      "i": 46,
+      "images": [],
+      "marker": "ordered",
+      "number": "4",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Собрал дизайн концепцию "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=8254-257143&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        }
+      ],
+      "text": "Собрал дизайн концепцию (ссылка)"
+    },
+    {
+      "heading": false,
+      "i": 47,
+      "images": [],
+      "marker": "ordered",
+      "number": "5",
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Спроектировал все внутренние страницы платформы "
+        },
+        {
+          "bold": false,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=8254-257143&t=iVzArKANns0cXoPa-11",
+          "italic": false,
+          "text": "(ссылка)"
+        },
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "\n"
+        }
+      ],
+      "text": "Спроектировал все внутренние страницы платформы (ссылка)\n"
+    },
+    {
+      "heading": true,
+      "i": 48,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Результат"
+        }
+      ],
+      "text": "Результат"
+    },
+    {
+      "heading": false,
+      "i": 49,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": false,
+          "href": null,
+          "italic": false,
+          "text": "Результат обновления в цифрах"
+        }
+      ],
+      "text": "Результат обновления в цифрах"
+    },
+    {
+      "heading": false,
+      "i": 50,
+      "images": [
+        {
+          "file": "results.png"
+        }
+      ],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    },
+    {
+      "heading": true,
+      "i": 51,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Почитать статью про наше обновление\n"
+        },
+        {
+          "bold": true,
+          "href": "https://dsgners.ru/dsgners",
+          "italic": false,
+          "text": "https://dsgners.ru/dsgners"
+        },
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "\n "
+        }
+      ],
+      "text": "Почитать статью про наше обновление\nhttps://dsgners.ru/dsgners\n "
+    },
+    {
+      "heading": true,
+      "i": 52,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [
+        {
+          "bold": true,
+          "href": null,
+          "italic": false,
+          "text": "Фигма проекта: "
+        },
+        {
+          "bold": true,
+          "href": "https://www.figma.com/design/GzxPyNRlbSWPvIBxqPoGs2/DSGNERS-?node-id=12006-7073&t=LqwXv4ThOizmTsmO-11",
+          "italic": false,
+          "text": "Ссылка"
+        }
+      ],
+      "text": "Фигма проекта: Ссылка"
+    },
+    {
+      "heading": false,
+      "i": 53,
+      "images": [],
+      "marker": null,
+      "number": null,
+      "runs": [],
+      "text": ""
+    }
+  ],
+  "title": "Дизайнерс https://dsgners.ru ",
+  "period": "Май (2024) - Апрель (2025)",
+  "tags": [
+    "UGC/AGC",
+    "Product design"
+  ]
+}
