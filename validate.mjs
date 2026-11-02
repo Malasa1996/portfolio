@@ -1,7 +1,7 @@
 import fs from 'node:fs';
-const html=fs.readFileSync('dist/index.html','utf8');
+const html=['dist/index.html','dist/cases/designers.html'].map(file=>fs.readFileSync(file,'utf8')).join('\n');
 const css=['styles.css','artwork.css','motion.css','stickers.css'].map(file=>fs.readFileSync('dist/'+file,'utf8')).join('\n');
-const assets=[...new Set([...html.matchAll(/(?:src|href)="(assets\/[^\"]+)"/g)].map(m=>m[1]).concat([...css.matchAll(/url\(['"]?(assets\/[^)'"?]+)(?:\?[^)'" ]+)?['"]?\)/g)].map(m=>m[1])))];
+const assets=[...new Set([...html.matchAll(/(?:src|href)="\/?(assets\/[^\"]+)"/g)].map(m=>m[1]).concat([...css.matchAll(/url\(['"]?(assets\/[^)'"?]+)(?:\?[^)'" ]+)?['"]?\)/g)].map(m=>m[1])))];
 const missing=assets.filter(p=>!fs.existsSync('dist/'+p)||!fs.statSync('dist/'+p).size);
 const temporaryUrls=/figma.com\/api\/mcp\/asset/.test(html+css);
 const expectedMotion=JSON.parse(fs.readFileSync('reference/motion.json','utf8')).nodes;
