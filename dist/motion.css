@@ -17,6 +17,11 @@ body{overflow-x:clip}
 .gallery{overflow-anchor:none;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;scroll-snap-type:none;scroll-behavior:auto}
 .gallery.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .gallery img{-webkit-user-drag:none}
+.gallery[data-autoplay-active="false"] [data-node-id],.gallery .slide:not(.is-in-view) [data-node-id]{animation-play-state:paused!important}
+.gallery .slide{contain:layout paint}
+/* Keep the stacked card on its composited layer while its scale changes. */
+.project:first-child{will-change:transform}
+.project:first-child:after{will-change:opacity}
 
 /* A live frosted front sits over the original paper and phone artwork. */
 .archive-art{padding:0;border:0;background:none;cursor:pointer;outline-offset:12px;user-select:none;-webkit-user-select:none}
