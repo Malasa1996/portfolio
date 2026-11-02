@@ -12,8 +12,8 @@ body{overflow-x:clip}
 .dot{flex:none;width:6px;height:6px;overflow:visible;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background-color .2s}
 .dot.nearby{width:9px;height:9px}
 .dot.active{width:40px;height:10px;background:#646468}
-.dot-fill{display:block;position:absolute;inset:0 auto 0 0;width:0;background:white;border-radius:inherit;opacity:0}
-.dot.active .dot-fill{opacity:1;width:calc(var(--progress)*100%)}
+.dot-fill{display:block;position:absolute;inset:0;width:100%;background:white;border-radius:inherit;opacity:0;pointer-events:none;clip-path:inset(0 calc((1 - var(--progress))*100%) 0 0)}
+.dot.active .dot-fill{opacity:1}
 .gallery{overflow-anchor:none;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;scroll-snap-type:none;scroll-behavior:auto}
 .gallery.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .gallery img{-webkit-user-drag:none}

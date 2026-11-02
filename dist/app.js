@@ -30,8 +30,7 @@ class Gallery {
   element.addEventListener('focusout',()=>{this.focused=false;});
   element.addEventListener('scroll',()=>{clearTimeout(this.settleTimer);this.settleTimer=setTimeout(()=>this.settle(),160);},{passive:true});
   element.addEventListener('scrollend',()=>this.settle());
-  new IntersectionObserver(entries=>{this.visible=entries[0].intersectionRatio>.2;},{threshold:[0,.2,.5]}).observe(element);
-  new ResizeObserver(()=>this.align()).observe(element);
+  new ResizeObserver(()=>{this.align();scheduleActiveGallery();}).observe(element);
   this.align();this.update();
  }
  closestSlide(projection=0){
@@ -164,6 +163,31 @@ class Gallery {
  }
 }
 const carousels=galleries.map(element=>new Gallery(element));
+// Only the largest exposed gallery owns the clock. Sticky case cards overlap,
+// so viewport intersection alone also counted the gallery hidden underneath.
+let activeGalleryFrame;
+function updateActiveGallery(){
+ activeGalleryFrame=undefined;
+ let active=null,bestHeight=0;
+ carousels.forEach((carousel,index)=>{
+  const bounds=carousel.element.getBoundingClientRect();
+  const panel=carousel.element.closest('.project').getBoundingClientRect();
+  const nextPanel=carousels[index+1]?.element.closest('.project').getBoundingClientRect();
+  const top=Math.max(0,bounds.top,panel.top);
+  const bottom=Math.min(innerHeight,bounds.bottom,panel.bottom,nextPanel?.top??Infinity);
+  const height=Math.max(0,bottom-top);
+  if(height>=Math.min(bounds.height,innerHeight)*.25&&height>bestHeight){active=carousel;bestHeight=height;}
+ });
+ carousels.forEach(carousel=>{
+  carousel.visible=carousel===active;
+  carousel.element.dataset.autoplayActive=String(carousel.visible);
+ });
+}
+function scheduleActiveGallery(){if(!activeGalleryFrame)activeGalleryFrame=requestAnimationFrame(updateActiveGallery);}
+window.addEventListener('scroll',scheduleActiveGallery,{passive:true});
+window.addEventListener('resize',scheduleActiveGallery);
+window.addEventListener('load',scheduleActiveGallery,{once:true});
+scheduleActiveGallery();
 window.addEventListener('load',()=>carousels.forEach(carousel=>carousel.align()),{once:true});
 reduced.addEventListener('change',()=>{carousels.forEach(carousel=>{carousel.paused=reduced.matches;});scheduleStack();});
 let lastFrame=performance.now();
