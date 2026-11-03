@@ -1,0 +1,5 @@
+/* The canvas keeps exactly the old 2500×2500 poster's crop and placement. */
+.hero-art.badge-3d.is-3d-ready{overflow:visible}
+.hero-art.badge-3d .badge-canvas{position:absolute;display:block;width:166.12%;height:111.21%;left:-26.74%;top:0;max-width:none;opacity:0;transition:opacity .2s;pointer-events:none}
+.hero-art.badge-3d.is-3d-ready .badge-canvas{opacity:1}
+@media(prefers-reduced-motion:reduce){.hero-art.badge-3d .badge-canvas{transition:none}}

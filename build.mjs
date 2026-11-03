@@ -108,6 +108,8 @@ const dots='<div class="dotfield" aria-hidden="true">'+Array(345).fill('<img src
 const archiveImages=[['telecom-graphics.png','Графика и материалы для DWDM-решений','2018:13981'],['laptop.png','Сайт и документация на экране ноутбука','2018:13984'],['telecom-details.png','Интерфейс и оборудование для оптических сетей','2018:13978'],['telecom-site.png','Сайт российских DWDM-решений','2018:13980'],['kvarta-catalog.png','Каталог оборудования KVARTA','2018:13982'],['kvarta-identity.png','Айдентика KVARTA','2018:13983'],['mining.png','Сайт Зангезурского медно-молибденового комбината','2018:13979']];
 const archiveTemplate=`<template id="archive-projects">${archiveImages.map(([file,alt,node])=>{const fd=fs.openSync(`dist/assets/archive-popup/${file}`,'r');const metadata=Buffer.alloc(24);fs.readSync(fd,metadata,0,24,0);fs.closeSync(fd);const width=metadata.readUInt32BE(16),height=metadata.readUInt32BE(20);return `<figure class="archive-item${file==='laptop.png'?' is-rounded':''}" style="--archive-ratio:${width/height}" data-figma-node="${node}"><img src="assets/archive-popup/${file}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async" draggable="false"></figure>`;}).join('')}</template>`;
 const preparedHtml=html.replace(`<div class="archive-art">${old}</div>`,`<button class="archive-art" type="button" data-open-project="archive" aria-label="Открыть папку с архивными проектами">${old}</button>`)
+ .replace('<div class="hero-art">','<div class="hero-art badge-3d" role="img" aria-label="3D-бейдж Максима Толстикова">')
+ .replace('</head>','<link rel="stylesheet" href="badge-3d.css"><script type="module" src="badge-3d.js"></script></head>')
  .replace('<button class="button" data-open-project="designers">Смотреть проект</button>','<a class="button" href="/cases/designers.html">Смотреть проект</a>')
  .replace(image('ce4b1.svg'),footerPortrait)
  .replace('<script src="app.js" defer></script>','<link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="stickers.css"><link rel="stylesheet" href="education.css"><link rel="stylesheet" href="about.css"><script src="app.js" defer></script><script src="vendor/matter.min.js" defer></script><script src="stickers.js" defer></script>')
@@ -125,3 +127,5 @@ css.push('@media(prefers-reduced-motion:reduce){[data-node-id]{animation:none!im
 fs.writeFileSync('dist/artwork.css',css.join('\n'));
 console.log(JSON.stringify({generated:'dist/index.html',artworkRules:rules.size,unhandledClasses:[...unknown]}));
 await import('./build-case.mjs');
+const {build}=await import('esbuild');
+await build({entryPoints:['src/badge-3d.js'],outfile:'dist/badge-3d.js',bundle:true,format:'esm',minify:true,target:'es2022',legalComments:'linked'});
