@@ -1,10 +1,11 @@
 import {
  AnimationMixer, Box3, Color, DoubleSide, FrontSide, Group, Matrix4, Mesh,
  MeshBasicMaterial, NoToneMapping, PerspectiveCamera, PlaneGeometry,
- PMREMGenerator, Scene, SRGBColorSpace, Vector3, WebGLRenderer
+ PMREMGenerator, RectAreaLight, Scene, SRGBColorSpace, Vector3, WebGLRenderer
 } from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
 const host=document.querySelector('.hero-art.badge-3d');
 
@@ -39,30 +40,31 @@ class BadgeScene {
    this.model.traverse(object=>{
     if(!object.isMesh)return;
     const adapt=material=>{
-     if(material.name==='Сатинированное серебро • единый физический масштаб зерна.001'){
-      object.geometry.computeVertexNormals();material.anisotropy=0;material.roughness=.4;
-     }
-     if(material.name.includes('Вкладыш')&&material.name.includes('сатиновая')){
+     if((material.name.includes('Вкладыш')&&material.name.includes('сатиновая'))||material.name.startsWith('Web baked')){
       const map=material.map||material.emissiveMap;if(map)map.anisotropy=this.renderer.capabilities.getMaxAnisotropy();
-      return new MeshBasicMaterial({name:material.name,map,side:material.side});
+      const baked=material.name.startsWith('Web baked');
+      return new MeshBasicMaterial({name:material.name,map,side:baked?FrontSide:material.side,alphaTest:baked?.01:0});
      }
-     material.envMapIntensity=.08;material.side=FrontSide;
-     if(material.name==='Сатинированное серебро • единый физический масштаб зерна.001')material.envMapIntensity=.35;
+     material.envMapIntensity=.25;material.side=FrontSide;
+     if(material.metalness>.8)material.envMapIntensity=.65;
+     if(material.anisotropy&&!object.geometry.attributes.uv)material.anisotropy=0;
      if(material.isMeshPhysicalMaterial&&(material.name.includes('Шнур')||material.name.includes('Ремешок')))material.sheen=.1;
      if(material.name.startsWith('Голубой акрил')){
-      material.color.setRGB(.015,.215,.25);material.transmission=.2;material.roughness=.13;
-     }
-     if(material.name==='Engraving - darkened silver recess'){
-      material.polygonOffset=true;material.polygonOffsetFactor=-1;material.polygonOffsetUnits=-2;
+      material.color.setRGB(.059293,.857743,1);material.transmission=.9;material.roughness=.085;
+      material.thickness=.15;material.attenuationDistance=.25;material.attenuationColor.setRGB(.04,.42,.48);
      }
      if(material.name.includes('серебро'))material.roughness=Math.max(material.roughness,.26);
      if(material.name.includes('Держатель')&&material.isMeshPhysicalMaterial){
+      if(!material.name.includes('антибликовое')){
+       material.transmission=1;material.thickness=.06;material.roughness=.055;
+       material.envMapIntensity=.4;material.ior=1.46;return material;
+      }
       material.transmission=0;material.transparent=true;material.depthWrite=false;material.forceSinglePass=true;
       material.envMapIntensity=.22;material.roughness=.09;
       // Blender's window mixes transparent and physical shaders. Recreate the
       // clear camera-facing sheet without a refraction pass blurring the print.
       material.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>',
-       'float edgeFresnel=pow(1.0-abs(dot(normalize(vViewPosition),normal)),3.0);diffuseColor.a*=mix(0.012,0.7,edgeFresnel);\n#include <opaque_fragment>');};
+       'float edgeFresnel=pow(1.0-abs(dot(normalize(vViewPosition),normal)),3.0);diffuseColor.a*=mix(0.005,0.3,edgeFresnel);\n#include <opaque_fragment>');};
       material.customProgramCacheKey=()=> 'badge-clear-PET-v1';
      }
      return material;
@@ -70,6 +72,16 @@ class BadgeScene {
     object.material=Array.isArray(object.material)?object.material.map(adapt):adapt(object.material);
    });
    this.environment=this.createEnvironment(metadata,centre);this.scene.environment=this.environment.texture;
+   this.createLights(metadata);
+   // Scene.environment uses scene.environmentIntensity, ignoring the per-material
+   // intensity unless an explicit envMap is assigned (Three r187).
+   this.model.traverse(object=>{
+    for(const material of Array.isArray(object.material)?object.material:[object.material]){
+     if(material?.isMeshStandardMaterial){
+      material.envMap=this.environment.texture;
+     }
+    }
+   });
    this.mixer=new AnimationMixer(this.model);
    for(const clip of gltf.animations)this.mixer.clipAction(clip).play();
    this.mixer.setTime(0);this.resize();
@@ -80,7 +92,7 @@ class BadgeScene {
   }catch(error){this.fallback();throw error;}
  }
  createEnvironment(metadata,centre){
-  const environment=new Scene();environment.background=new Color(.07,.075,.09);
+  const environment=new Scene();environment.background=new Color(.03,.03,.03);
   const axis=new Matrix4().makeRotationX(-Math.PI/2);
   const geometry=new PlaneGeometry(1,1),materials=[];
   for(const panel of metadata.areaLights){
@@ -94,6 +106,17 @@ class BadgeScene {
   const target=generator.fromScene(environment,.02,.1,100,{size:256,position:centre});
   generator.dispose();geometry.dispose();for(const material of materials)material.dispose();
   return target;
+ }
+ createLights(metadata){
+  RectAreaLightUniformsLib.init();
+  const axis=new Matrix4().makeRotationX(-Math.PI/2);
+  for(const panel of metadata.areaLights){
+   if(!['Студия 08.10 • большая фронтальная софт-панель','Студия • основной справа вне отражения','Студия • узкий контур металла'].includes(panel.name))continue;
+   const radiance=panel.power/(Math.PI*panel.width*panel.height);
+   const light=new RectAreaLight(new Color(...panel.color),radiance*.7,panel.width,panel.height);
+   light.applyMatrix4(new Matrix4().multiplyMatrices(axis,new Matrix4().fromArray(panel.matrix)));
+   this.scene.add(light);
+  }
  }
  resize(){
   if(!this.canvas)return;

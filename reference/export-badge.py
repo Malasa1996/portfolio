@@ -23,6 +23,8 @@ geometry=[o for o in scene.objects if o.type in {'MESH','CURVE','FONT','SURFACE'
 sys.path.insert(0,os.path.dirname(__file__))
 from badge_morph import compress_morphs
 morph_report=compress_morphs(geometry,scene)
+from badge_bake import bake_pendant
+bake_pendant(scene,DEST)
 used_materials={m for o in geometry for m in o.data.materials if m}
 used_images={n.image for m in used_materials if m.use_nodes for n in m.node_tree.nodes if n.type=='TEX_IMAGE' and n.image}
 for image in used_images:
@@ -95,6 +97,7 @@ bpy.ops.export_scene.gltf(filepath=os.path.join(DEST,'badge.glb'),export_format=
     export_draco_mesh_compression_level=6,export_draco_position_quantization=18,
     export_draco_normal_quantization=12,export_draco_texcoord_quantization=12)
 metadata={'source':'TestCodex.blend','camera':camera.name,'projection':flatten(projection),
+          'appearanceBake':{'mesh':'silver pendant','method':'source-camera Cycles render projected on original geometry','viewDependent':True},
           'referenceImage':{'width':2500,'height':2500},'referenceFrame':0,
           'duration':(scene.frame_end-scene.frame_start)/scene.render.fps,
           'areaLights':rig,'materialAdaptations':material_changes,
