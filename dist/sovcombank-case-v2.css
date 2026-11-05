@@ -1,7 +1,7 @@
 @font-face{font-family:Geist;src:url('/assets/GeistVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
 @font-face{font-family:Inter;src:url('/assets/InterVariable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
 @font-face{font-family:Onest;src:url('/assets/Onest.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-:root{color-scheme:dark;font-family:Geist,Inter,Arial,sans-serif;background:#1e1e24;color:#fff;--case-scale:1}
+:root{color-scheme:dark;font-family:Geist,Inter,Arial,sans-serif;background:#1e1e24;color:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;overflow-x:hidden;background:#1e1e24}
@@ -13,7 +13,7 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .skip-link:focus{top:16px}
 .portfolio-header,.portfolio-cv-dialog{font-family:Inter,Arial,sans-serif}
 #case-content{display:flex;justify-content:center;overflow:hidden}
-.case-artboard{width:1440px;height:12842px;flex:none;position:relative;overflow:hidden;background:#1e1e24;zoom:var(--case-scale)}
+.case-artboard{width:1440px;height:12842px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
 .case-dots{position:absolute;z-index:0;left:0;top:-25px;width:1440px;height:869px;background:url('/assets/sovcombank-case/hero-background.svg') 0 0/1440px 869px no-repeat;pointer-events:none}
 .case-glow{position:absolute;z-index:0;left:134px;top:-334px;width:1925.57px;height:1207.43px;pointer-events:none;filter:blur(217.56px);opacity:.3}
 .case-glow::before{content:"";position:absolute;inset:0;clip-path:polygon(0 83%,45% 8%,73% 6%,100% 0,62% 100%,36% 93%,53% 38%,8% 87%);background:linear-gradient(120deg,rgba(186,194,233,.35) 0%,rgba(186,194,233,.82) 45%,rgba(186,194,233,.95) 72%,rgba(186,194,233,.18) 100%)}

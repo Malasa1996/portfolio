@@ -2,6 +2,8 @@
 @media(min-width:1101px){
  body{width:1440px;zoom:var(--desktop-scale,1)}
  .header{left:720px;width:1040px}
+ .portfolio-header{left:720px;width:1040px}
+ .next-case{left:720px}
  .gallery-track{padding-inline:270px}
  .about{height:calc(260vh / var(--desktop-scale,1))}
  .about-sticky{height:calc(100svh / var(--desktop-scale,1))}
