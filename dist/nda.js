@@ -19,8 +19,8 @@
    ctx.setTransform(scale,0,0,scale,0,0);
    color=getComputedStyle(button).color;
    seed=3719;
-   particles=Array.from({length:Math.round(width*height/11)},()=>({
-    x:random()*width,y:3+random()*(height-6),r:.35+random()*.55,
+   particles=Array.from({length:Math.round(width*height/11*.9)},()=>({
+    x:random()*width,y:3+random()*(height-6),r:(.35+random()*.55)*1.05,
     phase:random()*tau,speed:.45+random()*.8,alpha:.2+random()*.65
    }));
    draw(performance.now());
@@ -29,11 +29,11 @@
   function draw(now){
    ctx.clearRect(0,0,width+pad*2,height+pad*2);
    ctx.fillStyle=color;
-   const time=reduced.matches?0:now/1000;
+   const time=reduced.matches?0:now/1000*1.15;
    while(impulses.length&&now-impulses[0].time>1100)impulses.shift();
    for(const p of particles){
-    let x=p.x+Math.sin(time*p.speed+p.phase)*1.6;
-    let y=p.y+Math.cos(time*p.speed*.8+p.phase)*1.2;
+    let x=p.x+Math.sin(time*p.speed+p.phase)*1.6*1.15;
+    let y=p.y+Math.cos(time*p.speed*.8+p.phase)*1.2*1.15;
     let dx=0,dy=0;
     if(!reduced.matches){
      for(const hit of impulses){
@@ -41,12 +41,12 @@
       const vx=p.x-hit.x,vy=(p.y-hit.y)*1.5;
       const distance=Math.hypot(vx,vy)||1;
       const envelope=Math.sin(Math.PI*Math.min(1,age))*Math.exp(-age*2.4);
-      const force=24*envelope*Math.exp(-distance/110);
+      const force=24*1.15*envelope*Math.exp(-distance/110);
       dx+=vx/distance*force;dy+=vy/distance*force;
      }
      if(pointer){
       const vx=x-pointer.x,vy=y-pointer.y,distance=Math.hypot(vx,vy)||1;
-      const force=2.5*Math.max(0,1-distance/48);
+      const force=2.5*1.15*Math.max(0,1-distance/48);
       dx+=vx/distance*force;dy+=vy/distance*force;
      }
     }
