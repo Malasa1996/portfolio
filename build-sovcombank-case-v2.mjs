@@ -14,7 +14,6 @@ const images = [
   [220,5631,1000,546,'tariff-figma.png','Расчёт тарифа'],
   [220,7345,1000,546,'application-flow.png','Создание заявки на платёж'],
   [220,7931,1000,546,'application-result.png','Состояния заявки'],
-  [220,9051,1000,639,'view-current.png','Предыдущая форма заявки'],
   [220,9984,1000,642,'view-target.png','Обновлённая форма заявки'],
   [220,10875,1000,643,'status.png','Просмотр заявки'],
   [240,11748,960,524,'final.png','Финальный интерфейс'],
@@ -33,11 +32,12 @@ elements.push(
   {y:442,html:'<ul class="case-tags" aria-label="Теги проекта"><li>B2B</li><li>Fintech</li><li>Redesignl</li></ul>'},
   {y:544.67,html:'<dl class="case-meta"><div><dt>Таймлайн</dt><dd>4 месяца (2026)</dd></div><div><dt>Роль</dt><dd>Продуктовый дизайнер</dd></div><div><dt>Объём</dt><dd>Исследования и анализ, концепты, дизайн-система</dd></div></dl>'},
   {y:1470,html:'<div class="case-card case-card-left" aria-hidden="true"></div><div class="case-card case-card-right" aria-hidden="true"></div>'},
-  {y:9714,html:'<div class="comparison-labels" aria-hidden="true"><span>Было</span><span>Стало</span></div>'},
+  {y:9051,html:'<figure class="case-image comparison-media" '+pos(220,9051,1000,639)+'><video class="comparison-video is-active" data-comparison-video="before" src="/assets/sovcombank-case/before.mp4" poster="/assets/sovcombank-case/view-current.png" muted loop playsinline preload="metadata" aria-label="Было — прежняя версия работы с инвойсами"></video><video class="comparison-video" data-comparison-video="after" data-src="/assets/sovcombank-case/after.mp4" poster="/assets/sovcombank-case/view-target.png" muted loop playsinline preload="none" aria-label="Стало — обновлённая работа с инвойсами"></video></figure>'},
+  {y:9714,html:'<div class="comparison-labels" role="group" aria-label="Сравнение видео"><button type="button" class="is-active" data-comparison-choice="before" aria-pressed="true">Было</button><button type="button" data-comparison-choice="after" aria-pressed="false">Стало</button></div>'},
 );
 elements.sort((a,b)=>a.y-b.y);
 const content = elements.map(e=>e.html).join('');
-const html = '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1e1e24"><meta name="description" content="Редизайн сервиса международных платежей — кейс Максима Толстикова."><title>Международные платежи · Максим Толстиков</title><link rel="icon" href="/assets/4a1d5.svg"><link rel="stylesheet" href="/sovcombank-case-v2.css"><link rel="stylesheet" href="/portfolio-nav.css"><link rel="stylesheet" href="/desktop.css"><script src="/desktop.js" defer></script><script src="/portfolio-nav.js" defer></script></head><body id="top"><a class="skip-link" href="#case-content">К содержанию</a>'+sharedHeader+'<main id="case-content"><article class="case-artboard"><div class="case-dots" aria-hidden="true"></div><div class="case-glow" aria-hidden="true"></div>'+content+'</article></main><a class="next-case" href="/cases/designers.html"><span>Следующий кейс</span><img src="/assets/sovcombank-case/next-arrow.svg" alt="" width="20" height="20"></a></body></html>';
+const html = '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1e1e24"><meta name="description" content="Редизайн сервиса международных платежей — кейс Максима Толстикова."><title>Международные платежи · Максим Толстиков</title><link rel="icon" href="/assets/4a1d5.svg"><link rel="stylesheet" href="/sovcombank-case-v2.css"><link rel="stylesheet" href="/portfolio-nav.css"><link rel="stylesheet" href="/desktop.css"><script src="/desktop.js" defer></script><script src="/portfolio-nav.js" defer></script><script src="/sovcombank-comparison.js" defer></script></head><body id="top"><a class="skip-link" href="#case-content">К содержанию</a>'+sharedHeader+'<main id="case-content"><article class="case-artboard"><div class="case-dots" aria-hidden="true"></div><div class="case-glow" aria-hidden="true"></div>'+content+'</article></main><a class="next-case" href="/cases/designers.html"><span>Следующий кейс</span><img src="/assets/sovcombank-case/next-arrow.svg" alt="" width="20" height="20"></a></body></html>';
 fs.mkdirSync('dist/cases',{recursive:true});
 fs.writeFileSync('dist/cases/sovcombank.html',html);
 console.log('Generated /cases/sovcombank.html from Figma 1:2540');
