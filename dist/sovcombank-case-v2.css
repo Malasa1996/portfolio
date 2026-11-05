@@ -15,7 +15,7 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 #case-content{display:flex;justify-content:center;overflow:hidden}
 .case-artboard{width:1440px;height:12842px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
 .case-dots{position:absolute;z-index:0;left:0;top:-25px;width:1440px;height:869px;background:url('/assets/sovcombank-case/hero-background.svg') 0 0/1440px 869px no-repeat;pointer-events:none}
-.case-glow{position:absolute;z-index:0;left:134px;top:-334px;width:1925.57px;height:1207.43px;pointer-events:none;filter:blur(217.56px);opacity:.3}
+.case-glow{position:absolute;z-index:0;left:134px;top:-334px;width:1925.57px;height:1207.43px;pointer-events:none;filter:blur(217.56px);opacity:.1}
 .case-glow::before{content:"";position:absolute;inset:0;clip-path:polygon(0 83%,45% 8%,73% 6%,100% 0,62% 100%,36% 93%,53% 38%,8% 87%);background:linear-gradient(120deg,rgba(186,194,233,.35) 0%,rgba(186,194,233,.82) 45%,rgba(186,194,233,.95) 72%,rgba(186,194,233,.18) 100%)}
 .case-text{position:absolute;z-index:2;white-space:normal;color:#fff;font-weight:400}
 .case-text.hero-title{font-size:61px;line-height:1.15;letter-spacing:-3.8px;font-weight:600}
