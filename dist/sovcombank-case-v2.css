@@ -24,6 +24,7 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .case-text.subheading{font-size:18px;line-height:26px;font-weight:600}
 .case-text.card-heading{font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.65px}
 .case-text.card-body{font-size:16px;line-height:23px}
+.case-text.card-body::before{content:"";position:absolute;left:-13px;top:9px;width:4px;height:4px;border-radius:50%;background:#fff}
 .case-tags{position:absolute;z-index:2;top:442px;left:329px;display:flex;gap:6px;list-style:none;padding:0}
 .case-tags li{display:flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;background:#2b2b31;font-size:12px;font-weight:500;line-height:16px}
 .case-meta{position:absolute;z-index:2;top:544.67px;left:329px;display:grid;grid-template-columns:109px 161px 352px;column-gap:100px;font-size:14px;line-height:19.5px}
