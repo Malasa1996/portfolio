@@ -1,0 +1,20 @@
+.portfolio-header{position:fixed;z-index:90;top:16px;left:50%;transform:translateX(-50%);width:min(1040px,calc(100% - 48px));height:82px;padding:8px 10px 8px 30px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.035);border-radius:32px;background:rgba(42,42,49,.86);box-shadow:0 12px 40px rgba(0,0,0,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.portfolio-brand{display:flex;align-items:center;gap:16px;font-size:14px;font-weight:500;letter-spacing:-.4px;white-space:nowrap}
+.portfolio-brand img{width:37.175px;height:40px}
+.portfolio-header nav{display:flex;align-items:center;gap:32px;font:500 14px Onest,Inter,Arial,sans-serif;letter-spacing:-.4px}
+.portfolio-header nav a,.portfolio-header nav button{border:0;background:none;padding:0;color:inherit;font:inherit;cursor:pointer;transition:opacity .15s}
+.portfolio-header nav a:hover,.portfolio-header nav button:hover{opacity:.65}
+.portfolio-actions{display:flex;align-items:center;gap:8px}
+.portfolio-theme{display:grid;place-items:center;width:48px;height:48px;padding:12px;border:0;border-radius:18px;background:transparent;color:inherit;cursor:pointer;transition:background .15s,transform .15s}
+.portfolio-theme:hover{background:rgba(255,255,255,.07);transform:translateY(-1px)}
+.portfolio-theme img{width:24px;height:24px}
+.portfolio-button{display:inline-flex;align-items:center;justify-content:center;min-height:65px;padding:0 24px;border:0;border-radius:24px;background:#3289f5;box-shadow:inset 0 0 17.3px rgba(151,216,238,.78);font:500 14px/17px Inter,Arial,sans-serif;letter-spacing:-.8px;color:#fff;white-space:nowrap;cursor:pointer;transition:filter .15s,transform .15s}
+.portfolio-button:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.portfolio-button-muted{background:rgba(255,255,255,.1);box-shadow:inset 0 1px 12px rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.03)}
+.portfolio-cv-dialog{width:min(520px,calc(100% - 32px));border:1px solid rgba(255,255,255,.12);border-radius:28px;background:#292930;color:#f6f6f8;padding:28px;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.portfolio-cv-dialog::backdrop{background:rgba(9,9,11,.88);backdrop-filter:blur(10px)}
+.portfolio-cv-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.portfolio-cv-head h2{margin:0;font:600 28px/1.1 Onest,Inter,Arial,sans-serif}.portfolio-cv-close{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:50%;background:#3b3b44;color:#fff;font-size:22px;cursor:pointer}.portfolio-cv-dialog p{margin:24px 0 14px;color:#bcbcc5;line-height:1.55}.portfolio-cv-dialog>a{display:block;padding:10px 0;color:#91caff}.portfolio-cv-dialog>a:hover{text-decoration:underline}
+body.light .portfolio-header{background:rgba(255,255,255,.88);border-color:rgba(20,20,30,.06);box-shadow:0 12px 40px rgba(35,35,50,.1)}
+body.light .portfolio-theme:hover{background:rgba(20,20,30,.05)}body.light .portfolio-button-muted{background:rgba(20,20,30,.07);color:#25252d;box-shadow:none;border-color:rgba(20,20,30,.05)}
+@media(max-width:760px){.portfolio-header{top:12px;width:calc(100% - 24px);height:68px;padding:8px 10px 8px 16px;border-radius:26px}.portfolio-brand{gap:8px;font-size:12px}.portfolio-brand img{width:29.74px;height:32px}.portfolio-header nav{display:none}.portfolio-actions{gap:4px}.portfolio-button-muted{display:none}.portfolio-theme{width:40px;height:40px;padding:8px}.portfolio-button{min-height:48px;padding:0 15px;border-radius:18px;font-size:12px}.portfolio-cv-dialog{padding:22px;border-radius:22px}}
+@media(prefers-reduced-motion:reduce){.portfolio-header *{transition:none!important}}
