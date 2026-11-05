@@ -10,7 +10,6 @@ const images = [
   [220,649,1000,546,'hero.png','Сервис международных платежей'],
   [220,2136,1000,546,'docs.png','Мобильные состояния фильтров'],
   [220,3414,1000,529,'user-flow.png','Карта пользовательских сценариев'],
-  [220,4196,1000,694,'main-table.png','Таблица международных платежей'],
   [220,5631,1000,546,'tariff-figma.png','Расчёт тарифа'],
   [220,7345,1000,546,'application-flow.png','Создание заявки на платёж'],
   [220,7931,1000,546,'application-result.png','Состояния заявки'],
@@ -32,6 +31,7 @@ elements.push(
   {y:442,html:'<ul class="case-tags" aria-label="Теги проекта"><li>B2B</li><li>Fintech</li><li>Redesignl</li></ul>'},
   {y:544.67,html:'<dl class="case-meta"><div><dt>Таймлайн</dt><dd>4 месяца (2026)</dd></div><div><dt>Роль</dt><dd>Продуктовый дизайнер</dd></div><div><dt>Объём</dt><dd>Исследования и анализ, концепты, дизайн-система</dd></div></dl>'},
   {y:1470,html:'<div class="case-card case-card-left" aria-hidden="true"></div><div class="case-card case-card-right" aria-hidden="true"></div>'},
+  {y:4196,html:'<figure class="case-image before-after" '+pos(220,4196,1000,694)+' aria-label="Сравнение главной страницы до и после редизайна"><img class="before-after__before" src="/assets/sovcombank-case/main-before.png" alt="Было: прежняя страница международных платежей" width="2080" height="1444" loading="lazy" decoding="async" draggable="false"><img class="before-after__after" src="/assets/sovcombank-case/main-after.png" alt="Стало: обновлённая страница международных платежей" width="2080" height="1444" loading="lazy" decoding="async" draggable="false"><span class="before-after__label before-after__label--before" aria-hidden="true">Было</span><span class="before-after__label before-after__label--after" aria-hidden="true">Стало</span><span class="before-after__divider"><span class="before-after__handle" role="slider" tabindex="0" aria-label="Доля прежнего дизайна" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% прежнего дизайна">↔</span></span></figure>'},
   {y:9051,html:'<figure class="case-image comparison-media" '+pos(220,9051,1000,639)+'><video class="comparison-video is-active" data-comparison-video="before" src="/assets/sovcombank-case/before.mp4" poster="/assets/sovcombank-case/view-current.png" muted loop playsinline preload="metadata" aria-label="Было — прежняя версия работы с инвойсами"></video><video class="comparison-video" data-comparison-video="after" data-src="/assets/sovcombank-case/after.mp4" poster="/assets/sovcombank-case/view-target.png" muted loop playsinline preload="none" aria-label="Стало — обновлённая работа с инвойсами"></video></figure>'},
   {y:9714,html:'<div class="comparison-labels" role="group" aria-label="Сравнение видео"><button type="button" class="is-active" data-comparison-choice="before" aria-pressed="true">Было</button><button type="button" data-comparison-choice="after" aria-pressed="false">Стало</button></div>'},
 );

@@ -43,3 +43,47 @@ if (comparison && comparisonButtons.length === 2 && comparisonVideos.length === 
     else syncPlayback();
   });
 }
+
+const beforeAfter = document.querySelector('.before-after');
+if (beforeAfter) {
+  const handle = beforeAfter.querySelector('[role="slider"]');
+  let split = 50;
+  let dragging = false;
+  const setSplit = value => {
+    split = Math.max(0, Math.min(100, Math.round(value)));
+    beforeAfter.style.setProperty('--split', `${split}%`);
+    handle.setAttribute('aria-valuenow', String(split));
+    handle.setAttribute('aria-valuetext', `${split}% прежнего дизайна`);
+  };
+  const updateFromPointer = event => {
+    const rect = beforeAfter.getBoundingClientRect();
+    setSplit((event.clientX - rect.left) / rect.width * 100);
+  };
+  beforeAfter.addEventListener('pointerdown', event => {
+    if (event.button !== 0 && event.pointerType === 'mouse') return;
+    dragging = true;
+    beforeAfter.setPointerCapture(event.pointerId);
+    updateFromPointer(event);
+    event.preventDefault();
+  });
+  beforeAfter.addEventListener('pointermove', event => {
+    if (dragging) updateFromPointer(event);
+  });
+  const stopDragging = () => { dragging = false; };
+  beforeAfter.addEventListener('pointerup', stopDragging);
+  beforeAfter.addEventListener('pointercancel', stopDragging);
+  beforeAfter.addEventListener('lostpointercapture', stopDragging);
+  handle.addEventListener('keydown', event => {
+    const next = {
+      ArrowLeft: split - 5,
+      ArrowDown: split - 5,
+      ArrowRight: split + 5,
+      ArrowUp: split + 5,
+      Home: 0,
+      End: 100,
+    }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    setSplit(next);
+  });
+}
