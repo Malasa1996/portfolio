@@ -1,3 +1,4 @@
 node_modules/
 *.zip
 .openai/*.local.*
+dist/client/
