@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { updateSharedHeader } from './shared-header.mjs';
 import path from 'node:path';
 const ref=path.resolve('reference');
 const read=id=>fs.readFileSync(path.join(ref,id.replace(':','-')+'.jsx'),'utf8');
@@ -119,7 +120,7 @@ const preparedHtml=html.replace(`<div class="archive-art">${old}</div>`,`<button
  .replace('<dialog id="project-dialog">','<dialog id="project-dialog" aria-labelledby="dialog-title">')
  .replace('<div class="stickers" aria-hidden="true">','<div class="stickers" role="group" aria-label="Интерактивные плашки">')
  .replace(/<span class="sticker ([^"]+)">([^<]+)<\/span>/g,(_,classes,label)=>`<button type="button" class="sticker ${classes}" aria-label="Подбросить ${label}">${label}</button>`);
-fs.writeFileSync('dist/index.html',preparedHtml.replace('<div class="hero-art">',dots+'<div class="hero-art">').replace('<footer>','<footer id="footer">'+dots));
+fs.writeFileSync('dist/index.html',updateSharedHeader(preparedHtml.replace('<div class="hero-art">',dots+'<div class="hero-art">').replace('<footer>','<footer id="footer">'+dots)));
 // Keep the supplied CSS keyframes and durations for the animated project artwork.
 const motion=JSON.parse(fs.readFileSync(path.join(ref,'motion.json'),'utf8'));
 for(const n of motion.nodes??[]){let snippet=n.codeSnippets?.css;if(!snippet)continue;const properties=snippet.match(/@property[^}]+}/g)||[];snippet=snippet.replace(/@property[^}]+}/g,'');const at=snippet.indexOf('@keyframes');if(at<0)continue;let declarations=snippet.slice(0,at);if(html.includes(`data-motion-wrapper-for="${n.nodeId}"`)){const base=declarations.match(/rotate\(var\(--rotate-transform, ([^)]+)\)\)/)?.[1];if(base)declarations=declarations.replace(/rotate\(var\(--rotate-transform, ([^)]+)\)\)/,'rotate(calc(var(--rotate-transform, $1) - $1))');css.push(`[data-motion-wrapper-for="${n.nodeId}"]>div>div{opacity:1}`);}css.push(...properties,`[data-node-id="${n.nodeId}"]{${declarations}}`,snippet.slice(at));}

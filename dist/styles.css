@@ -18,3 +18,5 @@ dialog{width:min(1100px,calc(100% - 32px));max-height:90vh;border:1px solid #fff
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 .hero:before,footer:before{display:none}.dotfield{position:absolute;inset:0;display:grid;grid-template-columns:repeat(23,1fr);grid-auto-rows:64px;pointer-events:none;opacity:.6;mask-image:radial-gradient(ellipse at 50% 40%,black,transparent 70%)}.dotfield img{width:2px;height:2px}.hero .dotfield{inset:0 0 140px}footer .dotfield{top:280px;mask-image:linear-gradient(transparent,black)}
 .education{overflow:hidden}@media(max-width:420px){.hero-art{top:-8px;width:335px;height:501px;left:calc(50% - 182px)}}
+.header nav{position:absolute;left:50%;transform:translateX(-50%)}
+@media(max-width:760px){.header nav{display:none}.header-actions .button-muted{display:inline-flex}.header{padding-left:12px}.brand{gap:6px}.brand span{font-size:11px}.header-actions .button{padding-inline:12px}}

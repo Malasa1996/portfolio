@@ -274,9 +274,7 @@ reduced.addEventListener('change',()=>{
  else startAvatarMotion();
 });
 
-const theme=document.querySelector('.theme-toggle');let saved;try{saved=localStorage.getItem('portfolio-theme');}catch{}
-function setTheme(light){document.documentElement.classList.toggle('light',light);theme.setAttribute('aria-pressed',String(light));theme.setAttribute('aria-label',light?'Включить тёмную тему':'Включить светлую тему');}
-setTheme(saved==='light');theme.addEventListener('click',()=>{const light=!document.documentElement.classList.contains('light');setTheme(light);try{localStorage.setItem('portfolio-theme',light?'light':'dark');}catch{}});
+document.documentElement.classList.remove('light');
 const dialog=document.querySelector('dialog');let opener,archiveViewer;
 const closeDialog=()=>dialog.close();
 dialog.addEventListener('close',()=>{archiveViewer?.destroy();archiveViewer=undefined;dialog.classList.remove('archive-dialog');document.body.style.overflow='';opener?.focus({preventScroll:true});});

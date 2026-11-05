@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { updateSharedHeader } from './shared-header.mjs';
 const source=JSON.parse(fs.readFileSync('reference/designers-writing.json','utf8'));
 const escape=text=>String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const imageLabels={'hero.png':'Главная страница Дизайнерс','cover.png':'Дизайнерс — платформа для дизайнеров','competitors.png':'Конкурентный анализ','survey.png':'Опрос пользователей и его результаты','feed.png':'Лента публикаций','profiles.png':'Профили и подписки','personal-feed.png':'Моя лента','settings.png':'Настройки профиля','analytics.png':'Аналитика публикаций','architecture.png':'Архитектура сайта','prototypes.png':'Прототипы','results.png':'Результат обновления в цифрах'};
@@ -48,5 +49,5 @@ ${figure('hero.png',true)}${article}
 <footer class="case-footer"><a class="footer-name" href="/">Maxim Tolstickov</a><nav aria-label="Контакты"><a href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="mailto:malasa1308@gmail.com">Email ↗</a></nav><span>© 2026</span></footer>
 <a class="to-top" href="#top" aria-label="Наверх">↑</a><dialog class="image-dialog" aria-label="Просмотр иллюстрации"><button class="dialog-close" type="button" aria-label="Закрыть изображение">×</button><img alt=""><p></p></dialog></body></html>`;
 fs.mkdirSync('dist/cases',{recursive:true});
-fs.writeFileSync('dist/cases/designers.html',html);
+fs.writeFileSync('dist/cases/designers.html',updateSharedHeader(html));
 console.log('Generated /cases/designers.html with verbatim source writing');

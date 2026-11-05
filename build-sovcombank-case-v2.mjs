@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import { copy } from './case-figma-copy.mjs';
+import { updateSharedHeader } from './shared-header.mjs';
 
 const oldBuilder = fs.readFileSync('build-sovcombank-case.mjs','utf8');
-const sharedHeader = oldBuilder.match(/<header class="portfolio-header">[\s\S]*?<\/dialog>/)?.[0];
+const sharedHeader = updateSharedHeader(oldBuilder.match(/<header class="portfolio-header">[\s\S]*?<\/dialog>/)?.[0] || '');
 if (!sharedHeader) throw new Error('Shared portfolio header was not found');
 
 const images = [
