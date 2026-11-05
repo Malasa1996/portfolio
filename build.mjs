@@ -127,4 +127,4 @@ css.push('@media(prefers-reduced-motion:reduce){[data-node-id]{animation:none!im
 fs.writeFileSync('dist/artwork.css',css.join('\n'));
 console.log(JSON.stringify({generated:'dist/index.html',artworkRules:rules.size,unhandledClasses:[...unknown]}));
 await import('./build-case.mjs');
-await import('./build-sovcombank-case.mjs');
+await import('./build-sovcombank-case-v2.mjs');
