@@ -35,6 +35,7 @@ if (comparison && comparisonButtons.length === 2 && comparisonVideos.length === 
   for (const button of comparisonButtons) {
     button.addEventListener('click', () => {
       active = button.dataset.comparisonChoice;
+      comparison.dataset.active = active;
       for (const item of comparisonButtons) {
         const selected = item === button;
         item.classList.toggle('is-active', selected);
