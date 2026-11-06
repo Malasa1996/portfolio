@@ -13,7 +13,7 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .skip-link:focus{top:16px}
 .portfolio-header,.portfolio-cv-dialog{font-family:Inter,Arial,sans-serif}
 #case-content{display:flex;justify-content:center;overflow:hidden}
-.case-artboard{width:1440px;height:12842px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
+.case-artboard{width:1440px;height:12221.55px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
 .case-dots{position:absolute;z-index:0;left:0;top:-25px;width:1440px;height:869px;background:url('/assets/sovcombank-case/hero-background.svg') 0 0/1440px 869px no-repeat;pointer-events:none}
 .case-glow{position:absolute;z-index:0;left:134px;top:-334px;width:1925.57px;height:1207.43px;pointer-events:none;filter:blur(217.56px);opacity:.1}
 .case-glow::before{content:"";position:absolute;inset:0;clip-path:polygon(0 83%,45% 8%,73% 6%,100% 0,62% 100%,36% 93%,53% 38%,8% 87%);background:linear-gradient(120deg,rgba(186,194,233,.35) 0%,rgba(186,194,233,.82) 45%,rgba(186,194,233,.95) 72%,rgba(186,194,233,.18) 100%)}
@@ -34,7 +34,7 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .case-card{position:absolute;z-index:1;top:1470.21px;width:492px;height:272px;border-radius:32px;background:#2b2b31}
 .case-card-left{left:220px}.case-card-right{left:728px}
 .case-image{position:absolute;z-index:1;overflow:hidden;border-radius:32px}
-.case-image img{width:100%;height:100%;object-fit:fill}
+.case-image img{width:100%;height:auto;object-fit:fill}
 .before-after{--split:50%;background:#69696d;touch-action:none;cursor:ew-resize;user-select:none;-webkit-user-select:none}
 .before-after img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
 .before-after__after{clip-path:inset(0 0 0 var(--split))}
