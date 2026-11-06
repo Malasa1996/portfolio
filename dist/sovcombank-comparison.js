@@ -1,6 +1,26 @@
 const comparison = document.querySelector('.comparison-media');
 const comparisonButtons = [...document.querySelectorAll('[data-comparison-choice]')];
 const comparisonVideos = [...document.querySelectorAll('[data-comparison-video]')];
+const applicationVideo = document.querySelector('[data-case-application-video]');
+
+if (applicationVideo) {
+  const applicationObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      if (!applicationVideo.src) {
+        applicationVideo.src = applicationVideo.dataset.src;
+        applicationVideo.load();
+      }
+      applicationVideo.play().catch(() => {});
+    } else {
+      applicationVideo.pause();
+    }
+  }, {threshold: .2});
+  applicationObserver.observe(applicationVideo);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) applicationVideo.pause();
+    else if (applicationObserver && applicationVideo.getBoundingClientRect().top < innerHeight && applicationVideo.getBoundingClientRect().bottom > 0) applicationVideo.play().catch(() => {});
+  });
+}
 
 if (comparison && comparisonButtons.length === 2 && comparisonVideos.length === 2) {
   let visible = false;

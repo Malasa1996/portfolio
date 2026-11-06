@@ -13,7 +13,6 @@ const images = [
   [220,5631,1000,546,'tariff-figma.png','Расчёт тарифа'],
   [220,7345,1000,546,'application-flow.png','Создание заявки на платёж'],
   [220,7931,1000,546,'application-result.png','Состояния заявки'],
-  [220,9984,1000,642,'view-target.png','Обновлённая форма заявки'],
   [220,10875,1000,643,'status.png','Просмотр заявки'],
   [240,11748,960,524,'final.png','Финальный интерфейс'],
 ];
@@ -22,6 +21,7 @@ const media = [
   ...images.map(([x,y,w,h]) => [y,w,h]),
   [4196,1000,694],
   [9051,1000,639],
+  [9984,1000,642],
 ].sort((a,b) => a[0] - b[0]);
 const mediaWidth = 900;
 const mediaLeft = (1440 - mediaWidth) / 2;
@@ -48,6 +48,7 @@ elements.push(
   {y:1470,html:'<div class="case-card case-card-left" style="top:'+layoutY(1470.21)+'px" aria-hidden="true"></div><div class="case-card case-card-right" style="top:'+layoutY(1470.21)+'px" aria-hidden="true"></div>'},
   {y:4196,html:'<figure class="case-image before-after" '+mediaStyle(4196,1000,694)+' aria-label="Сравнение главной страницы до и после редизайна"><img class="before-after__before" src="/assets/sovcombank-case/main-before.png" alt="Было: прежняя страница международных платежей" width="2080" height="1444" loading="lazy" decoding="async" draggable="false"><img class="before-after__after" src="/assets/sovcombank-case/main-after.png" alt="Стало: обновлённая страница международных платежей" width="2080" height="1444" loading="lazy" decoding="async" draggable="false"><span class="before-after__divider"><span class="before-after__handle" role="slider" tabindex="0" aria-label="Доля прежнего дизайна" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% прежнего дизайна">↔</span></span></figure>'},
   {y:9051,html:'<figure class="case-image comparison-media" '+mediaStyle(9051,1000,639)+'><video class="comparison-video is-active" data-comparison-video="before" src="/assets/sovcombank-case/before.mp4" poster="/assets/sovcombank-case/view-current.png" muted loop playsinline preload="metadata" aria-label="Было — прежняя версия работы с инвойсами"></video><video class="comparison-video" data-comparison-video="after" data-src="/assets/sovcombank-case/after.mp4" poster="/assets/sovcombank-case/view-target.png" muted loop playsinline preload="none" aria-label="Стало — обновлённая работа с инвойсами"></video></figure>'},
+  {y:9984,html:'<figure class="case-image case-application-video" '+mediaStyle(9984,1000,642)+'><video data-case-application-video data-src="/assets/sovcombank-case/application-test-5.mp4" poster="/assets/sovcombank-case/application-test-5-poster.jpg" controls muted loop playsinline preload="none" aria-label="Обновлённая форма заявки на международный платёж"></video></figure>'},
   {y:9714,html:'<div class="comparison-labels" style="top:'+layoutY(9714)+'px" role="group" aria-label="Сравнение видео"><button type="button" class="is-active" data-comparison-choice="before" aria-pressed="true">Было</button><button type="button" data-comparison-choice="after" aria-pressed="false">Стало</button></div>'},
 );
 elements.sort((a,b)=>a.y-b.y);
