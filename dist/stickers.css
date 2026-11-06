@@ -1,7 +1,7 @@
 /* Focused labels must not scroll the clipped footer as a nested scroll area. */
 footer{overflow:clip}
 .stickers{height:280px;width:100%;left:0;right:0;transform:none;pointer-events:none;z-index:1}
-.sticker{border:0;font-family:Inter,Arial,sans-serif;font-weight:400;cursor:pointer;pointer-events:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.sticker{border:0;font-family:MedeoSans,Arial,sans-serif;font-weight:400;cursor:pointer;pointer-events:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .sticker:hover{filter:brightness(1.035)}
 .sticker:focus-visible{outline:3px solid #fff;outline-offset:4px}
 .stickers.is-physical .sticker{left:0;top:0;right:auto;bottom:auto;transform-origin:50% 50%;transition:none}

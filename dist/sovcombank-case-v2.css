@@ -1,10 +1,10 @@
-@font-face{font-family:Geist;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:Geist;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
-@font-face{font-family:Inter;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:Inter;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
-@font-face{font-family:Onest;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:Onest;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
-:root{color-scheme:dark;font-family:Geist,Inter,Arial,sans-serif;background:#1e1e24;color:#fff}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:MedeoSans;src:url('/assets/MedeoSans-VariableItalic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
+:root{color-scheme:dark;font-family:MedeoSans,MedeoSans,Arial,sans-serif;background:#1e1e24;color:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;overflow-x:hidden;background:#1e1e24}
@@ -14,7 +14,7 @@ img{display:block;max-width:100%}
 p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .skip-link{position:fixed;z-index:1000;left:24px;top:-80px;padding:12px 16px;border-radius:12px;background:#fff;color:#111}
 .skip-link:focus{top:16px}
-.portfolio-header,.portfolio-cv-dialog{font-family:Inter,Arial,sans-serif}
+.portfolio-header,.portfolio-cv-dialog{font-family:MedeoSans,Arial,sans-serif}
 #case-content{display:flex;justify-content:center;overflow:hidden}
 .case-artboard{width:1440px;height:12221.55px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
 .case-dots{position:absolute;z-index:0;left:0;top:-25px;width:1440px;height:869px;background:url('/assets/sovcombank-case/hero-background.svg') 0 0/1440px 869px no-repeat;pointer-events:none}
@@ -42,16 +42,16 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .before-after img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
 .before-after__after{clip-path:inset(0 0 0 var(--split))}
 .before-after__divider{position:absolute;z-index:3;top:0;bottom:0;left:var(--split);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.1);pointer-events:none}
-.before-after__handle{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.1);border-radius:50%;background:#fff;color:#1e1e24;font:600 21px/1 Inter,Arial,sans-serif;box-shadow:0 4px 22px rgba(0,0,0,.18);transform:translate(-50%,-50%);pointer-events:auto;cursor:ew-resize}
+.before-after__handle{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.1);border-radius:50%;background:#fff;color:#1e1e24;font:600 21px/1 MedeoSans,Arial,sans-serif;box-shadow:0 4px 22px rgba(0,0,0,.18);transform:translate(-50%,-50%);pointer-events:auto;cursor:ew-resize}
 .before-after__handle:focus-visible{outline:3px solid #548af7;outline-offset:3px}
 .comparison-media{background:#1e1e24}
 .comparison-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
 .comparison-video.is-active{opacity:1;visibility:visible;pointer-events:auto}
 .comparison-labels{position:absolute;z-index:2;top:9714px;left:633px;width:174px;height:48px;display:flex;align-items:center;padding:4px;border-radius:24px;background:#2b2b31}
-.comparison-labels button{width:50%;height:40px;padding:0;border:0;border-radius:20px;background:transparent;color:#b2b2b2;font:500 12px/1 Inter,Arial,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
+.comparison-labels button{width:50%;height:40px;padding:0;border:0;border-radius:20px;background:transparent;color:#b2b2b2;font:500 12px/1 MedeoSans,Arial,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
 .comparison-labels button.is-active{background:#fff;color:#2b2b31}
 .comparison-labels button:focus-visible{outline:2px solid #70b6ff;outline-offset:2px}
-.next-case{position:fixed;z-index:80;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:9.76px;width:213.32px;height:61px;border-radius:29.28px;background:#1e1e24;box-shadow:inset 0 1.22px 14.6px rgba(255,255,255,.17),0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(3.355px);-webkit-backdrop-filter:blur(3.355px);font:500 16px/1 Inter,Arial,sans-serif;letter-spacing:-.976px;transition:transform .18s,box-shadow .18s}
+.next-case{position:fixed;z-index:80;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:9.76px;width:213.32px;height:61px;border-radius:29.28px;background:#1e1e24;box-shadow:inset 0 1.22px 14.6px rgba(255,255,255,.17),0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(3.355px);-webkit-backdrop-filter:blur(3.355px);font:500 16px/1 MedeoSans,Arial,sans-serif;letter-spacing:-.976px;transition:transform .18s,box-shadow .18s}
 .next-case:hover{transform:translateX(-50%) translateY(-2px);box-shadow:inset 0 1.22px 14.6px rgba(255,255,255,.22),0 12px 28px rgba(0,0,0,.3)}
 .next-case img{width:20px;height:20px}
 body.light{color:#fff;background:#1e1e24}
