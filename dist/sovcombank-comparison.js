@@ -1,5 +1,6 @@
 const comparison = document.querySelector('.comparison-media');
 const comparisonButtons = [...document.querySelectorAll('[data-comparison-choice]')];
+const comparisonLabels = document.querySelector('.comparison-labels');
 const comparisonVideos = [...document.querySelectorAll('[data-comparison-video]')];
 const applicationVideo = document.querySelector('[data-case-application-video]');
 
@@ -22,7 +23,7 @@ if (applicationVideo) {
   });
 }
 
-if (comparison && comparisonButtons.length === 2 && comparisonVideos.length === 2) {
+if (comparison && comparisonLabels && comparisonButtons.length === 2 && comparisonVideos.length === 2) {
   let visible = false;
   let active = 'before';
   const selectedVideo = () => comparisonVideos.find(video => video.dataset.comparisonVideo === active);
@@ -35,7 +36,7 @@ if (comparison && comparisonButtons.length === 2 && comparisonVideos.length === 
   for (const button of comparisonButtons) {
     button.addEventListener('click', () => {
       active = button.dataset.comparisonChoice;
-      comparison.dataset.active = active;
+      comparisonLabels.dataset.active = active;
       for (const item of comparisonButtons) {
         const selected = item === button;
         item.classList.toggle('is-active', selected);
