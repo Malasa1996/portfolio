@@ -12,3 +12,8 @@
 .about-scene img{position:absolute;max-width:none}
 @media(max-width:760px){.about{height:240vh}.about-sticky{height:100svh}.about-canvas>h2{font-size:60px;line-height:62px}.about-stage{overflow:visible}}
 @media(prefers-reduced-motion:reduce){.about{height:auto}.about-sticky{height:auto;position:relative;padding-block:32px;overflow:hidden}.about-stage{aspect-ratio:auto}.about-canvas{height:auto}.about-canvas>h2{position:relative;top:auto;margin-bottom:62px}.about-scene,.about-scene:first-child:not(.is-active){position:relative;height:760px;opacity:1!important;transform:none!important;filter:none;transition:none;will-change:auto}.about-stage{height:var(--about-static-height)}}
+
+@media(min-width:1101px){
+ .about{margin-top:220px}
+ .about-sticky{align-items:flex-start}
+}

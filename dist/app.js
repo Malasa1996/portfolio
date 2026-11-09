@@ -280,7 +280,7 @@ const closeDialog=()=>dialog.close();
 dialog.addEventListener('close',()=>{archiveViewer?.destroy();archiveViewer=undefined;dialog.classList.remove('archive-dialog');document.body.style.overflow='';opener?.focus({preventScroll:true});});
 document.querySelector('.close-button').addEventListener('click',closeDialog);dialog.addEventListener('cancel',()=>{document.body.style.overflow='';});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog();}});
 document.querySelectorAll('[data-open-project]').forEach(button=>button.addEventListener('click',()=>{
- opener=button;const id=button.dataset.openProject;if(id==='sovcombank'){location.href='/cases/sovcombank.html';return;}const body=document.querySelector('#dialog-body');body.replaceChildren();
+ opener=button;const id=button.dataset.openProject;if(id==='sovcombank'){location.href='cases/sovcombank.html';return;}const body=document.querySelector('#dialog-body');body.replaceChildren();
  document.querySelector('#dialog-title').textContent=id==='archive'?'Концепты и старые проекты':id==='designers'?'Дизайнерс':'Совкомбанк';
  if(id==='archive'){
   dialog.classList.add('archive-dialog');archiveViewer=new ArchiveGallery(body);
@@ -294,4 +294,3 @@ document.querySelectorAll('[data-open-project]').forEach(button=>button.addEvent
   body.querySelectorAll('.slide').forEach(slide=>{const width=parseFloat(slide.style.getPropertyValue('--slide-width'));slide.style.setProperty('--art-scale',Math.min(1,(body.clientWidth-4)/width));});
  });
 }));
-document.querySelectorAll('[data-cv]').forEach(button=>button.addEventListener('click',()=>{opener=button;document.querySelector('#dialog-title').textContent='Резюме';const body=document.querySelector('#dialog-body');body.innerHTML='<p class="dialog-copy">Актуальное резюме можно запросить по почте или в Telegram.</p><a class="dialog-contact" href="mailto:malasa1308@gmail.com?subject=Запрос%20резюме">malasa1308@gmail.com ↗</a><br><a class="dialog-contact" href="https://t.me/malasa1308" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>';dialog.showModal();document.body.style.overflow='hidden';}));

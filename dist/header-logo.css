@@ -1,0 +1,15 @@
+.header,.portfolio-header{width:min(900px,calc(100% - 48px));padding-left:20px;padding-right:8px}
+.brand,.portfolio-brand{gap:15px;font-size:14px;font-weight:500;letter-spacing:-.4px}
+.header-portrait{display:block;width:37.175px;height:40px;flex:none;transform-origin:50% 85%}
+.header nav,.portfolio-header nav{gap:32px;font:500 14px/20px MedeoSans,Arial,sans-serif;letter-spacing:-.4px}
+.header-actions .button,.portfolio-actions .portfolio-button{height:65px;min-height:65px;padding:0;border-radius:24px;font:500 14px/20px MedeoSans,Arial,sans-serif;letter-spacing:-.4px}
+.header-actions .button-muted,.portfolio-actions .portfolio-button-muted{width:69px}
+.header-actions .button:not(.button-muted),.portfolio-actions .portfolio-button:not(.portfolio-button-muted){width:104px}
+.header-eye{transform-box:fill-box;transform-origin:50% 30%}
+.brand.is-grooving .header-portrait,.portfolio-brand.is-grooving .header-portrait{animation:header-head-groove 1.4s linear infinite,header-head-bob 1.4s ease-in-out infinite}
+.brand.is-grooving .header-eye,.portfolio-brand.is-grooving .header-eye{animation:header-eye-blink 4.2s ease-in-out infinite}
+@keyframes header-head-groove{0%,50%,100%{transform:rotate(0deg);animation-timing-function:cubic-bezier(.333333,.523599,.666667,1)}25%{transform:rotate(-5deg);animation-timing-function:cubic-bezier(.333333,0,.666667,.476401)}75%{transform:rotate(5deg);animation-timing-function:cubic-bezier(.333333,0,.666667,.476401)}}
+@keyframes header-head-bob{0%,50%,100%{translate:0 0}25%,75%{translate:0 2px}}
+@keyframes header-eye-blink{0%,20%,24%,100%{transform:scaleY(1)}21.5%,22.5%{transform:scaleY(.12)}}
+@media(max-width:760px){.header,.portfolio-header{width:calc(100% - 24px);padding-left:12px;padding-right:10px}.brand,.portfolio-brand{gap:6px}.header-portrait{width:29.74px;height:32px}.header-actions .button,.portfolio-actions .portfolio-button{height:48px;min-height:48px;width:auto!important;padding:0 12px;border-radius:18px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.brand.is-grooving .header-portrait,.portfolio-brand.is-grooving .header-portrait,.brand.is-grooving .header-eye,.portfolio-brand.is-grooving .header-eye{animation:none;transform:none;translate:none}}
