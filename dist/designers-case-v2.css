@@ -414,6 +414,84 @@
   cursor: pointer;
 }
 .desk-research-close img { display: block; width: 24px; height: 24px; }
+@font-face {
+  font-family: Geist;
+  src: url('/assets/GeistVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+.survey-panel { padding-bottom: 32px; }
+.survey-intro,
+.survey-summary,
+.survey-findings {
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.072px;
+}
+.survey-intro { margin-top: 25px !important; }
+.survey-summary { margin-top: 24px; }
+.survey-summary-title { font-weight: 700; }
+.survey-findings { display: grid; gap: 12px; margin-top: 20px; }
+.survey-switch {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  width: 316.167px;
+  max-width: 100%;
+  height: 62.167px;
+  margin: 42px auto 0;
+  padding: 7.083px;
+  border-radius: 60.208px;
+  background: #1e1e24;
+}
+.survey-switch::before {
+  content: '';
+  position: absolute;
+  top: 7.083px;
+  left: 7.083px;
+  width: 135px;
+  height: 48px;
+  border-radius: 83.229px;
+  background: #fff;
+  transition: width .24s linear, transform .24s linear;
+}
+.survey-switch[data-active='results']::before { width: 167px; transform: translateX(135px); }
+.survey-switch button {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 135px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 83.229px;
+  background: transparent;
+  color: #fff;
+  font: 500 16px/1 Geist, Arial, sans-serif;
+  cursor: pointer;
+  transition: color .24s linear;
+}
+.survey-switch button:last-child { flex-basis: 167px; }
+.survey-switch button.is-active { color: #2b2b31; }
+.survey-switch button:focus-visible { outline: 2px solid #70b6ff; outline-offset: 2px; }
+.survey-media { position: relative; overflow: hidden; margin-top: 25px; }
+.survey-media [data-survey-panel] {
+  display: block;
+  width: 100%;
+  border-radius: 15.37px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+.survey-media [data-survey-panel].is-active { position: relative; opacity: 1; visibility: visible; }
+.survey-media [data-survey-panel]:not(.is-active) { position: absolute; inset: 0; pointer-events: none; }
+.survey-image-stack { overflow: hidden; margin: 0; padding: 0; gap: 0; line-height: 0; background: #f0ebf8; }
+.survey-image-stack img { display: block; width: 100%; height: auto; margin: 0; padding: 0; border: 0; border-radius: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .survey-switch::before,
+  .survey-switch button,
+  .survey-media [data-survey-panel] { transition: none; }
+}
 @media (max-width: 900px) {
   .desk-research-shell {
     top: 16px;
