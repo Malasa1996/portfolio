@@ -396,7 +396,7 @@
 .desk-research-gallery figure:nth-child(2) img { aspect-ratio: 654 / 716.237; }
 .desk-research-gallery figure:nth-child(3) img { aspect-ratio: 654 / 362.077; }
 .desk-research-gallery figcaption { margin-top: 16px; }
-.desk-research-gallery a { color: #fff; text-underline-offset: 2px; }
+.desk-research-publication-link { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
 .desk-research-close {
   position: absolute;
   top: 0;
