@@ -1,4 +1,5 @@
-.portfolio-header{position:fixed;z-index:90;top:16px;left:50%;transform:translateX(-50%);width:min(1040px,calc(100% - 48px));height:82px;padding:8px 10px 8px 30px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.035);border-radius:32px;background:rgba(42,42,49,.86);box-shadow:0 12px 40px rgba(0,0,0,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.portfolio-header{position:fixed;z-index:90;top:16px;left:50%;transform:translateX(-50%) translateY(0);transition:transform .3s ease;width:min(1040px,calc(100% - 48px));height:82px;padding:8px 10px 8px 30px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.035);border-radius:32px;background:rgba(42,42,49,.86);box-shadow:0 12px 40px rgba(0,0,0,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.portfolio-header.is-scroll-hidden{transform:translateX(-50%) translateY(-120%)}
 .portfolio-brand{display:flex;align-items:center;gap:16px;font-size:14px;font-weight:500;letter-spacing:-.4px;white-space:nowrap}
 .portfolio-brand img{width:37.175px;height:40px}
 .portfolio-header nav{display:flex;align-items:center;gap:32px;font:500 14px MedeoSans,MedeoSans,Arial,sans-serif;letter-spacing:-.4px}
@@ -17,7 +18,7 @@
 body.light .portfolio-header{background:rgba(255,255,255,.88);border-color:rgba(20,20,30,.06);box-shadow:0 12px 40px rgba(35,35,50,.1)}
 body.light .portfolio-theme:hover{background:rgba(20,20,30,.05)}body.light .portfolio-button-muted{background:rgba(20,20,30,.07);color:#25252d;box-shadow:none;border-color:rgba(20,20,30,.05)}
 @media(max-width:760px){.portfolio-header{top:12px;width:calc(100% - 24px);height:68px;padding:8px 10px 8px 16px;border-radius:26px}.portfolio-brand{gap:8px;font-size:12px}.portfolio-brand img{width:29.74px;height:32px}.portfolio-header nav{display:none}.portfolio-actions{gap:4px}.portfolio-button-muted{display:none}.portfolio-theme{width:40px;height:40px;padding:8px}.portfolio-button{min-height:48px;padding:0 15px;border-radius:18px;font-size:12px}.portfolio-cv-dialog{padding:22px;border-radius:22px}}
-@media(prefers-reduced-motion:reduce){.portfolio-header *{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.portfolio-header,.portfolio-header *{transition:none!important}}
 .portfolio-header nav{position:absolute;left:50%;transform:translateX(-50%)}
 #works,#background,#about{scroll-margin-top:48px}
 @media(max-width:760px){.portfolio-header nav{display:none}.portfolio-button-muted{display:inline-flex}.portfolio-header{padding-left:12px}.portfolio-brand{gap:6px}.portfolio-brand span{font-size:11px}.portfolio-actions{gap:4px}.portfolio-button{padding-inline:12px}}

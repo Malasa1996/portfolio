@@ -1,0 +1,306 @@
+.designers-page {
+  --ds-bg: #1e1e24;
+  --ds-card: #2b2b31;
+  --ds-text: #fff;
+  --ds-muted: rgba(255, 255, 255, 0.64);
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--ds-bg);
+  color: var(--ds-text);
+  font-family: "Medeo Sans", "MedeoSans", Arial, sans-serif;
+  padding: 154px 24px 160px;
+}
+
+.designers-page *,
+.designers-page *::before,
+.designers-page *::after { box-sizing: border-box; }
+
+.ds-case { width: 100%; }
+.ds-copy { width: min(720px, 100%); margin-inline: auto; }
+.ds-media { width: min(900px, 100%); margin-inline: auto; }
+.ds-wide { width: min(1040px, 100%); margin-inline: auto; }
+
+.ds-section { margin-top: 120px; }
+.ds-section--compact { margin-top: 80px; }
+
+.ds-kicker {
+  margin: 0 0 16px;
+  color: var(--ds-muted);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.4px;
+}
+
+.ds-title,
+.ds-heading,
+.ds-subheading,
+.ds-body,
+.ds-list,
+.ds-meta p { margin-top: 0; }
+
+.ds-title {
+  max-width: 797px;
+  margin: 0 auto 20px;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ds-heading {
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+  font-weight: 600;
+}
+
+.ds-heading--center { text-align: center; }
+
+.ds-subheading {
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.4px;
+  font-weight: 700;
+}
+
+.ds-body,
+.ds-list {
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.4px;
+  font-weight: 400;
+}
+
+.ds-body + .ds-body { margin-top: 20px; }
+.ds-subheading + .ds-body { margin-top: 0; }
+
+.ds-list {
+  padding-left: 25px;
+}
+
+.ds-list li + li { margin-top: 12px; }
+
+.ds-hero { text-align: center; }
+.ds-hero__lead { width: min(720px, 100%); margin: 0 auto; }
+.ds-hero__image { margin-top: 40px; }
+
+.ds-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-tags li {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #29292f;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.4px;
+}
+
+.ds-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px;
+  margin-top: 56px;
+  text-align: left;
+}
+
+.ds-meta dt {
+  margin-bottom: 4px;
+  color: var(--ds-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ds-meta dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ds-figure { margin: 40px auto 0; }
+.ds-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+}
+
+.ds-figure--plain img { border-radius: 0; }
+.ds-editor-before { width: min(904px, 100%); }
+.ds-editor-followup { margin-top: 40px; }
+.ds-editor-followup .ds-subheading { margin-top: 20px; }
+.ds-editor-test-copy { margin-top: 20px; }
+.ds-editor-tests { width: min(1440px, 100%); }
+.ds-editor-tests img { width: min(629px, 100%); margin-inline: auto; border-radius: 0; }
+.ds-editor-result { margin-top: 40px; }
+.ds-figure figcaption {
+  margin-top: 12px;
+  color: var(--ds-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ds-card {
+  padding: 40px 44px;
+  border-radius: 32px;
+  background: var(--ds-card);
+}
+
+.ds-research-grid,
+.ds-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.ds-research-grid .ds-card { min-height: 100%; }
+
+.ds-gallery figure { margin: 0; }
+.ds-gallery figure:first-child { grid-column: 1 / -1; }
+.ds-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  border-radius: 32px;
+}
+
+.ds-other-screens { display: grid; gap: 24px; margin-top: 40px; }
+.ds-other-screens figure { margin: 0; }
+.ds-other-screens img { display: block; width: 100%; height: auto; border-radius: 0; }
+
+.ds-result {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.ds-result .ds-heading { margin-bottom: 20px; }
+
+/* Hero geometry from the 1440 px Designers frame. Kept local to this case. */
+.designers-case-page .designers-page {
+  padding-top: 178px;
+  padding-bottom: 160px;
+  background-color: #1e1e24;
+  background-image: url('/assets/sovcombank-case/hero-background.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 1440px 869px;
+}
+
+.designers-case-page .reading-progress { display: none; }
+.designers-case-page .ds-hero { text-align: left; }
+.designers-case-page .ds-title {
+  font-family: MedeoSans, Arial, sans-serif;
+  font-style: normal;
+  max-width: none;
+  margin: 0 0 20px;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  font-weight: 600;
+  text-align: left;
+}
+.designers-case-page .ds-hero__lead {
+  margin: 0;
+  letter-spacing: -0.144px;
+}
+.designers-case-page .ds-tags {
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+.designers-case-page .ds-tags li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 41px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: #2b2b31;
+  font-size: 12px;
+  line-height: 20.4px;
+}
+.designers-case-page .ds-meta {
+  grid-template-columns: 123px 156px 242px;
+  column-gap: 95px;
+  margin-top: 62px;
+}
+.designers-case-page .ds-hero__image { margin-top: 48px; }
+.designers-case-page .ds-hero__image img { border-radius: 0; }
+.designers-case-page .ds-project-intro,
+.designers-case-page .ds-project-goal,
+.designers-case-page .ds-project-audience {
+  width: min(720px, 100%);
+  margin-top: 120px;
+  font-family: MedeoSans, Arial, sans-serif;
+}
+.designers-case-page .ds-project-intro .ds-heading,
+.designers-case-page .ds-project-goal .ds-heading,
+.designers-case-page .ds-project-audience .ds-heading {
+  font-family: MedeoSans, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.designers-case-page .ds-project-intro .ds-body,
+.designers-case-page .ds-project-goal .ds-body,
+.designers-case-page .ds-project-goal .ds-list,
+.designers-case-page .ds-project-audience .ds-body,
+.designers-case-page .ds-project-audience .ds-list {
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.072px;
+}
+.designers-case-page .ds-project-goal .ds-metrics-label { margin-top: 32px; }
+.designers-case-page .ds-project-goal .ds-metrics-list,
+.designers-case-page .ds-project-audience .ds-list { margin-top: 20px; }
+.designers-case-page .ds-audience-visual { margin-top: 40px; }
+.designers-case-page .ds-audience-visual img { border-radius: 0; }
+.designers-case-page .ds-discovery { margin-top: 120px; }
+.designers-case-page .ds-discovery .ds-list { font-size: 18px; line-height: 1.45; letter-spacing: -0.072px; }
+.designers-case-page .ds-discovery a { color: inherit; text-underline-offset: 2px; }
+.designers-case-page .ds-discovery-visual { margin-top: 40px; }
+.designers-case-page .ds-discovery-visual img { border-radius: 0; }
+.designers-case-page .ds-discovery-detail { margin-top: 40px; }
+.designers-case-page .ds-discovery-detail .ds-list { font-size: 18px; line-height: 1.45; letter-spacing: -0.072px; }
+.designers-case-page .ds-discovery-detail a { color: inherit; text-underline-offset: 2px; }
+.designers-case-page .ds-discovery-detail-visual { margin-top: 20px; }
+.designers-case-page .ds-discovery-detail-visual img { border-radius: 0; }
+.designers-case-page .ds-feed-visual,
+.designers-case-page .ds-feed-result-visual { margin-top: 20px; }
+.designers-case-page .ds-feed-visual img,
+.designers-case-page .ds-feed-result-visual img { border-radius: 0; }
+.designers-case-page .ds-feed-hypotheses,
+.designers-case-page .ds-feed-result { margin-top: 40px; }
+.designers-case-page .ds-interview-visual { width: min(1440px, 100%); }
+.designers-case-page .case-close,
+.designers-case-page .case-nav { display: none; }
+
+@media (max-width: 820px) {
+  .designers-page { padding: 122px 18px 112px; }
+  .ds-section { margin-top: 88px; }
+  .ds-section--compact { margin-top: 64px; }
+  .ds-title { font-size: 38px; }
+  .ds-heading { font-size: 28px; }
+  .ds-body, .ds-list, .ds-subheading { font-size: 17px; }
+  .ds-meta { grid-template-columns: 1fr; gap: 18px; margin-top: 40px; }
+  .ds-research-grid, .ds-gallery { grid-template-columns: 1fr; }
+  .ds-gallery figure:first-child { grid-column: auto; }
+  .ds-card { padding: 28px 24px; border-radius: 24px; }
+  .ds-figure img, .ds-gallery img { border-radius: 24px; }
+}
