@@ -84,7 +84,7 @@
     <section class="ds-section ds-copy ds-discovery" id="discovery">
       <h2 class="ds-heading">Дискавери</h2>
       <ul class="ds-list">
-        <li>Desk research. <a href="#discovery">Подробнее</a></li>
+        <li>Desk research. <a href="#discovery" data-desk-research-open>Подробнее</a></li>
         <li>UX-аудит. <a href="#discovery">Подробнее</a></li>
         <li>Бенчмаркинг. Изучил релевантные кейсы, как ребята повышали метрики, масштабировались и редизайнили свои продукты</li>
         <li>Конкурентный анализ. Провёл анализ функций, сделал сводную таблицу. <a href="#discovery">Подробнее</a></li>
@@ -187,4 +187,39 @@
     </section>
   </article>
 </main><a class="next-case" href="sovcombank.html">Следующий кейс</a>
+<dialog class="desk-research-dialog" aria-labelledby="desk-research-title">
+  <div class="desk-research-shell">
+    <div class="desk-research-panel">
+      <h2 id="desk-research-title">Desk research</h2>
+      <p class="desk-research-intro">Изучил продукты, отзывы и комментарии пользователей. Нашёл разборы на YouTube, статьи на VC.ru и обзоры на самой платформе Дизайнерс</p>
+      <p class="desk-research-label">Результат ресёрча:</p>
+      <ul class="desk-research-findings">
+        <li>Неудобный редактор — много лишних действий, чтобы просто написать и оформить статью</li>
+        <li>Баги редактора — зависания, проблемы с блоками и форматированием текста</li>
+        <li>Сложный процесс публикации — лишние шаги, не всегда понятные требования к материалам</li>
+        <li>Недостаточно аналитики — авторы не понимали, сколько просмотров набирают статьи и насколько хорошо они работают</li>
+        <li>Слабый органический охват — для продвижения материалов приходилось привлекать аудиторию из Telegram и VK</li>
+        <li>Неудобная навигация — фильтры ленты сбрасывались после перехода в статью</li>
+        <li>Проблемы с отображением контента — заголовки и описания обрезались в карточках публикаций</li>
+        <li>Неочевидные возможности комментариев — не сразу понятно, что к комментарию можно прикрепить изображение</li>
+      </ul>
+      <div class="desk-research-gallery">
+        <figure>
+          <img src="/assets/designers-case/desk-research-1.png" alt="Разбор нового редактора Дизайнерс" loading="lazy">
+          <figcaption><a href="https://dsgners.ru/artem-konakov/5422-ux-patrul-vyipusk-sedmoy-novyiy-redaktor-dsgners-i-sravnenie-s-vc" target="_blank" rel="noopener noreferrer">Ссылка на публикацию</a></figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/designers-case/desk-research-2.png" alt="Статья с отзывом о платформе Дизайнерс" loading="lazy">
+          <figcaption><a href="https://vc.ru/u/938375-irina-soloshenko" target="_blank" rel="noopener noreferrer">Ссылка на публикацию</a></figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/designers-case/desk-research-3.png" alt="Видеообзор платформы Дизайнерс" loading="lazy">
+          <figcaption><a href="https://www.youtube.com/watch?v=WKeixF209lo&amp;t=6s&amp;ab_channel=%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%BE%D0%B2UXART" target="_blank" rel="noopener noreferrer">Ссылка на публикацию</a></figcaption>
+        </figure>
+      </div>
+    </div>
+    <button class="desk-research-close" type="button" aria-label="Закрыть Desk research"><img src="/assets/archive-popup/close.svg" alt=""></button>
+  </div>
+</dialog>
+<script src="/desk-research.js" defer></script>
 <dialog class="image-dialog" aria-label="Просмотр иллюстрации"><button class="dialog-close" type="button" aria-label="Закрыть изображение">×</button><img alt=""><p></p></dialog></body></html>
