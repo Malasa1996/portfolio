@@ -221,6 +221,7 @@ new ResizeObserver(scheduleStack).observe(firstCase);
 scheduleStack();
 
 const aboutSection=document.querySelector('.about');
+const aboutSticky=aboutSection?.querySelector('.about-sticky');
 const aboutScenes=[...document.querySelectorAll('.about-scene')];
 let aboutFrame;
 let lastAboutScene=-1;
@@ -230,9 +231,8 @@ function updateAbout(){
  if(!aboutSection)return;
  const viewportHeight=innerHeight/pageScale();
  const bounds=aboutSection.getBoundingClientRect();
- const distance=Math.max(1,aboutSection.offsetHeight-viewportHeight);
- const progress=Math.max(0,Math.min(1,-bounds.top/pageScale()/distance));
- const active=Math.min(aboutScenes.length-1,Math.floor(progress*aboutScenes.length));
+ const pinTop=parseFloat(getComputedStyle(aboutSticky).top)*pageScale();
+ const active=Math.min(aboutScenes.length-1,bounds.top<=pinTop-550?1:0);
  if(aboutSizeDirty){
   const canvasWidth=Math.min(aboutSection.clientWidth,Math.max(280,viewportHeight-64)*1440/760);
   const scale=canvasWidth/1440;

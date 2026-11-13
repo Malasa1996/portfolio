@@ -5,7 +5,7 @@
  .portfolio-header{left:720px;width:900px}
  .next-case{left:720px}
  .gallery-track{padding-inline:270px}
- .about{height:calc(260vh / var(--desktop-scale,1))}
+ .about{height:calc((100svh + var(--about-extra)) / var(--desktop-scale,1))}
  .about-sticky{height:calc(100svh / var(--desktop-scale,1))}
 }
 @media(min-width:1101px) and (prefers-reduced-motion:reduce){
