@@ -66,8 +66,7 @@ if (comparison && comparisonLabels && comparisonButtons.length === 2 && comparis
   });
 }
 
-const beforeAfter = document.querySelector('.before-after');
-if (beforeAfter) {
+for (const beforeAfter of document.querySelectorAll('.before-after')) {
   const handle = beforeAfter.querySelector('[role="slider"]');
   let split = 50;
   let dragging = false;

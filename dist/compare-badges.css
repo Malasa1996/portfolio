@@ -1,0 +1,51 @@
+.before-after__badge-side {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.before-after__badge-side--before {
+  clip-path: inset(0 calc(100% - var(--split)) 0 0);
+}
+
+.before-after__badge-side--after {
+  clip-path: inset(0 0 0 var(--split));
+}
+
+.before-after__badge-side::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 76px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #626264;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 1;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  pointer-events: none;
+}
+
+.before-after__badge-side--before::before {
+  left: 20px;
+  background-image: url('./assets/compare-badge-before.svg');
+}
+
+.before-after__badge-side--after::before {
+  right: 20px;
+  background-image: url('./assets/compare-badge-after.svg');
+}
+
+.case-artboard .before-after__handle {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: #617ff4 url('./assets/designers-case/comparison-handle.svg') center / 36px 36px no-repeat;
+  color: transparent;
+  font-size: 0;
+  box-shadow: none;
+  filter: none;
+}

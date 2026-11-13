@@ -285,6 +285,12 @@
 .designers-case-page .ds-feed-result-visual { margin-top: 20px; }
 .designers-case-page .ds-feed-visual img,
 .designers-case-page .ds-feed-result-visual img { border-radius: 0; }
+.designers-case-page .before-after { --split: 50%; position: relative; aspect-ratio: 1800 / 1013; overflow: hidden; border-radius: 32px; background: #69696d; touch-action: none; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+.designers-case-page .before-after img { position: absolute; inset: 0; width: 100%; height: auto; border-radius: 0; pointer-events: none; }
+.designers-case-page .before-after__after { clip-path: inset(0 0 0 var(--split)); }
+.designers-case-page .before-after__divider { position: absolute; z-index: 3; top: 0; bottom: 0; left: var(--split); width: 2px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.1); pointer-events: none; }
+.designers-case-page .before-after__handle { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #617ff4 url('/assets/designers-case/comparison-handle.svg') center / 36px 36px no-repeat; color: transparent; font: 600 0/1 MedeoSans,Arial,sans-serif; box-shadow: none; transform: translate(-50%,-50%); pointer-events: auto; cursor: ew-resize; }
+.designers-case-page .before-after__handle:focus-visible { outline: 3px solid #548af7; outline-offset: 3px; }
 .designers-case-page .ds-feed-hypotheses,
 .designers-case-page .ds-feed-result { margin-top: 40px; }
 .designers-case-page .ds-interview-visual { width: min(1440px, 100%); }
