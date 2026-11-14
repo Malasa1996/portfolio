@@ -1,7 +1,14 @@
-/* No identity is rendered underneath the particles, including before JS loads. */
 .nda-heading{min-height:32px}
-.nda-spoiler{position:relative;display:block;isolation:isolate;width:232px;height:32px;max-width:100%;padding:0;border:0;border-radius:8px;background:var(--panel);color:var(--text);cursor:pointer;touch-action:manipulation}
-.nda-spoiler canvas{position:absolute;left:-18px;top:-18px;width:calc(100% + 36px);height:calc(100% + 36px);pointer-events:none}
+.nda-spoiler{position:relative;display:block;isolation:isolate;width:max-content;height:32px;max-width:100%;padding:0;border:0;background:none;color:var(--text);font:inherit;letter-spacing:inherit;text-align:left;white-space:nowrap;cursor:pointer;touch-action:manipulation}
+@property --iris-gradient-length{syntax:"<percentage>";inherits:false;initial-value:100%}
+@property --iris-radius{syntax:"<length> | <percentage>";inherits:false;initial-value:16px}
+.nda-spoiler__text{display:block;--iris-gradient-length:0%;--iris-radius:0px;opacity:0;filter:blur(1px);mask:radial-gradient(circle closest-corner,black var(--iris-gradient-length),transparent calc(var(--iris-gradient-length) + var(--iris-radius))) no-repeat center;transition:--iris-gradient-length 0s linear .15s,filter 0s linear .15s,opacity .15s ease-out}
+.nda-spoiler.is-revealed .nda-spoiler__text{--iris-gradient-length:100%;--iris-radius:16px;opacity:1;filter:none;transition:--iris-gradient-length .3s ease-out,opacity .3s ease-out,filter .3s ease-out;animation:0s linear .3s 1 forwards nda-remove-mask}
+@keyframes nda-remove-mask{to{mask-image:none}}
+.nda-spoiler canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0}
+.nda-spoiler.is-ready:not(.is-revealed) canvas{opacity:1}
+.nda-spoiler.is-revealed canvas{opacity:1}
 .nda-spoiler::before{content:"";position:absolute;inset:3px 0;border-radius:7px;opacity:.52;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='43' height='29'%3E%3Cg fill='%23b8b8bf'%3E%3Ccircle cx='2' cy='5' r='.65'/%3E%3Ccircle cx='12' cy='2' r='.7'/%3E%3Ccircle cx='7' cy='16' r='.6'/%3E%3Ccircle cx='21' cy='9' r='.8'/%3E%3Ccircle cx='30' cy='3' r='.5'/%3E%3Ccircle cx='40' cy='13' r='.7'/%3E%3Ccircle cx='27' cy='21' r='.65'/%3E%3Ccircle cx='15' cy='25' r='.55'/%3E%3Ccircle cx='36' cy='27' r='.5'/%3E%3C/g%3E%3C/svg%3E")}
-.nda-spoiler.is-ready::before{display:none}
+.nda-spoiler.is-ready::before,.nda-spoiler.is-revealed::before{display:none}
 .nda-spoiler:focus-visible{outline:2px solid #87caff;outline-offset:6px}
+@media(prefers-reduced-motion:reduce){.nda-spoiler__text,.nda-spoiler.is-revealed .nda-spoiler__text{transition:none;animation:none}.nda-spoiler.is-revealed .nda-spoiler__text{mask-image:none}}
