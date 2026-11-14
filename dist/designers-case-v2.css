@@ -139,7 +139,9 @@
 .ds-figure--plain img { border-radius: 0; }
 .ds-editor-before { width: min(904px, 100%); }
 .ds-editor-followup { margin-top: 40px; }
+.ds-editor-after-composition { margin-top: 25px; }
 .ds-editor-followup .ds-subheading { margin-top: 20px; }
+.ds-editor-new-copy { letter-spacing: -0.004em; margin-bottom: 40px; }
 .ds-editor-test-copy { margin-top: 20px; }
 .ds-editor-tests { width: min(1440px, 100%); }
 .ds-editor-tests img { width: min(629px, 100%); margin-inline: auto; border-radius: 0; }
