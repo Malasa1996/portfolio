@@ -1,4 +1,5 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Дизайнерс · Максим Толстиков</title><meta name="description" content="Дизайнерс — кейс Максима Толстикова. Исходное описание проекта, исследования, дизайн и результат обновления."><meta name="theme-color" content="#1e1e24"><link rel="icon" href="/assets/4a1d5.svg"><link rel="stylesheet" href="/case.css?v=medeo-2"><link rel="stylesheet" href="/portfolio-nav.css?v=medeo-2"><link rel="stylesheet" href="/header-logo.css"><link rel="stylesheet" href="/next-case.css"><link rel="stylesheet" href="/compare-badges.css"><link rel="stylesheet" href="/desktop.css"><script src="/desktop.js" defer></script><script src="/case.js" defer></script><script src="/sovcombank-comparison.js?v=segment-2" defer></script><script src="/header-logo.js" defer></script><script src="/next-case.js" defer></script>  <link rel="stylesheet" href="/designers-case-v2.css?v=1">
+  <link rel="stylesheet" href="/assets/designers-case/reactions/style.css">
 </head><body id="top" class="designers-case-page"><a class="skip" href="#context">К содержанию</a><div class="reading-progress" aria-hidden="true"></div>
 <header class="portfolio-header"><a class="portfolio-brand" href="/#top" aria-label="Максим Толстиков — главная"><svg class="header-portrait" aria-hidden="true" focusable="false" preserveAspectRatio="none" overflow="visible" style="display: block;" width="37.1748" height="40" viewBox="0 0 37.1748 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="header-portrait-Frame-2131337672">
@@ -121,6 +122,40 @@
       <span class="before-after__badge-side before-after__badge-side--after" aria-hidden="true"></span>
       <span class="before-after__divider"><span class="before-after__handle" role="slider" tabindex="0" aria-label="Доля прежнего дизайна" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% прежнего дизайна">↔</span></span>
     </figure>
+
+    <figure class="ds-figure ds-media ds-feed-composition" aria-label="Мобильный интерфейс Дизайнерс, анимированные реакции и переключатель ленты">
+      <div class="ds-feed-composition__canvas">
+        <div class="ds-feed-composition__phone">
+          <img src="/assets/designers-case/reactions/phone-block.png" alt="Мобильный интерфейс DSGNERS!" width="870" height="975" loading="lazy">
+        </div>
+        <div class="stage ds-feed-composition__reactions" aria-label="Анимированная демонстрация реакций DSGNERS!">
+          <div class="panel">
+            <img class="panel-shape" src="/assets/designers-case/reactions/panel.svg" alt="">
+            <div class="reactions" aria-label="Реакции">
+              <span class="reaction" aria-label="Сердце"><img src="/assets/designers-case/reactions/emoji-0.png" alt=""></span>
+              <span class="reaction" aria-label="Улыбка"><img src="/assets/designers-case/reactions/emoji-1.png" alt=""></span>
+              <span class="reaction" aria-label="Камень"><img src="/assets/designers-case/reactions/emoji-2.png" alt=""></span>
+              <span class="reaction" aria-label="Огонь"><img src="/assets/designers-case/reactions/emoji-3.png" alt=""></span>
+              <span class="reaction" aria-label="Восторг"><img src="/assets/designers-case/reactions/emoji-4.png" alt=""></span>
+            </div>
+            <img class="pointer" src="/assets/designers-case/reactions/pointer.svg" alt="">
+          </div>
+        </div>
+        <div class="ds-feed-composition__switch">
+          <img src="/assets/designers-case/reactions/green-block.png" alt="Популярное, Свежее, Моя лента" width="874" height="478" loading="lazy">
+        </div>
+      </div>
+    </figure>
+    <script>
+      (() => {
+        const block = document.querySelector('.ds-feed-composition');
+        const canvas = block.querySelector('.ds-feed-composition__canvas');
+        new ResizeObserver(() => {
+          canvas.style.transform = `scale(${block.clientWidth / 900})`;
+        }).observe(block);
+      })();
+    </script>
+    <script type="module" src="/assets/designers-case/reactions/script.js"></script>
 
     <section class="ds-section--compact ds-copy ds-feed-hypotheses">
       <h3 class="ds-subheading">Гипотезы</h3>
