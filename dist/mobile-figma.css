@@ -363,4 +363,42 @@
   .before-after, .comparison-media, .case-application-video { overflow: hidden; }
   .before-after__handle { width: 36px; height: 36px; }
   .next-case { display: none; }
+
+  /* International payments case: mobile spacing from the 375 px layout. */
+  .case-artboard > .case-text.heading { margin-top: 46px; }
+  .case-artboard > .case-text.heading + .case-text,
+  .case-artboard > .case-text.main-problem-title + .case-text.main-problem-body,
+  .case-artboard > .case-text.tariff-problem-title + .case-text.tariff-intro {
+    margin-top: -2px;
+  }
+  .case-artboard > .case-text.goals-body + .case-cards-mobile,
+  .case-artboard > .case-text.role-intro + .case-text.role-bullet,
+  .case-artboard > .case-text.discovery-intro + .case-text.discovery-bullet,
+  .case-artboard > .case-text.application-hypothesis + .case-text.application-tests-heading,
+  .case-artboard > .comparison-labels + .case-text.application-result-title,
+  .case-artboard > .case-text.application-tests-body + .case-image.comparison-media,
+  .case-artboard > .case-text.application-result-body + .case-image.case-application-video,
+  .case-artboard > .case-text.view-intro + .case-image,
+  .case-artboard > .case-image + .case-text.view-description,
+  .case-artboard > .case-text.view-description + .case-image,
+  .case-artboard > .case-text.view-description + .case-text.view-description,
+  .case-artboard > .case-text.tariff-description + .case-text.tariff-description,
+  .case-artboard > .case-text.role-bullet + .case-image,
+  .case-artboard > .case-image + .case-text.hypotheses-heading,
+  .case-artboard > .case-image + .case-text.tariff-description,
+  .case-artboard > .case-image + .case-text.application-hypotheses-heading {
+    margin-top: 8px;
+  }
+  .case-artboard > .case-text.flow-analysis + .case-image,
+  .case-artboard > .case-text.main-problem-body + .case-image,
+  .case-artboard > .case-text.tariff-intro + .case-image {
+    margin-top: -2px;
+  }
+  .case-artboard > .case-image:has(img[src$="application-flow.png"]) { margin-top: -4px; }
+  .case-artboard > .case-image:has(img[src$="application-result.png"]) { margin-top: -2px; }
+  .case-artboard > .case-text.hypotheses-interview + .case-text.hypotheses-result-title { margin-top: 5px; }
+  .case-artboard > .case-text.tariff-description + .case-text.tariff-hypotheses-heading,
+  .case-artboard > .case-text.tariff-hypothesis + .case-text.tariff-result-title,
+  .case-artboard > .case-text.application-heading + .case-text.application-problem-title { margin-top: 4px; }
+  .case-artboard > .case-text.application-insight-bullet + .case-image { margin-top: -4px; }
 }
