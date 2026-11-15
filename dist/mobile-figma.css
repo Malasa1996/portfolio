@@ -1,0 +1,324 @@
+/* Mobile composition measured from Figma section 336:19823 (375 px frames). */
+.hero-title-mobile { display: none; }
+.case-cards-mobile, .case-card-mobile { display: contents; }
+@media (max-width: 760px) {
+  :root { --art-scale: .355; }
+  html, body { max-width: 100%; overflow-x: clip; }
+  .portfolio-header {
+    top: 12px; width: calc(100% - 24px); height: 63px;
+    padding: 4px 4px 4px 14px; border-radius: 24px;
+  }
+  .portfolio-brand span { display: none; }
+  .portfolio-brand .header-portrait { width: 33px; height: 36px; }
+  .portfolio-actions { gap: 4px; }
+  .portfolio-actions .portfolio-button {
+    height: 54px; min-height: 54px; padding: 0;
+    border-radius: 18px; font-size: 14px;
+  }
+  .portfolio-actions .portfolio-button-muted { width: 55px !important; }
+  .portfolio-actions .portfolio-button:not(.portfolio-button-muted) { width: 88px !important; }
+
+  body:has(> main .projects) .hero { height: 552px; }
+  body:has(> main .projects) .hero-art {
+    top: -52px; left: calc(50% - 138px); width: 262px; height: 392px;
+  }
+  body:has(> main .projects) .hero-copy { top: 357px; gap: 10px; width: 312px; }
+  body:has(> main .projects) .hero-experience {
+    width: 94px; height: 40px; font-size: 8.5px; line-height: 12px; gap: 4px;
+  }
+  body:has(> main .projects) .hero-experience img { width: 10px; height: 10px; }
+  body:has(> main .projects) .hero .hero-copy h1 {
+    font-size: 21px; line-height: 1.25; font-weight: 500;
+    letter-spacing: -.4px; text-align: center;
+  }
+  body:has(> main .projects) .hero .hero-copy .hero-title-desktop { display: none; }
+  body:has(> main .projects) .hero .hero-copy .hero-title-mobile { display: block; }
+  body:has(> main .projects) .hero .hero-copy h1.hero-title-mobile br { display: inline; }
+  body:has(> main .projects) .hero-mark { width: 15px; height: 15px; }
+
+  body:has(> main .projects) .projects { margin: 0; --case-underlap: 299px; }
+  body:has(> main .projects) .project {
+    width: 100%; border-radius: 24px; padding: 28px 0 0;
+    background: #2c2c32;
+  }
+  body:has(> main .projects) #designers {
+    height: 745px; padding-bottom: 0; border-radius: 24px 24px 0 0;
+  }
+  body:has(> main .projects) #sovcombank {
+    height: 768px; margin-top: -299px; padding-bottom: 0;
+  }
+  body:has(> main .projects) .project-heading {
+    position: relative; display: block; height: 192px;
+    padding: 0 28px; max-width: none;
+  }
+  body:has(> main .projects) .project-heading > div { width: 100%; max-width: 318px; }
+  body:has(> main .projects) .project-heading h2 {
+    gap: 8px; font-size: 21px; line-height: 32px; letter-spacing: -.4px;
+  }
+  body:has(> main .projects) .project-heading h2 img { width: 28px; height: 28px; }
+  body:has(> main .projects) #sovcombank .project-heading h2 { position: relative; font-size: 0; }
+  body:has(> main .projects) #sovcombank .project-heading h2::before {
+    content: ''; width: 24px; height: 24px; flex: none;
+    background: url('/assets/home-bank-mark-mobile.svg') center / contain no-repeat;
+  }
+  body:has(> main .projects) #sovcombank .project-heading h2::after {
+    content: 'нда'; font-size: 21px;
+  }
+  body:has(> main .projects) #sovcombank .project-heading h2:has(.nda-spoiler[aria-pressed="true"])::after {
+    content: 'НДА. Топ 10 банк РФ';
+  }
+  body:has(> main .projects) #sovcombank .nda-spoiler {
+    position: absolute; inset: 0; z-index: 1; width: 100%; opacity: 0;
+  }
+  body:has(> main .projects) .project-heading .meta {
+    margin-top: 4px; font-size: 12px; line-height: 16px; letter-spacing: 0;
+  }
+  body:has(> main .projects) .project-heading .description {
+    margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: 0;
+  }
+  body:has(> main .projects) .project-heading > .button {
+    position: absolute; top: 0; right: 28px;
+    width: 40px; height: 40px; min-height: 40px;
+    margin: 0; padding: 0; overflow: hidden;
+    border-radius: 12px; font-size: 0; color: transparent;
+    background: url('/assets/home-project-arrow-mobile.svg') center / contain no-repeat;
+    box-shadow: none;
+  }
+  body:has(> main .projects) .gallery,
+  body:has(> main .projects) .bank-project .gallery { height: 170px; margin-top: 24px; }
+  body:has(> main .projects) .gallery-track { gap: 10px; padding-inline: 24px; }
+  body:has(> main .projects) .slide { height: 170px; border-radius: 12px; }
+  body:has(> main .projects) .gallery-controls { display: none; }
+  body:has(> main .projects) .archive {
+    padding-top: 62px; gap: 20px;
+  }
+  body:has(> main .projects) .archive-art { width: 140px; height: 120px; }
+  body:has(> main .projects) .archive-art > div {
+    transform: scale(.6635); transform-origin: top left;
+  }
+  body:has(> main .projects) .archive p { margin: 0; font-size: 14px; line-height: 20px; }
+  body:has(> main .projects) .archive > .button {
+    min-height: 50px; padding: 0 20px; border-radius: 16px; font-size: 12px;
+  }
+  body:has(> main .projects) .background { margin: 61px 12px 0; }
+  body:has(> main .projects) .section-intro { gap: 16px; }
+  body:has(> main .projects) .section-intro h2,
+  body:has(> main .projects) .education h2,
+  body:has(> main .projects) .about-canvas > h2 {
+    font-size: 21px; line-height: 29px; letter-spacing: -.4px;
+  }
+  body:has(> main .projects) .section-intro p {
+    width: 100%; font-size: 14px; line-height: 24px; letter-spacing: 0;
+  }
+  body:has(> main .projects) .experience-list { margin-top: 32px; gap: 16px; }
+  body:has(> main .projects) .experience {
+    height: 206px; min-height: 206px; padding: 24px;
+    flex-direction: column-reverse; align-items: flex-start;
+    justify-content: space-between; border-radius: 32px;
+  }
+  body:has(> main .projects) .experience img { width: 62px; height: 62px; border-radius: 16px; }
+  body:has(> main .projects) .experience h3 { font-size: 16px; line-height: 24px; margin: 0; }
+  body:has(> main .projects) .experience p { font-size: 16px; line-height: 24px; }
+  body:has(> main .projects) .about {
+    height: 265px; margin-top: 63px;
+  }
+  body:has(> main .projects) .about-sticky {
+    position: relative; top: auto; height: 265px;
+    display: block; overflow: hidden;
+  }
+  body:has(> main .projects) .about-stage { width: 100%; height: 265px; }
+  body:has(> main .projects) .about-canvas > h2 {
+    top: 0; left: 0; width: 1440px; text-align: center;
+    font-size: 80px; line-height: 112px;
+  }
+  body:has(> main .projects) .education {
+    margin-top: 62px; width: 100%; height: 301px; aspect-ratio: auto;
+  }
+  body:has(> main .projects) .education-video,
+  body:has(> main .projects) .education-art { display: none; }
+  body:has(> main .projects) .education-content {
+    top: 0; left: 50%; width: 334px; gap: 24px;
+    transform: translateX(-50%);
+  }
+  body:has(> main .projects) .education .courses { gap: 16px; }
+  body:has(> main .projects) .education .course { gap: 16px; }
+  body:has(> main .projects) .education .course > div { width: 250px; }
+  body:has(> main .projects) .education .course h3 { font-size: 15px; line-height: 20px; }
+  body:has(> main .projects) .education .course p { font-size: 14px; line-height: 20px; margin: 0; }
+  body:has(> main .projects) .education .edu-arrow { width: 16px; height: 16px; }
+  body:has(> main .projects) footer { height: 380px; margin-top: 62px; padding-top: 0; }
+  body:has(> main .projects) .footer-avatar,
+  body:has(> main .projects) .footer-avatar img { width: 47px; height: 51px; }
+  body:has(> main .projects) .copyright { margin-top: 12px; font-size: 16px; line-height: 22px; }
+  body:has(> main .projects) .footer-links { margin-top: 33px; gap: 28px; font-size: 16px; line-height: 24px; }
+  body:has(> main .projects) .stickers { transform: scale(.26); }
+}
+
+@media (max-width: 760px) {
+  .designers-case-page .designers-page {
+    width: 100%; padding: 107px 12px 851px;
+    background-size: 375px auto;
+  }
+  .designers-case-page .ds-hero-decorative-vector {
+    top: -5px; left: calc(50% - 465px);
+    width: 931px; height: 547px; max-width: none;
+  }
+  .designers-case-page .ds-copy,
+  .designers-case-page .ds-media,
+  .designers-case-page .ds-wide { width: 100%; max-width: 351px; }
+  .designers-case-page .ds-title,
+  .designers-case-page .ds-heading {
+    font-size: 21px; line-height: 29px; letter-spacing: -.4px;
+    font-weight: 600;
+  }
+  .designers-case-page .ds-title { margin: 0 0 24px; }
+  .designers-case-page .ds-hero__lead,
+  .designers-case-page .ds-body,
+  .designers-case-page .ds-list {
+    font-size: 14px; line-height: 20px; letter-spacing: 0;
+  }
+  .designers-case-page .ds-hero__lead { width: 329px; max-width: 100%; }
+  .designers-case-page .ds-tags { margin-top: 20px; gap: 4px; }
+  .designers-case-page .ds-tags li {
+    height: 40px; padding: 0 16px; border-radius: 8px;
+    font-size: 12px; line-height: 16px;
+  }
+  .designers-case-page .ds-meta {
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+    margin-top: 17px; font-size: 14px; line-height: 20px;
+  }
+  .designers-case-page .ds-meta dt,
+  .designers-case-page .ds-meta dd { font-size: 14px; line-height: 20px; }
+  .designers-case-page .ds-figure.ds-hero__image { width: 349px; margin-top: 41px; }
+  .designers-case-page .ds-hero__image img { width: 100%; border-radius: 0; }
+  .designers-case-page .ds-section { margin-top: 62px; }
+  .designers-case-page .ds-section--compact { margin-top: 40px; }
+  .designers-case-page .ds-heading,
+  .designers-case-page .ds-project-intro .ds-heading,
+  .designers-case-page .ds-project-goal .ds-heading,
+  .designers-case-page .ds-project-audience .ds-heading { margin-bottom: 15px; font-size: 21px; line-height: 29px; }
+  .designers-case-page .ds-project-intro { margin-top: 62px; }
+  .designers-case-page .ds-project-goal { margin-top: 66px; }
+  .designers-case-page .ds-project-intro .ds-body,
+  .designers-case-page .ds-project-goal .ds-body,
+  .designers-case-page .ds-project-goal .ds-list,
+  .designers-case-page .ds-discovery .ds-list,
+  .designers-case-page .ds-discovery-detail .ds-list {
+    font-size: 14px; line-height: 20px; letter-spacing: 0;
+  }
+  .designers-case-page .ds-body + .ds-body { margin-top: 16px; }
+  .designers-case-page .ds-project-goal .ds-list li + li { margin-top: 12px; }
+  .designers-case-page .ds-project-goal .ds-metrics-label { margin-top: 32px; }
+  .designers-case-page .ds-project-goal .ds-metrics-list { margin-top: 20px; }
+  .designers-case-page .ds-project-audience { display: none; }
+  .designers-case-page .ds-audience-visual { margin-top: 30px; }
+  .designers-case-page .ds-discovery { margin-top: 55px; }
+  .designers-case-page .ds-discovery .ds-list,
+  .designers-case-page .ds-discovery-detail .ds-list { font-size: 18px; line-height: 26px; }
+  .designers-case-page .ds-discovery-visual,
+  .designers-case-page .ds-discovery-detail-visual,
+  .designers-case-page .ds-figure { margin-top: 24px; }
+  .designers-case-page .ds-figure img { border-radius: 0; }
+  .designers-case-page .ds-discovery-detail { margin-top: 24px; }
+  .designers-case-page .ds-interview-visual {
+    height: 180px; overflow: hidden;
+  }
+  .designers-case-page .ds-interview-visual img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .designers-case-page .ds-feed-hypotheses { margin-top: 24px; }
+  .designers-case-page .ds-feed-intro .ds-body + .ds-body { margin-top: 8px; }
+  .designers-case-page .ds-feed-result { margin-top: 20px; }
+  .designers-case-page .ds-feed-result + .ds-section { margin-top: 48px; }
+  .designers-case-page .ds-feed-result + .ds-section > .ds-subheading { display: none; }
+  .designers-case-page .ds-figure.ds-editor-before { margin-top: -2px; }
+  .designers-case-page .ds-figure.ds-editor-video { margin-top: 16px; }
+  .designers-case-page .ds-editor-video-labels { height: 40px; margin-top: 16px; }
+  .designers-case-page .ds-editor-video-labels::before,
+  .designers-case-page .ds-editor-video-labels button { height: 32px; }
+  .designers-case-page .ds-editor-followup { min-height: 120px; margin-top: 24px; }
+  .designers-case-page .ds-figure.ds-editor-tests { height: 197px; margin-top: 0; overflow: hidden; }
+  .designers-case-page .ds-editor-tests img { width: 100%; height: 100%; object-fit: cover; }
+  .designers-case-page .ds-editor-result { min-height: 246px; margin-top: 24px; }
+  .designers-case-page .ds-other-screens { margin-top: 16px; }
+  .designers-case-page .ds-other-screens { height: 923px; gap: 9px; overflow: hidden; }
+  .designers-case-page .ds-result { margin-top: 48px; }
+  .designers-case-page .ds-subheading { font-size: 18px; line-height: 26px; }
+  .designers-case-page .ds-card { padding: 24px; border-radius: 24px; }
+  .designers-case-page .ds-research-grid,
+  .designers-case-page .ds-gallery { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+  .designers-case-page .ds-gallery img { height: auto; min-height: 0; border-radius: 16px; }
+  .designers-case-page .ds-feed-composition,
+  .designers-case-page .before-after,
+  .designers-case-page .ds-editor-video { border-radius: 16px; }
+  .designers-case-page .ds-feed-composition__canvas { transform: scale(.39); }
+}
+
+@media (max-width: 760px) {
+  #case-content { width: 100%; overflow: clip; }
+  .case-text br.desktop-break { display: none; }
+  .case-artboard {
+    width: 100%; gap: 16px; padding: 107px 12px 65px;
+    overflow: clip;
+  }
+  .case-dots { left: 50%; top: -25px; width: 1440px; transform: translateX(-50%); }
+  .case-glow { left: calc(50% - 465px); top: -4px; width: 931px; height: 547px; }
+  .case-hero-decorative-vector {
+    top: -4px; left: calc(50% - 465px); width: 931px;
+    height: 547px; max-width: none;
+  }
+  .case-text.hero-title {
+    font-size: 21px; line-height: 29px; letter-spacing: -.4px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .case-text.hero-intro { max-width: 329px; font-size: 14px; line-height: 20px; letter-spacing: 0; }
+  .case-tags { gap: 4px; margin-top: 4px; }
+  .case-tags li { height: 40px; padding: 0 16px; border-radius: 8px; font-size: 12px; }
+  .case-meta {
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+    margin: 0; font-size: 14px; line-height: 20px;
+  }
+  .case-meta dt, .case-meta dd { font-size: 14px; line-height: 20px; }
+  .case-meta dd { margin-top: 1px; }
+  .case-image { margin: 16px 0 0; border-radius: 16px; }
+  .case-meta + .case-image {
+    width: min(349px, 100%) !important;
+    aspect-ratio: 349 / 196 !important;
+    margin-top: 36px;
+  }
+  .case-text.role-bullet + .case-image { margin-top: 4px; }
+  .case-image img, .case-image video { max-width: 100%; }
+  .case-text.heading { margin-top: 46px; font-size: 21px; line-height: 29px; letter-spacing: -.4px; }
+  .case-text.body,
+  .case-text.role-intro,
+  .case-text.role-bullet { font-size: 14px; line-height: 20px; letter-spacing: 0; }
+  .case-text.subheading { font-size: 18px; line-height: 26px; }
+  .case-cards-mobile { display: flex; flex-direction: column; gap: 14px; margin-top: 67px; }
+  .case-card-mobile {
+    display: flex; flex-direction: column; gap: 12px;
+    min-height: 224px; padding: 24px; border-radius: 32px;
+    background: #2b2b31;
+  }
+  .case-card-mobile:first-child { min-height: 259px; }
+  .case-card { display: none; }
+  .case-text.card-heading {
+    width: 100% !important; margin: 0 0 7px;
+    font-size: 21px; line-height: 29px; letter-spacing: -.4px;
+  }
+  .case-text.card-body {
+    width: calc(100% - 24px) !important; margin-left: 24px;
+    font-size: 16px; line-height: 23px;
+  }
+  .case-text.card-body::before { left: -24px; }
+  .case-text.flow-heading { margin-top: 40px; }
+  .case-text.main-heading { margin-top: 25px; }
+  .case-text.tariff-heading { margin-top: 116px; }
+  .case-text.application-heading { margin-top: 5px; }
+  .case-image:has(img[src$="application-flow.png"]) { margin-top: -15px; }
+  .case-image:has(img[src$="application-result.png"]) { margin-top: -3px; }
+  .case-image.case-application-video { margin-top: -22px; }
+  .comparison-labels { margin: 8px auto 0; }
+  .before-after, .comparison-media, .case-application-video { overflow: hidden; }
+  .before-after__handle { width: 36px; height: 36px; }
+  .next-case { display: none; }
+}
