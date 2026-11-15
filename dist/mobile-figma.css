@@ -4,6 +4,8 @@
 @media (max-width: 760px) {
   :root { --art-scale: .355; }
   html, body { max-width: 100%; overflow-x: clip; }
+  body:has(> main .projects) .hero .dotfield,
+  body:has(> main .projects) .hero .hero-dust { display: none; }
   .portfolio-header {
     top: 12px; width: calc(100% - 24px); height: 63px;
     padding: 4px 4px 4px 14px; border-radius: 24px;
@@ -122,10 +124,34 @@
     position: relative; top: auto; height: 265px;
     display: block; overflow: hidden;
   }
-  body:has(> main .projects) .about-stage { width: 100%; height: 265px; }
+  body:has(> main .projects) .about-stage {
+    width: 100%; height: 265px; overflow-x: auto; overflow-y: hidden;
+    container-type: inline-size; scroll-snap-type: x mandatory; scrollbar-width: none;
+  }
+  body:has(> main .projects) .about-stage::-webkit-scrollbar { display: none; }
+  body:has(> main .projects) .about-canvas {
+    width: calc(200cqw - 14px); height: 265px; transform: none;
+  }
   body:has(> main .projects) .about-canvas > h2 {
-    top: 0; left: 0; width: 1440px; text-align: center;
-    font-size: 80px; line-height: 112px;
+    position: sticky; top: 0; left: 0; width: 100cqw; height: 29px;
+    margin: 0; text-align: center; font-size: 21px; line-height: 29px;
+  }
+  body:has(> main .projects) .about-scene,
+  body:has(> main .projects) .about-scene:first-child:not(.is-active) {
+    position: absolute; top: 52.47px; right: auto; bottom: auto;
+    width: calc(100cqw - 26px); height: auto; margin: 0;
+    opacity: 1; transform: none; filter: none; transition: none;
+    scroll-snap-align: center; pointer-events: auto;
+    background-size: 100% 100%; background-repeat: no-repeat;
+  }
+  body:has(> main .projects) .about-scene > div { display: none; }
+  body:has(> main .projects) .about-scene[data-about-scene="0"] {
+    left: 13px; aspect-ratio: 349 / 198.355;
+    background-image: url('/assets/about-mobile-travel.png');
+  }
+  body:has(> main .projects) .about-scene[data-about-scene="1"] {
+    left: calc(100cqw - 1px); aspect-ratio: 349.092 / 212.462;
+    background-image: url('/assets/about-mobile-games.png');
   }
   body:has(> main .projects) .education {
     margin-top: 62px; width: 100%; height: 301px; aspect-ratio: auto;
