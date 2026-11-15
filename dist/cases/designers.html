@@ -29,6 +29,7 @@
 <a class="case-close" href="../index.html#designers" aria-label="Закрыть кейс и вернуться к работам">×</a>
 <nav class="case-nav" aria-label="Разделы кейса"><a href="#context" aria-label="О проекте"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">О проекте</span></a><a href="#goal" aria-label="Цель"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Цель</span></a><a href="#audience" aria-label="Аудитория"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Аудитория</span></a><a href="#success" aria-label="Критерии успеха"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Критерии успеха</span></a><a href="#discovery" aria-label="Дискавери"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Дискавери</span></a><a href="#design" aria-label="Дизайн"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Дизайн</span></a><a href="#results" aria-label="Результат"><span class="toc-line" aria-hidden="true"></span><span class="toc-label">Результат</span></a></nav>
 <main class="designers-page">
+  <img class="ds-hero-decorative-vector" src="/assets/hero-decorative-vector.svg" alt="" aria-hidden="true">
   <article class="ds-case">
     <section class="ds-hero ds-copy" aria-labelledby="designers-title">
       <h1 class="ds-title" id="designers-title">Дизайнерс<br>реддизайн всего сервиса</h1>
@@ -190,6 +191,12 @@
       <span class="before-after__badge-side before-after__badge-side--after" aria-hidden="true"></span>
       <span class="before-after__divider"><span class="before-after__handle" role="slider" tabindex="0" aria-label="Доля прежнего дизайна редактора" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% прежнего дизайна">↔</span></span>
     </figure>
+
+    <figure class="ds-figure ds-editor-video comparison-media" aria-label="Сравнение старого и нового редактора Дизайнерс">
+      <video class="comparison-video is-active" data-comparison-video="before" src="/assets/designers-case/editor-before.mp4" controls muted loop playsinline preload="metadata" aria-label="Было — старый редактор"></video>
+      <video class="comparison-video" data-comparison-video="after" data-src="/assets/designers-case/editor-after.mp4" controls muted loop playsinline preload="none" aria-label="Стало — новый редактор"></video>
+    </figure>
+    <div class="ds-editor-video-labels comparison-labels" role="group" aria-label="Сравнение видео редактора" data-active="before"><button type="button" class="is-active" data-comparison-choice="before" aria-pressed="true">Было</button><button type="button" data-comparison-choice="after" aria-pressed="false">Стало</button></div>
 
     <section class="ds-copy ds-editor-followup">
       <p class="ds-body">Основной фокус редизайна был на улучшении качества постинга. Мы хотели полностью переработать редактор: уйти от блочной системы, убрать лишние и сделать работу с контентом максимально гибкой и удобной</p>

@@ -138,6 +138,14 @@
 
 .ds-figure--plain img { border-radius: 0; }
 .ds-editor-before { width: min(904px, 100%); }
+.ds-editor-video { position: relative; width: min(904px, 100%); aspect-ratio: 1000 / 639; margin: 40px auto 0; overflow: hidden; border-radius: 32px; background: #1e1e24; }
+.ds-editor-video .comparison-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s ease, visibility .25s ease; }
+.ds-editor-video .comparison-video.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+.ds-editor-video-labels { position: relative; z-index: 2; width: 174px; height: 48px; display: flex; align-items: center; padding: 4px; margin: 24px auto 0; isolation: isolate; border-radius: 34px; background: rgba(235,235,237,.08); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.ds-editor-video-labels::before { content: ""; position: absolute; top: 4px; left: 4px; width: calc((100% - 8px)/2); height: 40px; border-radius: 34px; background: #fff; transform: translateX(0); transition: transform .24s linear; }
+.ds-editor-video-labels[data-active="after"]::before { transform: translateX(100%); }
+.ds-editor-video-labels button { position: relative; z-index: 1; width: 50%; height: 40px; padding: 0; border: 0; border-radius: 34px; background: transparent; color: #fff; font: 500 12px/20.4px MedeoSans,Arial,sans-serif; mix-blend-mode: difference; cursor: pointer; }
+.ds-editor-video-labels button:focus-visible { outline: 2px solid #70b6ff; outline-offset: 2px; }
 .ds-editor-followup { margin-top: 40px; }
 .ds-editor-after-composition { margin-top: 25px; }
 .ds-editor-followup .ds-subheading { margin-top: 20px; }
@@ -194,6 +202,7 @@
 
 /* Hero geometry from the 1440 px Designers frame. Kept local to this case. */
 .designers-case-page .designers-page {
+  position: relative;
   padding-top: 178px;
   padding-bottom: 160px;
   background-color: #1e1e24;
@@ -202,6 +211,9 @@
   background-position: center top;
   background-size: 1440px 869px;
 }
+.designers-case-page .ds-hero-decorative-vector { position: absolute; z-index: 0; top: 0; left: 50%; width: 1440px; height: 1100px; transform: translateX(-50%); pointer-events: none; }
+@media (max-width: 1100px) { .designers-case-page .ds-hero-decorative-vector { left: 0; width: 100%; height: auto; transform: none; } }
+.designers-case-page .ds-case { position: relative; z-index: 1; }
 
 .designers-case-page .reading-progress { display: none; }
 .designers-case-page .ds-hero { text-align: left; }
