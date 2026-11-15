@@ -169,6 +169,7 @@
   body:has(> main .projects) .education .course p { font-size: 14px; line-height: 20px; margin: 0; }
   body:has(> main .projects) .education .edu-arrow { width: 16px; height: 16px; }
   body:has(> main .projects) footer { height: 385px; margin-top: 62px; padding-top: 0; }
+  body:has(> main .projects) footer .dotfield { display: none; }
   body:has(> main .projects) .footer-avatar {
     width: 196px; height: 106px;
     background: url('/assets/mobile-footer-head.svg') center / contain no-repeat;
