@@ -10,6 +10,39 @@
   }, 3000);
   const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)
     && new URLSearchParams(location.search).get('preview') === 'preloader';
+  if (matchMedia('(max-width: 760px)').matches && document.querySelector('main .projects')) {
+    const savedY = window.scrollY;
+    const saved = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      overflow: document.body.style.overflow
+    };
+    Object.assign(document.body.style, {
+      position: 'fixed', top: `-${savedY}px`, width: '100%', overflow: 'hidden'
+    });
+    if (localPreview) return;
+    const reveal = () => {
+      clearInterval(timer);
+      loader.classList.add('is-hidden');
+      loader.setAttribute('aria-hidden', 'true');
+      Object.assign(document.body.style, saved);
+      window.scrollTo(0, savedY);
+    };
+    const ready = async () => {
+      const hero = document.querySelector('.hero-art img');
+      await Promise.all([
+        document.fonts.ready,
+        hero?.decode?.().catch(() => {})
+      ]);
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    };
+    Promise.race([
+      ready(),
+      new Promise(resolve => setTimeout(resolve, 8000))
+    ]).then(reveal, reveal);
+    return;
+  }
   if (localPreview) return;
   const hide = () => {
     clearInterval(timer);

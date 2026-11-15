@@ -18,15 +18,15 @@
   .portfolio-actions .portfolio-button-muted { width: 55px !important; }
   .portfolio-actions .portfolio-button:not(.portfolio-button-muted) { width: 88px !important; }
 
-  body:has(> main .projects) .hero { height: 552px; }
+  body:has(> main .projects) .hero { height: 568px; }
   body:has(> main .projects) .hero-art {
-    top: -52px; left: calc(50% - 138px); width: 262px; height: 392px;
+    top: -58px; left: calc(50% - 146px); width: 277px; height: 414px;
   }
-  body:has(> main .projects) .hero-copy { top: 357px; gap: 10px; width: 312px; }
+  body:has(> main .projects) .hero-copy { top: 367px; gap: 10px; width: 312px; }
   body:has(> main .projects) .hero-experience {
-    width: 94px; height: 40px; font-size: 8.5px; line-height: 12px; gap: 4px;
+    width: 118px; height: 45px; font-size: 12px; line-height: 16px; gap: 4.86px;
   }
-  body:has(> main .projects) .hero-experience img { width: 10px; height: 10px; }
+  body:has(> main .projects) .hero-experience img { width: 9.68px; height: 9.68px; }
   body:has(> main .projects) .hero .hero-copy h1 {
     font-size: 21px; line-height: 1.25; font-weight: 500;
     letter-spacing: -.4px; text-align: center;
@@ -56,19 +56,13 @@
     gap: 8px; font-size: 21px; line-height: 32px; letter-spacing: -.4px;
   }
   body:has(> main .projects) .project-heading h2 img { width: 28px; height: 28px; }
-  body:has(> main .projects) #sovcombank .project-heading h2 { position: relative; font-size: 0; }
+  body:has(> main .projects) #sovcombank .project-heading h2 { position: relative; font-size: 21px; }
   body:has(> main .projects) #sovcombank .project-heading h2::before {
-    content: ''; width: 24px; height: 24px; flex: none;
-    background: url('/assets/home-bank-mark-mobile.svg') center / contain no-repeat;
-  }
-  body:has(> main .projects) #sovcombank .project-heading h2::after {
-    content: 'нда'; font-size: 21px;
-  }
-  body:has(> main .projects) #sovcombank .project-heading h2:has(.nda-spoiler[aria-pressed="true"])::after {
-    content: 'НДА. Топ 10 банк РФ';
+    content: none;
   }
   body:has(> main .projects) #sovcombank .nda-spoiler {
-    position: absolute; inset: 0; z-index: 1; width: 100%; opacity: 0;
+    position: relative; z-index: 1; width: 240px; height: 32px;
+    padding-left: 0; font-size: 21px; line-height: 32px;
   }
   body:has(> main .projects) .project-heading .meta {
     margin-top: 4px; font-size: 12px; line-height: 16px; letter-spacing: 0;
@@ -76,6 +70,7 @@
   body:has(> main .projects) .project-heading .description {
     margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: 0;
   }
+  body:has(> main .projects) #designers .project-heading .description { letter-spacing: -.5px; }
   body:has(> main .projects) .project-heading > .button {
     position: absolute; top: 0; right: 28px;
     width: 40px; height: 40px; min-height: 40px;
@@ -102,6 +97,7 @@
   }
   body:has(> main .projects) .background { margin: 61px 12px 0; }
   body:has(> main .projects) .section-intro { gap: 16px; }
+  body:has(> main .projects) .section-intro .star { width: 32px; height: 32px; }
   body:has(> main .projects) .section-intro h2,
   body:has(> main .projects) .education h2,
   body:has(> main .projects) .about-canvas > h2 {
@@ -112,15 +108,15 @@
   }
   body:has(> main .projects) .experience-list { margin-top: 32px; gap: 16px; }
   body:has(> main .projects) .experience {
-    height: 206px; min-height: 206px; padding: 24px;
+    height: 192px; min-height: 192px; padding: 24px;
     flex-direction: column-reverse; align-items: flex-start;
-    justify-content: space-between; border-radius: 32px;
+    justify-content: space-between; border-radius: 40px;
   }
-  body:has(> main .projects) .experience img { width: 62px; height: 62px; border-radius: 16px; }
+  body:has(> main .projects) .experience img { width: 48px; height: 48px; border-radius: 14.4px; }
   body:has(> main .projects) .experience h3 { font-size: 16px; line-height: 24px; margin: 0; }
   body:has(> main .projects) .experience p { font-size: 16px; line-height: 24px; }
   body:has(> main .projects) .about {
-    height: 265px; margin-top: 63px;
+    height: 265px; margin-top: 62px;
   }
   body:has(> main .projects) .about-sticky {
     position: relative; top: auto; height: 265px;
@@ -146,12 +142,24 @@
   body:has(> main .projects) .education .course h3 { font-size: 15px; line-height: 20px; }
   body:has(> main .projects) .education .course p { font-size: 14px; line-height: 20px; margin: 0; }
   body:has(> main .projects) .education .edu-arrow { width: 16px; height: 16px; }
-  body:has(> main .projects) footer { height: 380px; margin-top: 62px; padding-top: 0; }
-  body:has(> main .projects) .footer-avatar,
-  body:has(> main .projects) .footer-avatar img { width: 47px; height: 51px; }
-  body:has(> main .projects) .copyright { margin-top: 12px; font-size: 16px; line-height: 22px; }
-  body:has(> main .projects) .footer-links { margin-top: 33px; gap: 28px; font-size: 16px; line-height: 24px; }
-  body:has(> main .projects) .stickers { transform: scale(.26); }
+  body:has(> main .projects) footer { height: 385px; margin-top: 62px; padding-top: 0; }
+  body:has(> main .projects) .footer-avatar {
+    width: 196px; height: 106px;
+    background: url('/assets/mobile-footer-head.svg') center / contain no-repeat;
+  }
+  body:has(> main .projects) .footer-avatar > svg { display: none !important; }
+  body:has(> main .projects) .copyright {
+    position: absolute; width: 1px; height: 1px; margin: 0;
+    overflow: hidden; clip-path: inset(50%);
+  }
+  body:has(> main .projects) .footer-links { margin-top: 34px; gap: 32px; font-size: 16px; line-height: 24px; }
+  body:has(> main .projects) .stickers {
+    height: 215px; width: 376px; left: 50%; right: auto;
+    transform: translateX(-50%);
+    background: url('/assets/mobile-footer-badges.svg') center / contain no-repeat;
+  }
+  body:has(> main .projects) .sticker { display: none; }
+  body:has(> main .projects) .archive-art { pointer-events: none; cursor: default; }
 }
 
 @media (max-width: 760px) {

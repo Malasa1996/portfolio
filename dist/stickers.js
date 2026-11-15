@@ -28,6 +28,7 @@
   for(const node of labels){node.style.removeProperty('transform');node.classList.remove('is-moving');}
   Composite.clear(engine.world,false);Engine.clear(engine);
   const mobile=width<760;
+  if(mobile&&document.querySelector('main .projects')){items=[];return;}
   items=labels.map((node,i)=>{
    const w=node.offsetWidth,h=node.offsetHeight;
    const style=getComputedStyle(node);

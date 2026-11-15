@@ -1,6 +1,54 @@
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const SLIDE_DURATION=15000;
 const galleries=[...document.querySelectorAll('.gallery')];
+const mobileCopy=matchMedia('(max-width: 760px)');
+const mobileParagraphs=[...document.querySelectorAll('main .project-heading .description, main .section-intro p, main .archive p')];
+const desktopParagraphs=mobileParagraphs.map(node=>node.textContent);
+const danglingWord=/(^|[\s(«„])(в|во|на|с|со|к|ко|у|о|об|от|до|за|из|по|для|при|и|а|но)( +)(?=\S)/giu;
+const syncMobileLineBreaks=()=>mobileParagraphs.forEach((node,index)=>{
+ node.textContent=desktopParagraphs[index];
+ if(!mobileCopy.matches)return;
+ for(let pass=0;pass<12;pass++){
+  let changed=false;
+  const value=node.textContent;
+  const matches=[...value.matchAll(danglingWord)];
+  for(const match of matches.reverse()){
+   const start=match.index+match[1].length;
+   const end=start+match[2].length;
+   const next=end+match[3].length;
+   const text=node.firstChild;
+   const before=document.createRange();before.setStart(text,start);before.setEnd(text,end);
+   const after=document.createRange();after.setStart(text,next);after.setEnd(text,next+1);
+   if(after.getBoundingClientRect().top-before.getBoundingClientRect().top>1){
+    node.textContent=node.textContent.slice(0,end)+'\u00a0'+node.textContent.slice(next);
+    changed=true;
+   }
+  }
+  if(!changed)break;
+ }
+});
+mobileCopy.addEventListener('change',syncMobileLineBreaks);
+let mobileCopyFrame;
+window.addEventListener('resize',()=>{
+ cancelAnimationFrame(mobileCopyFrame);
+ mobileCopyFrame=requestAnimationFrame(syncMobileLineBreaks);
+});
+document.fonts.ready.then(syncMobileLineBreaks);
+syncMobileLineBreaks();
+const mobileArchiveArt=document.querySelector('.archive-art');
+if(mobileArchiveArt){
+ const mobileHome=matchMedia('(max-width: 760px)');
+ const syncArchiveArt=()=>{
+  if(mobileHome.matches){mobileArchiveArt.tabIndex=-1;mobileArchiveArt.setAttribute('aria-hidden','true');}
+  else{mobileArchiveArt.removeAttribute('tabindex');mobileArchiveArt.removeAttribute('aria-hidden');}
+ };
+ mobileHome.addEventListener('change',syncArchiveArt);
+ syncArchiveArt();
+ mobileArchiveArt.addEventListener('click',event=>{
+  if(!mobileHome.matches)return;
+  event.preventDefault();event.stopImmediatePropagation();
+ },true);
+}
 
 class Gallery {
  constructor(element){
