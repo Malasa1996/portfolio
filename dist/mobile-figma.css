@@ -297,10 +297,16 @@
     overflow: clip;
   }
   .case-dots { left: 50%; top: -25px; width: 1440px; transform: translateX(-50%); }
-  .case-glow { left: calc(50% - 465px); top: -4px; width: 931px; height: 547px; }
+  .case-glow {
+    left: calc(50% - 465px); top: -4px; width: 931px; height: 547px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+  }
   .case-hero-decorative-vector {
     top: -4px; left: calc(50% - 465px); width: 931px;
     height: 547px; max-width: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
   }
   .case-text.hero-title {
     font-size: 21px; line-height: 29px; letter-spacing: -.4px; font-weight: 600;
@@ -317,10 +323,11 @@
   .case-meta dd { margin-top: 1px; }
   .case-image { margin: 16px 0 0; border-radius: 16px; }
   .case-meta + .case-image {
-    width: min(349px, 100%) !important;
-    aspect-ratio: 349 / 196 !important;
-    margin-top: 36px;
+    width: min(349.03px, 100%) !important;
+    aspect-ratio: 349.03 / 196.15 !important;
+    margin-top: 16px;
   }
+  .case-meta + .case-image img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
   .case-text.role-bullet + .case-image { margin-top: 4px; }
   .case-image img, .case-image video { max-width: 100%; }
   .case-text.heading { margin-top: 46px; font-size: 21px; line-height: 29px; letter-spacing: -.4px; }
