@@ -19,6 +19,8 @@ p,h1,h2,h3,figure,ul,dl,dd{margin:0}
 .case-artboard{width:1440px;height:13398.42px;flex:none;position:relative;overflow:hidden;background:#1e1e24}
 .case-dots{position:absolute;z-index:0;left:0;top:-25px;width:1440px;height:869px;background:url('/assets/sovcombank-case/hero-background.svg') 0 0/1440px 869px no-repeat;pointer-events:none}
 .case-glow{position:absolute;z-index:0;left:269.437px;top:-222.063px;width:1975.49px;height:1430.63px;pointer-events:none;background:url('/assets/sovcombank-case/glow.svg') 0 0/100% 100% no-repeat}
+.case-hero-decorative-vector{position:absolute;z-index:1;left:0;top:0;width:1440px;height:1100px;pointer-events:none}
+@media(max-width:1100px){.case-hero-decorative-vector{width:100%;height:auto}}
 .case-text{position:absolute;z-index:2;white-space:normal;color:#fff;font-weight:400}
 .case-text.hero-title{font-size:44px;line-height:1.1;letter-spacing:-.8px;font-weight:600}
 .case-text.hero-intro{font-size:18px;line-height:1.45;letter-spacing:-.144px}
