@@ -8,6 +8,8 @@
 @keyframes preloader-look{0%,100%{transform:rotate(-2deg) translateX(-1px)}50%{transform:rotate(2deg) translateX(1px)}}
 @media (prefers-reduced-motion:reduce){.site-preloader__portrait{animation:none}}
 @media (max-width:760px){
+ body:has(> main .projects) .site-preloader::after{display:none}
+ body:has(> main .projects) .site-preloader__content{transform:scale(.9)}
  html:has(body > main .projects):has(.site-preloader:not(.is-hidden)),
  body:has(> main .projects):has(.site-preloader:not(.is-hidden)){overflow:hidden!important;overscroll-behavior:none}
  body:has(> main .projects) .site-preloader:not(.is-hidden){touch-action:none;min-height:100dvh}
