@@ -118,7 +118,7 @@
   body:has(> main .projects) .experience h3 { font-size: 16px; line-height: 24px; margin: 0; }
   body:has(> main .projects) .experience p { font-size: 16px; line-height: 24px; }
   body:has(> main .projects) .about {
-    height: 265px; margin-top: 62px;
+    display: none;
   }
   body:has(> main .projects) .about-sticky {
     position: relative; top: auto; height: 265px;
