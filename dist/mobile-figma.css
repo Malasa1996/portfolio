@@ -296,7 +296,7 @@
     width: 100%; gap: 16px; padding: 107px 12px 65px;
     overflow: clip;
   }
-  .case-dots { left: 50%; top: -25px; width: 1440px; transform: translateX(-50%); }
+  .case-dots { display: none; left: 50%; top: -25px; width: 1440px; transform: translateX(-50%); }
   .case-glow {
     left: calc(50% - 465px); top: -4px; width: 931px; height: 547px;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
