@@ -323,7 +323,7 @@
   .case-meta dd { margin-top: 1px; }
   .case-image { margin: 16px 0 0; border-radius: 16px; }
   .case-meta + .case-image {
-    width: min(349.03px, 100%) !important;
+    width: 100% !important;
     aspect-ratio: 349.03 / 196.15 !important;
     margin-top: 16px;
   }
