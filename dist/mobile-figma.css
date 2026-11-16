@@ -266,7 +266,7 @@
   .designers-case-page .ds-feed-result { margin-top: 20px; }
   .designers-case-page .ds-feed-result + .ds-section { margin-top: 48px; }
   .designers-case-page .ds-feed-result + .ds-section > .ds-subheading { display: none; }
-  .designers-case-page .ds-figure.ds-editor-before { margin-top: -2px; }
+  .designers-case-page .ds-figure.ds-editor-before { margin-top: 24px; }
   .designers-case-page .ds-figure.ds-editor-video { margin-top: 16px; }
   .designers-case-page .ds-editor-video-labels { height: 40px; margin-top: 16px; }
   .designers-case-page .ds-editor-video-labels::before,
