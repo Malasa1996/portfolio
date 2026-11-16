@@ -1,4 +1,5 @@
 .about{--about-extra:593.392px;height:calc(100svh + var(--about-extra));position:relative}
+.about[hidden]{display:none!important}
 .about-sticky{position:sticky;top:calc(80px - (100svh - var(--about-width,100vw)*760/1440)/2);height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .about-stage{position:relative;flex:none;width:var(--about-width,100%);height:calc(var(--about-width,100vw)*760/1440);max-height:none;overflow:visible}
 .about-canvas{position:relative;width:1440px;height:760px;transform:scale(var(--about-scale,1));transform-origin:0 0}
