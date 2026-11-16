@@ -272,7 +272,7 @@
   .designers-case-page .ds-editor-video-labels::before,
   .designers-case-page .ds-editor-video-labels button { height: 32px; }
   .designers-case-page .ds-editor-followup { min-height: 120px; margin-top: 24px; }
-  .designers-case-page .ds-figure.ds-editor-tests { height: 197px; margin-top: 0; overflow: hidden; }
+  .designers-case-page .ds-figure.ds-editor-tests { height: 197px; margin-top: 24px; overflow: hidden; }
   .designers-case-page .ds-editor-tests img { width: 100%; height: 100%; object-fit: cover; }
   .designers-case-page .ds-editor-result { min-height: 246px; margin-top: 24px; }
   .designers-case-page .ds-other-screens { margin-top: 16px; }
